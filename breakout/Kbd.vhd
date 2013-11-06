@@ -10,86 +10,72 @@ entity kbd is
         reset           : in std_logic;
         keyboard_clk    : in std_logic;
         keyboard_data   : in std_logic;
-        r_en	        : in std_logic;
         scan_code	: out std_logic_vector(7 downto 0);
         scan_ready	: out std_logic);
 end kbd;
 
 architecture mixed of kbd is
 
---begin  -- mixed
+type receiver_status is (wait_start, start, parity, ready);  -- Control & data flow for the receiver
+signal control_state : receiver_status;
+signal bit_index : unsigned;                -- counter for the shift register
+signal one_counter : unsigned;              -- counter for the erro checking
+signal sum : unsigned;                      -- parity checking
+signal scan_code_reg : std_logic_vector (7 downto 0);  -- Register that hold the
+                                                       -- byte sent
+begin                                   --mixed
 
---signal read_char : std_logic;
+  -- purpose: FSM for receiving bytes from keyboard
+  -- type   : combinational
+  -- inputs : keyboard_clk
+  -- outputs: 
+  control: process (keyboard_clk)
+  begin  -- process control
+    if reset = '0' then
+      scan_ready    <= '0';
+      scan_code_reg <= (others => '0');
+      control_state <= wait_start;
+      bit_index     <= 0;
+      one_counter   <= 0;
+      sum           <= 0;
+    elsif(falling_edge(keyboard_clk)) then
+      case (control_state) is
+        when  wait_start =>
 
+          if (keyboard_data = '0') then
+            control_state <= start;
+          end if;
+        when start =>
+ 
+          if (keyboard_data = '1') then
+            one_counter <= one_counter + 1;
+          end if;
 
-SIGNAL READ_CHAR 			        : STD_LOGIC;
-SIGNAL INFLAG, ready_set		    : STD_LOGIC;
-SIGNAL keyboard_clk_filtered 		: STD_LOGIC;
-SIGNAL filter 					    : STD_LOGIC_VECTOR(7 downto 0);
-SIGNAL lower_code_buf				: STD_LOGIC_VECTOR(3 downto 0);
-SIGNAL high_code_buf				: STD_LOGIC_VECTOR(3 downto 0);		
-	
-BEGIN
+          if (index = 7) then
+            index <= 0;
+            control_state <= ready;
+          else  
+            index <= index + 1;
+          end if;
+          scan_code_reg (6 downto 0) <= scan_code_reg (7 downto 1);
+          scan_code_reg (7)           <= keyboard_data;
 
-PROCESS (read, ready_set)
-BEGIN
-  IF read = '1' THEN scan_ready <= '0';
-  ELSIF ready_set'EVENT and ready_set = '1' THEN
-	scan_ready <= '1';
-  END IF;
-END PROCESS;
+        when parity =>
+          sum           <= one_counter + keyboard_data;
+          one_counter   <= 0;
+          control_state <= ready;
+        when ready =>
+           if (sum mod 2) = 0 then
+             scan_code_reg <= (others => '0');
+             control_state <= wait_start;
+           else
+             scan_ready <= '1';
+           end if;
+          
+        when others => null;
+      end case;    
 
-
---This process filters the raw clock signal coming from the keyboard using a shift register and two AND gates
-Clock_filter: PROCESS
-BEGIN
-	WAIT UNTIL clock_25Mhz'EVENT AND clock_25Mhz= '1';
-	filter (6 DOWNTO 0) <= filter(7 DOWNTO 1) ;
-	filter(7) <= keyboard_clk;
-	
-	IF filter = "11111111" THEN		-- If 0hFF set keyboard_clk_filtered
-	   keyboard_clk_filtered <= '1';
-	ELSIF  filter= "00000000" THEN 
-	   keyboard_clk_filtered <= '0';
-	END IF;
-
-END PROCESS Clock_filter;
-
---This process reads in serial data coming from the terminal
-PROCESS
-BEGIN
-
-WAIT UNTIL (KEYBOARD_CLK_filtered'EVENT AND KEYBOARD_CLK_filtered='1');
-IF RESET='1' THEN
-   INCNT <= "0000";
-   READ_CHAR <= '0';
-ELSE
-  IF KEYBOARD_DATA='0' AND READ_CHAR='0' THEN
-        READ_CHAR<= '1';
-        ready_set<= '0';
-  ELSE
-
-    -- Shift in next 8 data bits to assemble a scan code
-    IF READ_CHAR = '1' THEN
-
-        IF INCNT < "1001" THEN	-- If less than 9-bits keep shifting in data from keyboard
-         	INCNT <= INCNT + 1;
-         	SHIFTIN(7 DOWNTO 0) <= SHIFTIN(8 DOWNTO 1);
-         	SHIFTIN(8) <= KEYBOARD_DATA;
-  	        ready_set <= '0';
-	-- End of scan code character, so set flags and exit loop
-        ELSE
-	  scan_code <= SHIFTIN(7 DOWNTO 0);
-	  READ_CHAR <='0';
-	  ready_set <= '1';
-	  INCNT <= "0000";
-     
-	END IF;
-     END IF;
-   END IF;
- END IF;
-END PROCESS;
-
-end mixed;;
-
-
+    end if;
+  end process control;
+  scan_code <= scan_code_reg;
+end mixed;
