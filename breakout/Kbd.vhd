@@ -6,7 +6,7 @@ USE  IEEE.STD_LOGIC_UNSIGNED.all;
 
         
 entity kbd is
-  PORT( clock           : in std_logic; 
+  port( clock           : in std_logic; 
         reset           : in std_logic;
         keyboard_clk    : in std_logic;
         keyboard_data   : in std_logic;
@@ -14,7 +14,7 @@ entity kbd is
         scan_ready	: out std_logic);
 end kbd;
 
-architecture mixed of kbd is
+architecture behavioral of kbd is
 
 type receiver_status is (wait_start, start, parity, ready);  -- Control & data flow for the receiver
 signal control_state : receiver_status;
@@ -78,4 +78,4 @@ begin                                   --mixed
     end if;
   end process control;
   scan_code <= scan_code_reg;
-end mixed;
+end behavioral;
