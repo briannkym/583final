@@ -5,6 +5,8 @@ use ieee.numeric_std.all;
 Entity Sync is
 Port(
 clk: in std_logic;
+R_in, G_in, B_in : in std_logic_vector(3 downto 0);
+x, y : out std_logic_vector(11 downto 0);
 HSync, VSync: out std_logic;
 R, G, B : out std_logic_vector(3 downto 0)
 );
@@ -12,10 +14,15 @@ R, G, B : out std_logic_vector(3 downto 0)
 end Sync;
 
 Architecture behavioral of Sync is
-signal x_pos : integer range 0 to 800:= 0;
-signal y_pos : integer range 0 to 525:= 0;
+signal x_pos : unsigned range 0 to 800:= 0;
+signal y_pos : unsigned range 0 to 525:= 0;
 
 begin
+x <= std_logic_vector(x_pos - 160) when (x_pos > 159) else
+	(others => '1');
+y <= std_logic_vector(y_pos - 45) when (y_pos > 159) else
+	(others => '1');
+
 	process(clk)
 	begin
 		if(clk'event and clk='1') then
@@ -44,8 +51,10 @@ begin
 				R <= (others => '0');
 				G <= (others => '0');
 				B <= (others => '0');
-			end if;
-			if(y_pos >= 0 and y_pos < 45)
+			else
+				R <= R_in;
+				G <= G_in;
+				B <= B_in;
 			end if;
 
 		end if;

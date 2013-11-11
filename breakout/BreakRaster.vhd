@@ -20,7 +20,8 @@ Architecture dataflow of BreakRaster is
 begin
 	process(x_pos, y_pos, paddle_x, ball_x, ball_y, bricks, draw_mode)
 	begin
-		if(x_pos )
+		if(x_pos > 0) then
+		end if;
 
 	end process;
 
