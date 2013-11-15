@@ -4,16 +4,14 @@ use ieee.numeric_std.all;
 
 Entity VGA is
 Port(
-Clock_24: in std_logic_vector(1 downto 0);
-VGA_HS, VGA_VS: out std_logic;
-VGA_R, VGA_G, VGA_B: out std_logic_vector(3 downto 0);
-Key: in std_logic_vector(3 downto 0);
-SW: in std_logic_vector(1 downto 0);
+B8: in std_logic; --The Clock
+T4, U3: out std_logic; --Horizontal Sync and Vertical Sync
+R9, T8, R8, N8, P8, P6, U5, U4: out std_logic; --RGB pins
 
 --Things specific to the game
-paddle_x : in integer range 0 to 640; 
-ball_x : in integer range 0 to 640;  
-ball_y : in integer range 0 to 480;
+paddle_x : in std_logic_vector(11 downto 0); 
+ball_x : in std_logic_vector(11 downto 0);  
+ball_y : in std_logic_vector(11 downto 0);
 bricks : in std_logic_vector(128 downto 0); 
 draw_mode : in std_logic_vector(3 downto 0)
 );
@@ -22,6 +20,8 @@ end VGA;
 Architecture structural of VGA is
 
 signal r, g, b : std_logic_vector(3 downto 0);
+signal VGA_R, VGA_G, VGA_B : std_logic_vector(3 downto 0);
+
 signal x,y : std_logic_vector(11 downto 0);
 
 
@@ -38,11 +38,11 @@ End Component Sync;
 
 Component BreakRaster is
 Port(
-x_pos: in integer range 0 to 800;
-y_pos: in integer range 0 to 525;
-paddle_x : in integer range 0 to 640; --This will change based off the paddle's width.
-ball_x : in integer range 0 to 640;  --These values will also change based off of the balls acceptable space
-ball_y : in integer range 0 to 480;
+x_pos: in std_logic_vector(11 downto 0);
+y_pos: in std_logic_vector(11 downto 0);
+paddle_x : in std_logic_vector(11 downto 0); --This will change based off the paddle's width.
+ball_x : in std_logic_vector(11 downto 0);  --These values will also change based off of the balls acceptable space
+ball_y : in std_logic_vector(11 downto 0);
 bricks : in std_logic_vector(128 downto 0); -- For now this will be the map of accpeptable brick coordinates. May change.
 draw_mode : in std_logic_vector(3 downto 0); -- We may wish to draw things multiple ways...
 R, G, B : out std_logic_vector(3 downto 0)
@@ -53,16 +53,25 @@ End Component BreakRaster;
 
 begin
 
+R9<=VGA_R(3);
+T8<=VGA_R(2);
+R8<=VGA_R(1);
+N8<=VGA_G(3);
+P8<=VGA_G(2);
+P6<=VGA_G(1);
+U5<=VGA_B(3);
+U4<=VGA_B(2);
+
 Sync_Imp: Sync
 port map(
-clk => Clock_24(0),
+clk => B8,
 R_in => r,
 G_in => g,
 B_in => b,
 X => x,
 Y => y,
-HSync => VGA_HS,
-VSync => VGA_VS,
+HSync => T4,
+VSync => U3,
 R => VGA_R,
 G => VGA_G,
 B => VGA_B
@@ -72,7 +81,7 @@ BreakRaster_Imp : BreakRaster
 port map(
 x_pos => x,
 y_pos => y,
-paddle_x => paddle, 
+paddle_x => paddle_x,
 ball_x => ball_x,
 ball_y => ball_y,
 bricks => bricks, 

@@ -14,13 +14,13 @@ R, G, B : out std_logic_vector(3 downto 0)
 end Sync;
 
 Architecture behavioral of Sync is
-signal x_pos : unsigned range 0 to 800:= 0;
-signal y_pos : unsigned range 0 to 525:= 0;
+signal x_pos : unsigned(11 downto 0) := (others => '0');
+signal y_pos : unsigned(11 downto 0) := (others => '0');
 
 begin
 x <= std_logic_vector(x_pos - 160) when (x_pos > 159) else
 	(others => '1');
-y <= std_logic_vector(y_pos - 45) when (y_pos > 159) else
+y <= std_logic_vector(y_pos - 45) when (y_pos > 44) else
 	(others => '1');
 
 	process(clk)
@@ -29,11 +29,11 @@ y <= std_logic_vector(y_pos - 45) when (y_pos > 159) else
 			if(x_pos < 800) then
 				x_pos <= x_pos + 1;
 			else
-				x_pos <= 0;
+				x_pos <= (others => '0');
 				if(y_pos < 525) then
 					y_pos <= y_pos + 1;
 				else
-					y_pos <= 0;
+					y_pos <= (others => '0');
 				end if;
 
 			end if;
@@ -48,6 +48,7 @@ y <= std_logic_vector(y_pos - 45) when (y_pos > 159) else
 				Vsync <='1';
 			end if;
 			if((x_pos > 0 and x_pos < 160) or (y_pos > 0 and y_pos < 45)) then
+			
 				R <= (others => '0');
 				G <= (others => '0');
 				B <= (others => '0');
