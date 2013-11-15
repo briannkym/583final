@@ -1,0 +1,3 @@
+xst -intstyle ise -ifn "/home/brian/Desktop/583final/Breakout/VGA.xst" -ofn "/home/brian/Desktop/583final/Breakout/VGA.syr" 
+ngdbuild -intstyle ise -dd _ngo -nt timestamp -i -p xc3s1200e-ft256-5 VGA.ngc VGA.ngd  
+map -intstyle ise -p xc3s1200e-ft256-5 -cm area -ir off -pr off -c 100 -o VGA_map.ncd VGA.ngd VGA.pcf 

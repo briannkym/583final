@@ -1,1 +1,32 @@
-test push
+Digilent Commands for uploading a bit file:
+
+	--Use Ise as usual. The webpack can be downloaded online.
+
+djtgcfg enum  --Shows all devices connected to the computer.
+
+	Example output:
+Found 1 device(s)
+
+Device: Nexys2
+    Product Name:   DOnbUsb1 V2.0
+    User Name:      Nexys2
+    Serial Number:  10054D252264
+
+
+djtgcfg init -d Nexys2  --Use this to connect to Nexys 2
+
+	Example output:
+Initializing scan chain...
+Found Device ID: f5046093
+Found Device ID: 21c2e093
+
+Found 2 device(s):
+    Device 0: XC3S1200E
+    Device 1: XCF04S
+
+djtgcfg prog -d Nexys2 -i 0 -f VGA.bit  --Use this to put a bit file onto the board
+
+
+	--To test the board, you can load the default program on the rom. Switch the mode pin to rom. When connected to the projector the Digilent Nexys2 Board Logo wil be on the screen with a rainbow background.
+
+	Tutorial: http://sadgeeksinsnow.blogspot.com/2012/01/using-xilinx-ise-webpack-ide.html
