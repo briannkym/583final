@@ -1,6 +1,10 @@
-AR sync behavioral /home/brian/Desktop/583final/Breakout/Sync.vhd sub00/vhpl01 1384485467
-EN vga NULL /home/brian/Desktop/583final/Breakout/VGA_Breakout.vhd sub00/vhpl04 1384485470
-EN sync NULL /home/brian/Desktop/583final/Breakout/Sync.vhd sub00/vhpl00 1384485466
-AR breakraster dataflow /home/brian/Desktop/583final/Breakout/BreakRaster.vhd sub00/vhpl03 1384485469
-AR vga structural /home/brian/Desktop/583final/Breakout/VGA_Breakout.vhd sub00/vhpl05 1384485471
-EN breakraster NULL /home/brian/Desktop/583final/Breakout/BreakRaster.vhd sub00/vhpl02 1384485468
+AR dcm behavioral /home/brian/Desktop/583final/Breakout/DCM.vhd sub00/vhpl09 1384809706
+EN dcm NULL /home/brian/Desktop/583final/Breakout/DCM.vhd sub00/vhpl08 1384809705
+AR sync behavioral /home/brian/Desktop/583final/Breakout/Sync.vhd sub00/vhpl01 1384809700
+EN top_module NULL /home/brian/Desktop/583final/Breakout/Top_module.vhd sub00/vhpl06 1384809707
+AR top_module structural /home/brian/Desktop/583final/Breakout/Top_module.vhd sub00/vhpl07 1384809708
+EN vga NULL /home/brian/Desktop/583final/Breakout/VGA_Breakout.vhd sub00/vhpl04 1384809703
+EN sync NULL /home/brian/Desktop/583final/Breakout/Sync.vhd sub00/vhpl00 1384809699
+AR breakraster dataflow /home/brian/Desktop/583final/Breakout/BreakRaster.vhd sub00/vhpl03 1384809702
+AR vga structural /home/brian/Desktop/583final/Breakout/VGA_Breakout.vhd sub00/vhpl05 1384809704
+EN breakraster NULL /home/brian/Desktop/583final/Breakout/BreakRaster.vhd sub00/vhpl02 1384809701

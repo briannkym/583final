@@ -1,3 +1,12 @@
 xst -intstyle ise -ifn "/home/brian/Desktop/583final/Breakout/VGA.xst" -ofn "/home/brian/Desktop/583final/Breakout/VGA.syr" 
 ngdbuild -intstyle ise -dd _ngo -nt timestamp -i -p xc3s1200e-ft256-5 VGA.ngc VGA.ngd  
 map -intstyle ise -p xc3s1200e-ft256-5 -cm area -ir off -pr off -c 100 -o VGA_map.ncd VGA.ngd VGA.pcf 
+xst -intstyle ise -ifn "/home/brian/Desktop/583final/Breakout/VGA.xst" -ofn "/home/brian/Desktop/583final/Breakout/VGA.syr" 
+ngdbuild -intstyle ise -dd _ngo -nt timestamp -i -p xc3s1200e-ft256-5 VGA.ngc VGA.ngd  
+map -intstyle ise -p xc3s1200e-ft256-5 -cm area -ir off -pr off -c 100 -o VGA_map.ncd VGA.ngd VGA.pcf 
+xst -intstyle ise -ifn "/home/brian/Desktop/583final/Breakout/VGA.xst" -ofn "/home/brian/Desktop/583final/Breakout/VGA.syr" 
+ngdbuild -intstyle ise -dd _ngo -nt timestamp -i -p xc3s1200e-ft256-5 VGA.ngc VGA.ngd  
+map -intstyle ise -p xc3s1200e-ft256-5 -cm area -ir off -pr off -c 100 -o VGA_map.ncd VGA.ngd VGA.pcf 
+par -w -intstyle ise -ol high -t 1 VGA_map.ncd VGA.ncd VGA.pcf 
+trce -intstyle ise -v 3 -s 5 -n 3 -fastpaths -xml VGA.twx VGA.ncd -o VGA.twr VGA.pcf 
+bitgen -intstyle ise -f VGA.ut VGA.ncd 

@@ -4,9 +4,18 @@ use ieee.numeric_std.all;
 
 Entity VGA is
 Port(
-B8: in std_logic; --The Clock
-T4, U3: out std_logic; --Horizontal Sync and Vertical Sync
-R9, T8, R8, N8, P8, P6, U5, U4: out std_logic; --RGB pins
+
+--The Clock
+clk: in std_logic; 
+rst: in std_logic;
+
+--The signals to the VGA
+Hsync: out std_logic;
+Vsync: out std_logic;
+vgaRed: out std_logic_vector(3 downto 1);
+vgaGreen: out std_logic_vector(3 downto 1);
+vgaBlue: out std_logic_vector(3 downto 2);
+
 
 --Things specific to the game
 paddle_x : in std_logic_vector(11 downto 0); 
@@ -53,25 +62,25 @@ End Component BreakRaster;
 
 begin
 
-R9<=VGA_R(3);
-T8<=VGA_R(2);
-R8<=VGA_R(1);
-N8<=VGA_G(3);
-P8<=VGA_G(2);
-P6<=VGA_G(1);
-U5<=VGA_B(3);
-U4<=VGA_B(2);
+vgaRed(3)<=VGA_R(3);
+vgaRed(2)<=VGA_R(2);
+vgaRed(1)<=VGA_R(1);
+vgaGreen(3)<=VGA_G(3);
+vgaGreen(2)<=VGA_G(2);
+vgaGreen(1)<=VGA_G(1);
+vgaBlue(3)<=VGA_B(3);
+vgaBlue(2)<=VGA_B(2);
 
 Sync_Imp: Sync
 port map(
-clk => B8,
+clk => clk,
 R_in => r,
 G_in => g,
 B_in => b,
 X => x,
 Y => y,
-HSync => T4,
-VSync => U3,
+HSync => Hsync,
+VSync => Vsync,
 R => VGA_R,
 G => VGA_G,
 B => VGA_B

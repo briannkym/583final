@@ -1,0 +1,44 @@
+<html>
+<head>
+<title>Implementing Breakout on an FPGA: Setting up Software</title>
+</head>
+
+<p>The directions found in this tutorial will have relevance to those using any sort of FPGA(Field Programmable Gate Array) or OS(Operating System). However, for consistent results I would advise using the following:<br>
+
+<ul>
+<li> The Linux Operating System (Linux Mint or Ubuntu preferably).</li>
+<li> Digilent's Nexys2 board, which uses a Xilinx Spartan3E-1200.</li>
+</ul>
+
+The Nexys2 board will make interfacing with an old keyboard and the VGA(Video Graphics Array) port easy. Ofcourse, this is not the cheapest board.</p>
+
+<p>In order to use the board we will need to install additional software, the installation of which can be complicated:
+
+<ol>
+<li> Xilinx WebPack ISE (the free version of ISE, the most recent version should work)</li>
+<li> Adept 2 Runtime and Utilities</li>
+</ol>
+
+These directions may change over time. Hopefully, both products can be found with a quick google search.
+</p>
+
+<h3>Installing ISE(and jumping through hoops)</h3>
+<p>The website for downloading ISE can be found at http://www.xilinx.com/support/download.html. Navigate to the ISE tab, and download the full version for Linux. This will require you to make an account with Xilinx that you will also need later for the license. This will also take half an eternity depending on the speed of your internet. The file is huge, be sure you're downloading the right one (e.g. not Vivado). Next untar the file. Installing the file is as easy as running the install script included in the file (for ISE 14.7 the name of the installation script was xsetup.)
+<br>
+<div style="text-align:center;"><i>Potential Pit Fall: The drive where you run the xsetup script needs exec privileges. (It's my drive; I'll do what I want gosh darnit!) If for some reason you are not allowed to run the script, unmount the drive where the script is located and remount with exec privileges. You might be able to use Chmod to accomplish this as well, but for me only remounting my external hard drive worked.</i></div>
+<br>
+When installing select the options for the free Webpack software. After installing, running ISE should be as easy as sourcing the appropriate file (for me this was settings64.sh). Then use the command 'ise'. 
+</p>
+<p>
+At this point you will need a license in order to use the software. (Seemed a little silly to me since the software was free and I had to accept a few hefty User Agreements just to install it, but whatever I'm not a lawyer.) At the time of writing, licenses can be found at https://secure.xilinx.com/webreg/login.do?goto=https%3A%2F%2Fsecure.xilinx.com%3A443%2Fwebreg%2Fregister.do%3Fgroup%3Desd_oms%26tab%3DCreateLicense. In the likelihood that this link does not work, google 'Xilinx License' to find the correct site. Look for your free license (which may also be a license for Vivado, that's ok.) Load your license into ISE and you are set to make bitfiles and other cool stuff!
+</p>
+<h3>Installing Adept</h3>
+<p>Unlike ISE, Adept is very small. At the time of writing, Adept can be found at http://www.digilentinc.com/Products/Detail.cfm?Prod=ADEPT2. Be sure to download the correct versions of the Adept Runtime and Utilities. 
+<br>
+<div style="text-align:center;"><i>Potential Pit Fall: When untarring the 'tar.gz' files pay attention to the messages displayed in the terminal. If the packages do not untar correctly, crucial files may be missing. If this happens, redownload the file, cross your fingers, and untar it again.</i></div>
+<br>
+Both programs should have their own installation files: install.sh. Depending on your level of comfort with Linux, I would just go with the options the installer provides. After installing uploading bit files is as easy as the following commands:
+</p>
+
+
+</html>

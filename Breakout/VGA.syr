@@ -5,14 +5,14 @@ Parameter TMPDIR set to xst/projnav.tmp
 
 
 Total REAL time to Xst completion: 0.00 secs
-Total CPU time to Xst completion: 0.18 secs
+Total CPU time to Xst completion: 0.16 secs
  
 --> 
 Parameter xsthdpdir set to xst
 
 
 Total REAL time to Xst completion: 0.00 secs
-Total CPU time to Xst completion: 0.18 secs
+Total CPU time to Xst completion: 0.16 secs
  
 --> 
 Reading design: VGA.prj
@@ -108,14 +108,11 @@ Slice Utilization Ratio Delta      : 5
 *                          HDL Compilation                              *
 =========================================================================
 Compiling vhdl file "/home/brian/Desktop/583final/Breakout/Sync.vhd" in Library work.
-Entity <Sync> compiled.
-Entity <Sync> (Architecture <behavioral>) compiled.
+Architecture behavioral of Entity sync is up to date.
 Compiling vhdl file "/home/brian/Desktop/583final/Breakout/BreakRaster.vhd" in Library work.
-Entity <BreakRaster> compiled.
-Entity <BreakRaster> (Architecture <dataflow>) compiled.
+Architecture dataflow of Entity breakraster is up to date.
 Compiling vhdl file "/home/brian/Desktop/583final/Breakout/VGA_Breakout.vhd" in Library work.
-Entity <VGA> compiled.
-Entity <VGA> (Architecture <structural>) compiled.
+Architecture structural of Entity vga is up to date.
 
 =========================================================================
 *                     Design Hierarchy Analysis                         *
@@ -425,13 +422,13 @@ Offset:              4.134ns (Levels of Logic = 1)
 =========================================================================
 
 
-Total REAL time to Xst completion: 8.00 secs
-Total CPU time to Xst completion: 5.32 secs
+Total REAL time to Xst completion: 6.00 secs
+Total CPU time to Xst completion: 5.19 secs
  
 --> 
 
 
-Total memory usage is 520296 kilobytes
+Total memory usage is 520308 kilobytes
 
 Number of errors   :    0 (   0 filtered)
 Number of warnings :   12 (   0 filtered)

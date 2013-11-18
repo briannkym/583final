@@ -20,6 +20,9 @@
 <msg type="warning" file="Xst" num="646" delta="new" >Signal &lt;<arg fmt="%s" index="1">bx</arg>&gt; is assigned but never used. This unconnected signal will be trimmed during the optimization process.
 </msg>
 
+<msg type="warning" file="Xst" num="647" delta="new" >Input &lt;<arg fmt="%s" index="1">rst</arg>&gt; is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.
+</msg>
+
 <msg type="warning" file="Xst" num="646" delta="new" >Signal &lt;<arg fmt="%s" index="1">VGA_R&lt;0&gt;</arg>&gt; is assigned but never used. This unconnected signal will be trimmed during the optimization process.
 </msg>
 
@@ -27,6 +30,15 @@
 </msg>
 
 <msg type="warning" file="Xst" num="646" delta="new" >Signal &lt;<arg fmt="%s" index="1">VGA_B&lt;1:0&gt;</arg>&gt; is assigned but never used. This unconnected signal will be trimmed during the optimization process.
+</msg>
+
+<msg type="warning" file="Xst" num="646" delta="new" >Signal &lt;<arg fmt="%s" index="1">clk50mhz</arg>&gt; is assigned but never used. This unconnected signal will be trimmed during the optimization process.
+</msg>
+
+<msg type="warning" file="Xst" num="79" delta="new" >Model &apos;<arg fmt="%s" index="1">DCM</arg>&apos; has different characteristics in destination library
+</msg>
+
+<msg type="warning" file="Xst" num="80" delta="new" >Model name has been changed to &apos;<arg fmt="%s" index="1">DCM1</arg>&apos;
 </msg>
 
 <msg type="warning" file="Xst" num="2677" delta="new" >Node &lt;<arg fmt="%s" index="1">B_0</arg>&gt; of sequential type is unconnected in block &lt;<arg fmt="%s" index="2">Sync_Imp</arg>&gt;.
