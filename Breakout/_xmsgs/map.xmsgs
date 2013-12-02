@@ -11,7 +11,7 @@
 <msg type="info" file="LIT" num="244" delta="old" >All of the single ended outputs in this design are using slew rate limited output drivers. The delay on speed critical single ended outputs can be dramatically reduced by designating them as fast outputs.
 </msg>
 
-<msg type="warning" file="LIT" num="178" delta="new" >Clock buffer <arg fmt="%s" index="1">BUFGMUX symbol &quot;physical_group_clkdv/Inst_DCM/CLKDV_BUFG_INST&quot; (output signal=clkdv)</arg> does not drive clock loads. Driving only non-clock loads with a clock buffer will cause ALL of the dedicated clock routing resources for this buffer to be wasted. The non-clock loads are:
+<msg type="warning" file="LIT" num="178" delta="old" >Clock buffer <arg fmt="%s" index="1">BUFGMUX symbol &quot;physical_group_clkdv/Inst_DCM/CLKDV_BUFG_INST&quot; (output signal=clkdv)</arg> does not drive clock loads. Driving only non-clock loads with a clock buffer will cause ALL of the dedicated clock routing resources for this buffer to be wasted. The non-clock loads are:
 <arg fmt="%s" index="2">Pin I1 of clk25mhz1</arg>
 </msg>
 

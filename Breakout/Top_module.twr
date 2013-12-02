@@ -45,16 +45,13 @@ Clock clk to Pad
             | clk (edge) |                  | Clock  |
 Destination |   to PAD   |Internal Clock(s) | Phase  |
 ------------+------------+------------------+--------+
-Hsync       |   10.746(R)|clk25mhz          |   0.000|
-Vsync       |   10.694(R)|clk25mhz          |   0.000|
-vgaBlue<2>  |   11.038(R)|clk25mhz          |   0.000|
-vgaBlue<3>  |   11.039(R)|clk25mhz          |   0.000|
-vgaGreen<1> |   10.574(R)|clk25mhz          |   0.000|
-vgaGreen<2> |   10.581(R)|clk25mhz          |   0.000|
-vgaGreen<3> |   11.549(R)|clk25mhz          |   0.000|
-vgaRed<1>   |   10.765(R)|clk25mhz          |   0.000|
-vgaRed<2>   |   10.353(R)|clk25mhz          |   0.000|
-vgaRed<3>   |   10.521(R)|clk25mhz          |   0.000|
+Hsync       |   10.069(R)|clk25mhz          |   0.000|
+Vsync       |   10.351(R)|clk25mhz          |   0.000|
+vgaBlue<2>  |   10.499(R)|clk25mhz          |   0.000|
+vgaBlue<3>  |   10.530(R)|clk25mhz          |   0.000|
+vgaGreen<3> |   10.039(R)|clk25mhz          |   0.000|
+vgaRed<2>   |   10.348(R)|clk25mhz          |   0.000|
+vgaRed<3>   |   10.911(R)|clk25mhz          |   0.000|
 ------------+------------+------------------+--------+
 
 Clock to Setup on destination clock clk
@@ -62,18 +59,18 @@ Clock to Setup on destination clock clk
                | Src:Rise| Src:Fall| Src:Rise| Src:Fall|
 Source Clock   |Dest:Rise|Dest:Rise|Dest:Fall|Dest:Fall|
 ---------------+---------+---------+---------+---------+
-clk            |    6.055|         |         |         |
+clk            |   13.127|         |         |         |
 ---------------+---------+---------+---------+---------+
 
 
-Analysis completed Mon Nov 18 15:22:22 2013 
+Analysis completed Mon Dec  2 15:51:12 2013 
 --------------------------------------------------------------------------------
 
 Trace Settings:
 -------------------------
 Trace Settings 
 
-Peak Memory Usage: 359 MB
+Peak Memory Usage: 360 MB
 
 
 

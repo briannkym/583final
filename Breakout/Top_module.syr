@@ -4,15 +4,15 @@ Copyright (c) 1995-2013 Xilinx, Inc.  All rights reserved.
 Parameter TMPDIR set to xst/projnav.tmp
 
 
-Total REAL time to Xst completion: 0.00 secs
-Total CPU time to Xst completion: 0.16 secs
+Total REAL time to Xst completion: 1.00 secs
+Total CPU time to Xst completion: 0.15 secs
  
 --> 
 Parameter xsthdpdir set to xst
 
 
-Total REAL time to Xst completion: 0.00 secs
-Total CPU time to Xst completion: 0.16 secs
+Total REAL time to Xst completion: 1.00 secs
+Total CPU time to Xst completion: 0.15 secs
  
 --> 
 Reading design: Top_module.prj
@@ -110,14 +110,14 @@ Slice Utilization Ratio Delta      : 5
 Compiling vhdl file "/home/brian/Desktop/583final/Breakout/Sync.vhd" in Library work.
 Architecture behavioral of Entity sync is up to date.
 Compiling vhdl file "/home/brian/Desktop/583final/Breakout/BreakRaster.vhd" in Library work.
-Architecture dataflow of Entity breakraster is up to date.
+Entity <breakraster> compiled.
+Entity <breakraster> (Architecture <dataflow>) compiled.
 Compiling vhdl file "/home/brian/Desktop/583final/Breakout/VGA_Breakout.vhd" in Library work.
 Architecture structural of Entity vga is up to date.
 Compiling vhdl file "/home/brian/Desktop/583final/Breakout/DCM.vhd" in Library work.
 Architecture behavioral of Entity dcm is up to date.
 Compiling vhdl file "/home/brian/Desktop/583final/Breakout/Top_module.vhd" in Library work.
-Entity <top_module> compiled.
-Entity <top_module> (Architecture <structural>) compiled.
+Architecture structural of Entity top_module is up to date.
 
 =========================================================================
 *                     Design Hierarchy Analysis                         *
@@ -146,6 +146,7 @@ Analyzing Entity <Sync> in library <work> (Architecture <behavioral>).
 Entity <Sync> analyzed. Unit <Sync> generated.
 
 Analyzing Entity <BreakRaster> in library <work> (Architecture <dataflow>).
+WARNING:Xst:790 - "/home/brian/Desktop/583final/Breakout/BreakRaster.vhd" line 61: Index value(s) does not match array range, simulation mismatch.
 Entity <BreakRaster> analyzed. Unit <BreakRaster> generated.
 
 Analyzing Entity <DCM> in library <work> (Architecture <behavioral>).
@@ -207,15 +208,31 @@ Unit <Sync> synthesized.
 Synthesizing Unit <BreakRaster>.
     Related source file is "/home/brian/Desktop/583final/Breakout/BreakRaster.vhd".
 WARNING:Xst:647 - Input <draw_mode> is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.
-WARNING:Xst:647 - Input <bricks> is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.
-WARNING:Xst:646 - Signal <px> is assigned but never used. This unconnected signal will be trimmed during the optimization process.
-WARNING:Xst:646 - Signal <by> is assigned but never used. This unconnected signal will be trimmed during the optimization process.
-WARNING:Xst:646 - Signal <bx> is assigned but never used. This unconnected signal will be trimmed during the optimization process.
-    Found 12-bit comparator greater for signal <G$cmp_gt0000> created at line 35.
-    Found 12-bit comparator less for signal <G$cmp_lt0000> created at line 35.
-    Found 12-bit comparator less for signal <G$cmp_lt0001> created at line 35.
+WARNING:Xst:646 - Signal <vy> is assigned but never used. This unconnected signal will be trimmed during the optimization process.
+WARNING:Xst:646 - Signal <vx> is assigned but never used. This unconnected signal will be trimmed during the optimization process.
+    Found 128x1-bit ROM for signal <bricks$mux0000> created at line 61.
+    Found 12-bit comparator greatequal for signal <B$cmp_le0000> created at line 68.
+    Found 12-bit comparator greatequal for signal <B$cmp_le0001> created at line 51.
+    Found 12-bit comparator greatequal for signal <B$cmp_le0002> created at line 51.
+    Found 12-bit comparator greatequal for signal <B$cmp_le0003> created at line 55.
+    Found 12-bit comparator less for signal <B$cmp_lt0000> created at line 39.
+    Found 12-bit comparator less for signal <B$cmp_lt0001> created at line 42.
+    Found 12-bit comparator less for signal <B$cmp_lt0002> created at line 46.
+    Found 12-bit comparator less for signal <B$cmp_lt0003> created at line 64.
+    Found 12-bit comparator less for signal <B$cmp_lt0004> created at line 68.
+    Found 12-bit comparator less for signal <B$cmp_lt0005> created at line 51.
+    Found 12-bit comparator less for signal <B$cmp_lt0006> created at line 51.
+    Found 12-bit comparator less for signal <B$cmp_lt0007> created at line 55.
+    Found 24-bit adder for signal <bricks$add0000> created at line 61.
+    Found 12x12-bit multiplier for signal <bricks$mult0000> created at line 61.
+    Found 12-bit comparator less for signal <R$cmp_lt0000> created at line 71.
+    Found 12-bit subtractor for signal <vx$sub0000> created at line 57.
+    Found 12-bit subtractor for signal <vy$sub0000> created at line 58.
     Summary:
-	inferred   3 Comparator(s).
+	inferred   1 ROM(s).
+	inferred   3 Adder/Subtractor(s).
+	inferred   1 Multiplier(s).
+	inferred  13 Comparator(s).
 Unit <BreakRaster> synthesized.
 
 
@@ -243,16 +260,22 @@ Unit <Top_module> synthesized.
 HDL Synthesis Report
 
 Macro Statistics
-# Adders/Subtractors                                   : 2
- 12-bit subtractor                                     : 2
+# ROMs                                                 : 1
+ 128x1-bit ROM                                         : 1
+# Multipliers                                          : 1
+ 12x12-bit multiplier                                  : 1
+# Adders/Subtractors                                   : 5
+ 12-bit subtractor                                     : 4
+ 24-bit adder                                          : 1
 # Counters                                             : 2
  12-bit up counter                                     : 2
 # Registers                                            : 5
  1-bit register                                        : 2
  4-bit register                                        : 3
-# Comparators                                          : 15
- 12-bit comparator greater                             : 7
- 12-bit comparator less                                : 8
+# Comparators                                          : 25
+ 12-bit comparator greatequal                          : 4
+ 12-bit comparator greater                             : 6
+ 12-bit comparator less                                : 15
 
 =========================================================================
 
@@ -262,6 +285,9 @@ Macro Statistics
 
 WARNING:Xst:79 - Model 'DCM' has different characteristics in destination library
 WARNING:Xst:80 - Model name has been changed to 'DCM1'
+WARNING:Xst:1710 - FF/Latch <R_1> (without init value) has a constant value of 0 in block <Sync_Imp>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1710 - FF/Latch <G_1> (without init value) has a constant value of 0 in block <Sync_Imp>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1710 - FF/Latch <G_2> (without init value) has a constant value of 0 in block <Sync_Imp>. This FF/Latch will be trimmed during the optimization process.
 WARNING:Xst:2677 - Node <B_0> of sequential type is unconnected in block <Sync_Imp>.
 WARNING:Xst:2677 - Node <B_1> of sequential type is unconnected in block <Sync_Imp>.
 WARNING:Xst:2677 - Node <R_0> of sequential type is unconnected in block <Sync_Imp>.
@@ -271,32 +297,44 @@ WARNING:Xst:2677 - Node <G_0> of sequential type is unconnected in block <Sync_I
 Advanced HDL Synthesis Report
 
 Macro Statistics
-# Adders/Subtractors                                   : 2
- 12-bit subtractor                                     : 2
+# ROMs                                                 : 1
+ 128x1-bit ROM                                         : 1
+# Multipliers                                          : 1
+ 12x12-bit multiplier                                  : 1
+# Adders/Subtractors                                   : 5
+ 12-bit subtractor                                     : 4
+ 7-bit adder                                           : 1
 # Counters                                             : 2
  12-bit up counter                                     : 2
 # Registers                                            : 14
  Flip-Flops                                            : 14
-# Comparators                                          : 15
- 12-bit comparator greater                             : 7
- 12-bit comparator less                                : 8
+# Comparators                                          : 25
+ 12-bit comparator greatequal                          : 4
+ 12-bit comparator greater                             : 6
+ 12-bit comparator less                                : 15
 
 =========================================================================
 
 =========================================================================
 *                         Low Level Synthesis                           *
 =========================================================================
-INFO:Xst:2261 - The FF/Latch <G_0> in Unit <Sync> is equivalent to the following 3 FFs/Latches, which will be removed : <G_1> <G_2> <G_3> 
-INFO:Xst:2261 - The FF/Latch <R_0> in Unit <Sync> is equivalent to the following 3 FFs/Latches, which will be removed : <R_1> <R_2> <R_3> 
-INFO:Xst:2261 - The FF/Latch <B_0> in Unit <Sync> is equivalent to the following 3 FFs/Latches, which will be removed : <B_1> <B_2> <B_3> 
 
 Optimizing unit <Top_module> ...
 
 Optimizing unit <Sync> ...
 
+Optimizing unit <BreakRaster> ...
+WARNING:Xst:1710 - FF/Latch <VGA_impl/Sync_Imp/G_2> (without init value) has a constant value of 0 in block <Top_module>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1710 - FF/Latch <VGA_impl/Sync_Imp/G_1> (without init value) has a constant value of 0 in block <Top_module>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1710 - FF/Latch <VGA_impl/Sync_Imp/R_1> (without init value) has a constant value of 0 in block <Top_module>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:2677 - Node <VGA_impl/Sync_Imp/G_0> of sequential type is unconnected in block <Top_module>.
+WARNING:Xst:2677 - Node <VGA_impl/Sync_Imp/R_0> of sequential type is unconnected in block <Top_module>.
+WARNING:Xst:2677 - Node <VGA_impl/Sync_Imp/B_1> of sequential type is unconnected in block <Top_module>.
+WARNING:Xst:2677 - Node <VGA_impl/Sync_Imp/B_0> of sequential type is unconnected in block <Top_module>.
+
 Mapping all equations...
 Building and optimizing final netlist ...
-Found area constraint ratio of 100 (+ 5) on block Top_module, actual ratio is 0.
+Found area constraint ratio of 100 (+ 5) on block Top_module, actual ratio is 1.
 
 Final Macro Processing ...
 
@@ -304,8 +342,8 @@ Final Macro Processing ...
 Final Register Report
 
 Macro Statistics
-# Registers                                            : 29
- Flip-Flops                                            : 29
+# Registers                                            : 31
+ Flip-Flops                                            : 31
 
 =========================================================================
 
@@ -334,23 +372,26 @@ Design Statistics
 # IOs                              : 11
 
 Cell Usage :
-# BELS                             : 210
+# BELS                             : 336
 #      GND                         : 1
 #      INV                         : 15
 #      LUT1                        : 32
-#      LUT2                        : 15
+#      LUT2                        : 43
+#      LUT2_D                      : 2
 #      LUT3                        : 7
-#      LUT3_L                      : 1
-#      LUT4                        : 24
-#      LUT4_D                      : 1
+#      LUT3_D                      : 1
+#      LUT3_L                      : 4
+#      LUT4                        : 63
+#      LUT4_D                      : 8
 #      LUT4_L                      : 2
-#      MUXCY                       : 75
-#      MUXF5                       : 1
+#      MUXCY                       : 106
+#      MUXF5                       : 2
 #      VCC                         : 1
-#      XORCY                       : 35
-# FlipFlops/Latches                : 29
-#      FDR                         : 17
+#      XORCY                       : 49
+# FlipFlops/Latches                : 31
+#      FDR                         : 18
 #      FDRE                        : 12
+#      FDRS                        : 1
 # Clock Buffers                    : 3
 #      BUFG                        : 3
 # IO Buffers                       : 11
@@ -358,6 +399,8 @@ Cell Usage :
 #      OBUF                        : 10
 # DCMs                             : 1
 #      DCM_SP                      : 1
+# MULTs                            : 1
+#      MULT18X18SIO                : 1
 =========================================================================
 
 Device utilization summary:
@@ -365,11 +408,12 @@ Device utilization summary:
 
 Selected Device : 3s1200efg320-5 
 
- Number of Slices:                       62  out of   8672     0%  
- Number of Slice Flip Flops:             29  out of  17344     0%  
- Number of 4 input LUTs:                 97  out of  17344     0%  
+ Number of Slices:                       99  out of   8672     1%  
+ Number of Slice Flip Flops:             31  out of  17344     0%  
+ Number of 4 input LUTs:                177  out of  17344     1%  
  Number of IOs:                          11
  Number of bonded IOBs:                  11  out of    250     4%  
+ Number of MULT18X18SIOs:                 1  out of     28     3%  
  Number of GCLKs:                         3  out of     24    12%  
  Number of DCMs:                          1  out of      8    12%  
 
@@ -394,7 +438,7 @@ Clock Information:
 -----------------------------------+------------------------------------+-------+
 Clock Signal                       | Clock buffer(FF name)              | Load  |
 -----------------------------------+------------------------------------+-------+
-clk25mhz1(clk25mhz1:O)             | BUFG(*)(VGA_impl/Sync_Imp/y_pos_11)| 29    |
+clk25mhz1(clk25mhz1:O)             | BUFG(*)(VGA_impl/Sync_Imp/y_pos_11)| 31    |
 -----------------------------------+------------------------------------+-------+
 (*) This 1 clock signal(s) are generated by combinatorial logic,
 and XST is not able to identify which are the primary clock signals.
@@ -408,9 +452,9 @@ Timing Summary:
 ---------------
 Speed Grade: -5
 
-   Minimum period: 7.311ns (Maximum Frequency: 136.788MHz)
+   Minimum period: 13.956ns (Maximum Frequency: 71.656MHz)
    Minimum input arrival time before clock: No path found
-   Maximum output required time after clock: 4.134ns
+   Maximum output required time after clock: 4.040ns
    Maximum combinational path delay: No path found
 
 Timing Detail:
@@ -419,69 +463,76 @@ All values displayed in nanoseconds (ns)
 
 =========================================================================
 Timing constraint: Default period analysis for Clock 'clk25mhz1'
-  Clock period: 7.311ns (frequency: 136.788MHz)
-  Total number of paths / destination ports: 1134 / 67
+  Clock period: 13.956ns (frequency: 71.656MHz)
+  Total number of paths / destination ports: 19021 / 73
 -------------------------------------------------------------------------
-Delay:               7.311ns (Levels of Logic = 13)
-  Source:            VGA_impl/Sync_Imp/y_pos_0 (FF)
-  Destination:       VGA_impl/Sync_Imp/G_0 (FF)
+Delay:               13.956ns (Levels of Logic = 20)
+  Source:            VGA_impl/Sync_Imp/y_pos_2 (FF)
+  Destination:       VGA_impl/Sync_Imp/B_3 (FF)
   Source Clock:      clk25mhz1 rising
   Destination Clock: clk25mhz1 rising
 
-  Data Path: VGA_impl/Sync_Imp/y_pos_0 to VGA_impl/Sync_Imp/G_0
+  Data Path: VGA_impl/Sync_Imp/y_pos_2 to VGA_impl/Sync_Imp/B_3
                                 Gate     Net
     Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
     ----------------------------------------  ------------
-     FDRE:C->Q             6   0.514   0.721  VGA_impl/Sync_Imp/y_pos_0 (VGA_impl/Sync_Imp/y_pos_0)
-     LUT1:I0->O            1   0.612   0.000  VGA_impl/Sync_Imp/Msub_y_addsub0000_cy<0>_rt (VGA_impl/Sync_Imp/Msub_y_addsub0000_cy<0>_rt)
-     MUXCY:S->O            1   0.404   0.000  VGA_impl/Sync_Imp/Msub_y_addsub0000_cy<0> (VGA_impl/Sync_Imp/Msub_y_addsub0000_cy<0>)
-     MUXCY:CI->O           1   0.051   0.000  VGA_impl/Sync_Imp/Msub_y_addsub0000_cy<1> (VGA_impl/Sync_Imp/Msub_y_addsub0000_cy<1>)
-     MUXCY:CI->O           1   0.051   0.000  VGA_impl/Sync_Imp/Msub_y_addsub0000_cy<2> (VGA_impl/Sync_Imp/Msub_y_addsub0000_cy<2>)
-     MUXCY:CI->O           1   0.051   0.000  VGA_impl/Sync_Imp/Msub_y_addsub0000_cy<3> (VGA_impl/Sync_Imp/Msub_y_addsub0000_cy<3>)
-     MUXCY:CI->O           1   0.051   0.000  VGA_impl/Sync_Imp/Msub_y_addsub0000_cy<4> (VGA_impl/Sync_Imp/Msub_y_addsub0000_cy<4>)
-     MUXCY:CI->O           1   0.051   0.000  VGA_impl/Sync_Imp/Msub_y_addsub0000_cy<5> (VGA_impl/Sync_Imp/Msub_y_addsub0000_cy<5>)
-     XORCY:CI->O           1   0.699   0.426  VGA_impl/Sync_Imp/Msub_y_addsub0000_xor<6> (VGA_impl/Sync_Imp/y_addsub0000<6>)
-     LUT2:I1->O            1   0.612   0.360  VGA_impl/BreakRaster_Imp/Mcompar_G_cmp_lt0001_lut<3>_SW0_SW0 (N18)
-     LUT4:I3->O            1   0.612   0.000  VGA_impl/BreakRaster_Imp/Mcompar_G_cmp_lt0001_lut<3> (VGA_impl/BreakRaster_Imp/Mcompar_G_cmp_lt0001_lut<3>)
-     MUXCY:S->O            1   0.404   0.000  VGA_impl/BreakRaster_Imp/Mcompar_G_cmp_lt0001_cy<3> (VGA_impl/BreakRaster_Imp/Mcompar_G_cmp_lt0001_cy<3>)
-     MUXCY:CI->O           2   0.400   0.410  VGA_impl/BreakRaster_Imp/Mcompar_G_cmp_lt0001_cy<4> (VGA_impl/BreakRaster_Imp/Mcompar_G_cmp_lt0001_cy<4>)
-     LUT3:I2->O            1   0.612   0.000  VGA_impl/BreakRaster_Imp/G<1>1 (VGA_impl/g<0>)
-     FDR:D                     0.268          VGA_impl/Sync_Imp/G_0
+     FDRE:C->Q             8   0.514   0.795  VGA_impl/Sync_Imp/y_pos_2 (VGA_impl/Sync_Imp/y_pos_2)
+     LUT2:I0->O            1   0.612   0.000  VGA_impl/Sync_Imp/Mcompar_y_cmp_gt0000_lut<1> (VGA_impl/Sync_Imp/Mcompar_y_cmp_gt0000_lut<1>)
+     MUXCY:S->O            1   0.404   0.000  VGA_impl/Sync_Imp/Mcompar_y_cmp_gt0000_cy<1> (VGA_impl/Sync_Imp/Mcompar_y_cmp_gt0000_cy<1>)
+     MUXCY:CI->O           1   0.052   0.000  VGA_impl/Sync_Imp/Mcompar_y_cmp_gt0000_cy<2> (VGA_impl/Sync_Imp/Mcompar_y_cmp_gt0000_cy<2>)
+     MUXCY:CI->O           1   0.052   0.000  VGA_impl/Sync_Imp/Mcompar_y_cmp_gt0000_cy<3> (VGA_impl/Sync_Imp/Mcompar_y_cmp_gt0000_cy<3>)
+     MUXCY:CI->O           1   0.052   0.000  VGA_impl/Sync_Imp/Mcompar_y_cmp_gt0000_cy<4> (VGA_impl/Sync_Imp/Mcompar_y_cmp_gt0000_cy<4>)
+     MUXCY:CI->O          35   0.399   1.143  VGA_impl/Sync_Imp/Mcompar_y_cmp_gt0000_cy<5> (VGA_impl/Sync_Imp/Mcompar_y_cmp_gt0000_cy<5>)
+     LUT2:I1->O            4   0.612   0.000  VGA_impl/Sync_Imp/y<2>1 (VGA_impl/y<2>)
+     MUXCY:S->O            1   0.404   0.000  VGA_impl/BreakRaster_Imp/Msub_vy_sub0000_cy<2> (VGA_impl/BreakRaster_Imp/Msub_vy_sub0000_cy<2>)
+     XORCY:CI->O           1   0.699   0.357  VGA_impl/BreakRaster_Imp/Msub_vy_sub0000_xor<3> (VGA_impl/BreakRaster_Imp/vy_sub0000<3>)
+     MULT18X18SIO:A0->P0    1   3.251   0.426  VGA_impl/BreakRaster_Imp/Mmult_bricks_mult0000 (VGA_impl/BreakRaster_Imp/bricks_mult0000<0>)
+     LUT2:I1->O            1   0.612   0.000  VGA_impl/BreakRaster_Imp/Madd_bricks_add0000_Madd_lut<0> (VGA_impl/BreakRaster_Imp/Madd_bricks_add0000_Madd_lut<0>)
+     MUXCY:S->O            1   0.404   0.000  VGA_impl/BreakRaster_Imp/Madd_bricks_add0000_Madd_cy<0> (VGA_impl/BreakRaster_Imp/Madd_bricks_add0000_Madd_cy<0>)
+     MUXCY:CI->O           1   0.052   0.000  VGA_impl/BreakRaster_Imp/Madd_bricks_add0000_Madd_cy<1> (VGA_impl/BreakRaster_Imp/Madd_bricks_add0000_Madd_cy<1>)
+     MUXCY:CI->O           1   0.052   0.000  VGA_impl/BreakRaster_Imp/Madd_bricks_add0000_Madd_cy<2> (VGA_impl/BreakRaster_Imp/Madd_bricks_add0000_Madd_cy<2>)
+     MUXCY:CI->O           1   0.052   0.000  VGA_impl/BreakRaster_Imp/Madd_bricks_add0000_Madd_cy<3> (VGA_impl/BreakRaster_Imp/Madd_bricks_add0000_Madd_cy<3>)
+     MUXCY:CI->O           1   0.052   0.000  VGA_impl/BreakRaster_Imp/Madd_bricks_add0000_Madd_cy<4> (VGA_impl/BreakRaster_Imp/Madd_bricks_add0000_Madd_cy<4>)
+     MUXCY:CI->O           0   0.052   0.000  VGA_impl/BreakRaster_Imp/Madd_bricks_add0000_Madd_cy<5> (VGA_impl/BreakRaster_Imp/Madd_bricks_add0000_Madd_cy<5>)
+     XORCY:CI->O           1   0.699   0.360  VGA_impl/BreakRaster_Imp/Madd_bricks_add0000_Madd_xor<6> (VGA_impl/BreakRaster_Imp/bricks_add0000<6>)
+     LUT4_D:I3->O          1   0.612   0.360  VGA_impl/BreakRaster_Imp/B<2>139 (VGA_impl/BreakRaster_Imp/B<2>139)
+     LUT4:I3->O            1   0.612   0.000  VGA_impl/BreakRaster_Imp/B<2>1166 (VGA_impl/BreakRaster_Imp/N11)
+     FDRS:D                    0.268          VGA_impl/Sync_Imp/B_3
     ----------------------------------------
-    Total                      7.311ns (5.394ns logic, 1.917ns route)
-                                       (73.8% logic, 26.2% route)
+    Total                     13.956ns (10.515ns logic, 3.441ns route)
+                                       (75.3% logic, 24.7% route)
 
 =========================================================================
 Timing constraint: Default OFFSET OUT AFTER for Clock 'clk25mhz1'
-  Total number of paths / destination ports: 10 / 10
+  Total number of paths / destination ports: 7 / 7
 -------------------------------------------------------------------------
-Offset:              4.134ns (Levels of Logic = 1)
-  Source:            VGA_impl/Sync_Imp/R_0 (FF)
-  Destination:       vgaRed<3> (PAD)
+Offset:              4.040ns (Levels of Logic = 1)
+  Source:            VGA_impl/Sync_Imp/VSync (FF)
+  Destination:       Vsync (PAD)
   Source Clock:      clk25mhz1 rising
 
-  Data Path: VGA_impl/Sync_Imp/R_0 to vgaRed<3>
+  Data Path: VGA_impl/Sync_Imp/VSync to Vsync
                                 Gate     Net
     Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
     ----------------------------------------  ------------
-     FDR:C->Q              3   0.514   0.451  VGA_impl/Sync_Imp/R_0 (VGA_impl/Sync_Imp/R_0)
-     OBUF:I->O                 3.169          vgaRed_3_OBUF (vgaRed<3>)
+     FDR:C->Q              1   0.514   0.357  VGA_impl/Sync_Imp/VSync (VGA_impl/Sync_Imp/VSync)
+     OBUF:I->O                 3.169          Vsync_OBUF (Vsync)
     ----------------------------------------
-    Total                      4.134ns (3.683ns logic, 0.451ns route)
-                                       (89.1% logic, 10.9% route)
+    Total                      4.040ns (3.683ns logic, 0.357ns route)
+                                       (91.2% logic, 8.8% route)
 
 =========================================================================
 
 
-Total REAL time to Xst completion: 12.00 secs
-Total CPU time to Xst completion: 5.51 secs
+Total REAL time to Xst completion: 7.00 secs
+Total CPU time to Xst completion: 6.18 secs
  
 --> 
 
 
-Total memory usage is 538200 kilobytes
+Total memory usage is 539880 kilobytes
 
 Number of errors   :    0 (   0 filtered)
-Number of warnings :   16 (   0 filtered)
-Number of infos    :    3 (   0 filtered)
+Number of warnings :   25 (   0 filtered)
+Number of infos    :    0 (   0 filtered)
 

@@ -71,7 +71,7 @@ vgaBlue: out std_logic_vector(3 downto 2);
 paddle_x : in std_logic_vector(11 downto 0); 
 ball_x : in std_logic_vector(11 downto 0);  
 ball_y : in std_logic_vector(11 downto 0);
-bricks : in std_logic_vector(128 downto 0); 
+bricks : in std_logic_vector(127 downto 0); 
 draw_mode : in std_logic_vector(3 downto 0)
 );
 End Component VGA;
@@ -111,10 +111,10 @@ vgaGreen => vgaGreen,
 vgaBlue => vgaBlue,
 
 --Things specific to the game
-paddle_x => (others => '0'), 
-ball_x => (others => '0'), 
-ball_y => (others => '0'),
-bricks => (others => '0'),
+paddle_x => "000000111111", 
+ball_x => "000000111111", 
+ball_y => "000011111111",
+bricks => x"FFFFFFFFEEEEEEEECCCCCCCC11111111",
 draw_mode => (others => '0')
 );
 

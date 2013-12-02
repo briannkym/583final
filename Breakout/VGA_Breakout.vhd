@@ -21,7 +21,7 @@ vgaBlue: out std_logic_vector(3 downto 2);
 paddle_x : in std_logic_vector(11 downto 0); 
 ball_x : in std_logic_vector(11 downto 0);  
 ball_y : in std_logic_vector(11 downto 0);
-bricks : in std_logic_vector(128 downto 0); 
+bricks : in std_logic_vector(127 downto 0); 
 draw_mode : in std_logic_vector(3 downto 0)
 );
 end VGA;
@@ -52,7 +52,7 @@ y_pos: in std_logic_vector(11 downto 0);
 paddle_x : in std_logic_vector(11 downto 0); --This will change based off the paddle's width.
 ball_x : in std_logic_vector(11 downto 0);  --These values will also change based off of the balls acceptable space
 ball_y : in std_logic_vector(11 downto 0);
-bricks : in std_logic_vector(128 downto 0); -- For now this will be the map of accpeptable brick coordinates. May change.
+bricks : in std_logic_vector(127 downto 0); -- For now this will be the map of accpeptable brick coordinates. May change.
 draw_mode : in std_logic_vector(3 downto 0); -- We may wish to draw things multiple ways...
 R, G, B : out std_logic_vector(3 downto 0)
 );
