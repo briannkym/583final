@@ -1,7 +1,7 @@
 Release 14.7 par P.20131013 (lin64)
 Copyright (c) 1995-2013 Xilinx, Inc.  All rights reserved.
 
-dahlia::  Wed Dec 04 20:47:28 2013
+dahlia::  Wed Dec 04 21:30:03 2013
 
 par -w -intstyle ise -ol high -t 1 top_module_map.ncd top_module.ncd
 top_module.pcf 
@@ -56,8 +56,8 @@ Placer effort level (-pl):    High
 Placer cost table entry (-t): 1
 Router effort level (-rl):    High 
 
-Starting initial Timing Analysis.  REAL time: 2 secs 
-Finished initial Timing Analysis.  REAL time: 2 secs 
+Starting initial Timing Analysis.  REAL time: 1 secs 
+Finished initial Timing Analysis.  REAL time: 1 secs 
 
 
 Starting Placer
@@ -121,11 +121,11 @@ Phase  1  : 1335 unrouted;      REAL time: 10 secs
 
 Phase  2  : 1216 unrouted;      REAL time: 10 secs 
 
-Phase  3  : 252 unrouted;      REAL time: 11 secs 
+Phase  3  : 252 unrouted;      REAL time: 10 secs 
 
 Phase  4  : 269 unrouted; (Par is working to improve performance)     REAL time: 11 secs 
 
-Phase  5  : 0 unrouted; (Par is working to improve performance)     REAL time: 12 secs 
+Phase  5  : 0 unrouted; (Par is working to improve performance)     REAL time: 11 secs 
 
 Updating file: top_module.ncd with current fully routed design.
 
@@ -135,13 +135,13 @@ Phase  7  : 0 unrouted; (Par is working to improve performance)     REAL time: 1
 
 Updating file: top_module.ncd with current fully routed design.
 
-Phase  8  : 0 unrouted; (Par is working to improve performance)     REAL time: 16 secs 
+Phase  8  : 0 unrouted; (Par is working to improve performance)     REAL time: 15 secs 
 
-Phase  9  : 0 unrouted; (Par is working to improve performance)     REAL time: 16 secs 
+Phase  9  : 0 unrouted; (Par is working to improve performance)     REAL time: 15 secs 
 
-Phase 10  : 0 unrouted; (Par is working to improve performance)     REAL time: 16 secs 
+Phase 10  : 0 unrouted; (Par is working to improve performance)     REAL time: 15 secs 
 
-Phase 11  : 0 unrouted; (Par is working to improve performance)     REAL time: 16 secs 
+Phase 11  : 0 unrouted; (Par is working to improve performance)     REAL time: 15 secs 
 
 Phase 12  : 0 unrouted; (Par is working to improve performance)     REAL time: 16 secs 
 WARNING:Route:455 - CLK Net:control/control_en may have excessive skew because 

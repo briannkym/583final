@@ -4,7 +4,7 @@ Copyright (c) 1995-2013 Xilinx, Inc.  All rights reserved.
 
 /media/brian/RootMount/Programs/ISEwebPack/14.7/ISE_DS/ISE/bin/lin64/unwrapped/trce
 -intstyle ise -v 3 -s 5 -n 3 -fastpaths -xml top_module.twx top_module.ncd -o
-top_module.twr top_module.pcf -ucf Nexys2_1200General.ucf
+top_module.twr top_module.pcf
 
 Design file:              top_module.ncd
 Physical constraint file: top_module.pcf
@@ -94,7 +94,7 @@ clk            |   13.297|    3.819|         |    4.601|
 ---------------+---------+---------+---------+---------+
 
 
-Analysis completed Wed Dec  4 20:47:48 2013 
+Analysis completed Wed Dec  4 21:30:23 2013 
 --------------------------------------------------------------------------------
 
 Trace Settings:

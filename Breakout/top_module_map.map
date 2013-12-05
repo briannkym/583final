@@ -9,7 +9,7 @@ Target Device  : xc3s1200e
 Target Package : fg320
 Target Speed   : -5
 Mapper Version : spartan3e -- $Revision: 1.55 $
-Mapped Date    : Wed Dec  4 20:47:23 2013
+Mapped Date    : Wed Dec  4 21:29:57 2013
 
 Mapping design into LUTs...
 WARNING:LIT:178 - Clock buffer BUFGMUX symbol

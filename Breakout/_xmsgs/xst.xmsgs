@@ -17,7 +17,7 @@
 <msg type="info" file="Xst" num="2679" delta="old" >Register &lt;<arg fmt="%s" index="1">draw_mode</arg>&gt; in unit &lt;<arg fmt="%s" index="2">game_logic</arg>&gt; has a constant value of <arg fmt="%s" index="3">0000</arg> during circuit operation. The register is replaced by logic.
 </msg>
 
-<msg type="warning" file="Xst" num="790" delta="old" >&quot;<arg fmt="%s" index="1">/home/brian/Desktop/583final/Breakout/BreakRaster.vhd</arg>&quot; line <arg fmt="%d" index="2">61</arg>: Index value(s) does not match array range, simulation mismatch.
+<msg type="warning" file="Xst" num="790" delta="old" >&quot;<arg fmt="%s" index="1">/home/brian/Desktop/583final/Breakout/src/BreakRaster.vhd</arg>&quot; line <arg fmt="%d" index="2">61</arg>: Index value(s) does not match array range, simulation mismatch.
 </msg>
 
 <msg type="info" file="Xst" num="2117" delta="old" >HDL ADVISOR - Mux Selector &lt;<arg fmt="%s" index="1">current_state</arg>&gt; of Case statement line <arg fmt="%s" index="2">63</arg> was re-encoded using one-hot encoding. The case statement will be optimized (default statement optimization), but this optimization may lead to design initialization problems. To ensure the design works safely, you can:

@@ -4,15 +4,15 @@ Copyright (c) 1995-2013 Xilinx, Inc.  All rights reserved.
 Parameter TMPDIR set to xst/projnav.tmp
 
 
-Total REAL time to Xst completion: 0.00 secs
-Total CPU time to Xst completion: 0.16 secs
+Total REAL time to Xst completion: 1.00 secs
+Total CPU time to Xst completion: 0.15 secs
  
 --> 
 Parameter xsthdpdir set to xst
 
 
-Total REAL time to Xst completion: 0.00 secs
-Total CPU time to Xst completion: 0.16 secs
+Total REAL time to Xst completion: 1.00 secs
+Total CPU time to Xst completion: 0.15 secs
  
 --> 
 Reading design: top_module.prj
@@ -107,25 +107,23 @@ Slice Utilization Ratio Delta      : 5
 =========================================================================
 *                          HDL Compilation                              *
 =========================================================================
-Compiling vhdl file "/home/brian/Desktop/583final/Breakout/Sync.vhd" in Library work.
+Compiling vhdl file "/home/brian/Desktop/583final/Breakout/src/Sync.vhd" in Library work.
 Architecture behavioral of Entity sync is up to date.
-Compiling vhdl file "/home/brian/Desktop/583final/Breakout/BreakRaster.vhd" in Library work.
+Compiling vhdl file "/home/brian/Desktop/583final/Breakout/src/BreakRaster.vhd" in Library work.
 Architecture dataflow of Entity breakraster is up to date.
-Compiling vhdl file "/home/brian/Desktop/583final/Breakout/Breakout_config.vhd" in Library work.
-Compiling vhdl file "/home/brian/Desktop/583final/Breakout/Kbd.vhd" in Library work.
-Entity <kbd> compiled.
-Entity <kbd> (Architecture <behavioral>) compiled.
-Compiling vhdl file "/home/brian/Desktop/583final/Breakout/Controller.vhd" in Library work.
+Compiling vhdl file "/home/brian/Desktop/583final/Breakout/src/Breakout_config.vhd" in Library work.
+Compiling vhdl file "/home/brian/Desktop/583final/Breakout/src/Kbd.vhd" in Library work.
+Architecture behavioral of Entity kbd is up to date.
+Compiling vhdl file "/home/brian/Desktop/583final/Breakout/src/Controller.vhd" in Library work.
 Architecture behavioral of Entity controller is up to date.
-Compiling vhdl file "/home/brian/Desktop/583final/Breakout/Game_logic.vhd" in Library work.
+Compiling vhdl file "/home/brian/Desktop/583final/Breakout/src/Game_logic.vhd" in Library work.
 Architecture behavioral of Entity game_logic is up to date.
-Compiling vhdl file "/home/brian/Desktop/583final/Breakout/VGA_Breakout.vhd" in Library work.
+Compiling vhdl file "/home/brian/Desktop/583final/Breakout/src/VGA_Breakout.vhd" in Library work.
 Architecture structural of Entity vga is up to date.
 Compiling vhdl file "/home/brian/Desktop/583final/Breakout/DCM.vhd" in Library work.
 Architecture behavioral of Entity dcm is up to date.
-Compiling vhdl file "/home/brian/Desktop/583final/Breakout/Top_module.vhd" in Library work.
-Entity <top_module> compiled.
-Entity <top_module> (Architecture <top_level>) compiled.
+Compiling vhdl file "/home/brian/Desktop/583final/Breakout/src/Top_module.vhd" in Library work.
+Architecture top_level of Entity top_module is up to date.
 
 =========================================================================
 *                     Design Hierarchy Analysis                         *
@@ -173,7 +171,7 @@ Analyzing Entity <Sync> in library <work> (Architecture <behavioral>).
 Entity <Sync> analyzed. Unit <Sync> generated.
 
 Analyzing Entity <BreakRaster> in library <work> (Architecture <dataflow>).
-WARNING:Xst:790 - "/home/brian/Desktop/583final/Breakout/BreakRaster.vhd" line 61: Index value(s) does not match array range, simulation mismatch.
+WARNING:Xst:790 - "/home/brian/Desktop/583final/Breakout/src/BreakRaster.vhd" line 61: Index value(s) does not match array range, simulation mismatch.
 Entity <BreakRaster> analyzed. Unit <BreakRaster> generated.
 
 Analyzing Entity <DCM> in library <work> (Architecture <behavioral>).
@@ -202,7 +200,7 @@ Entity <DCM> analyzed. Unit <DCM> generated.
 Performing bidirectional port resolution...
 
 Synthesizing Unit <kbd>.
-    Related source file is "/home/brian/Desktop/583final/Breakout/Kbd.vhd".
+    Related source file is "/home/brian/Desktop/583final/Breakout/src/Kbd.vhd".
     Using one-hot encoding for signal <current_state>.
     Found 4-bit up counter for signal <bit_index>.
     Found 4-bit register for signal <current_state>.
@@ -224,7 +222,7 @@ Unit <kbd> synthesized.
 
 
 Synthesizing Unit <controller>.
-    Related source file is "/home/brian/Desktop/583final/Breakout/Controller.vhd".
+    Related source file is "/home/brian/Desktop/583final/Breakout/src/Controller.vhd".
     Using one-hot encoding for signal <current_state>.
 INFO:Xst:2117 - HDL ADVISOR - Mux Selector <current_state> of Case statement line 63 was re-encoded using one-hot encoding. The case statement will be optimized (default statement optimization), but this optimization may lead to design initialization problems. To ensure the design works safely, you can:
    	- add an 'INIT' attribute on signal <current_state> (optimization is then done without any risk)
@@ -245,7 +243,7 @@ Unit <controller> synthesized.
 
 
 Synthesizing Unit <game_logic>.
-    Related source file is "/home/brian/Desktop/583final/Breakout/Game_logic.vhd".
+    Related source file is "/home/brian/Desktop/583final/Breakout/src/Game_logic.vhd".
 WARNING:Xst:647 - Input <clock> is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.
     Found 12-bit up counter for signal <paddle_x_reg>.
     Summary:
@@ -254,7 +252,7 @@ Unit <game_logic> synthesized.
 
 
 Synthesizing Unit <Sync>.
-    Related source file is "/home/brian/Desktop/583final/Breakout/Sync.vhd".
+    Related source file is "/home/brian/Desktop/583final/Breakout/src/Sync.vhd".
     Found 1-bit register for signal <VSync>.
     Found 4-bit register for signal <B>.
     Found 4-bit register for signal <G>.
@@ -285,7 +283,7 @@ Unit <Sync> synthesized.
 
 
 Synthesizing Unit <BreakRaster>.
-    Related source file is "/home/brian/Desktop/583final/Breakout/BreakRaster.vhd".
+    Related source file is "/home/brian/Desktop/583final/Breakout/src/BreakRaster.vhd".
 WARNING:Xst:647 - Input <draw_mode> is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.
 WARNING:Xst:646 - Signal <vy> is assigned but never used. This unconnected signal will be trimmed during the optimization process.
 WARNING:Xst:646 - Signal <vx> is assigned but never used. This unconnected signal will be trimmed during the optimization process.
@@ -320,7 +318,7 @@ Unit <BreakRaster> synthesized.
 
 
 Synthesizing Unit <VGA>.
-    Related source file is "/home/brian/Desktop/583final/Breakout/VGA_Breakout.vhd".
+    Related source file is "/home/brian/Desktop/583final/Breakout/src/VGA_Breakout.vhd".
 WARNING:Xst:647 - Input <rst> is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.
 WARNING:Xst:646 - Signal <VGA_R<0>> is assigned but never used. This unconnected signal will be trimmed during the optimization process.
 WARNING:Xst:646 - Signal <VGA_G<0>> is assigned but never used. This unconnected signal will be trimmed during the optimization process.
@@ -334,7 +332,7 @@ Unit <DCM> synthesized.
 
 
 Synthesizing Unit <top_module>.
-    Related source file is "/home/brian/Desktop/583final/Breakout/Top_module.vhd".
+    Related source file is "/home/brian/Desktop/583final/Breakout/src/Top_module.vhd".
 WARNING:Xst:1306 - Output <LEDs<7>> is never assigned.
 WARNING:Xst:1306 - Output <LEDs<5>> is never assigned.
 WARNING:Xst:646 - Signal <clk50mhz> is assigned but never used. This unconnected signal will be trimmed during the optimization process.
@@ -878,12 +876,12 @@ Offset:              4.182ns (Levels of Logic = 1)
 
 
 Total REAL time to Xst completion: 12.00 secs
-Total CPU time to Xst completion: 11.39 secs
+Total CPU time to Xst completion: 11.58 secs
  
 --> 
 
 
-Total memory usage is 569276 kilobytes
+Total memory usage is 569284 kilobytes
 
 Number of errors   :    0 (   0 filtered)
 Number of warnings :  121 (   0 filtered)
