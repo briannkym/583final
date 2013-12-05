@@ -1,8 +1,0 @@
-INTSTYLE=ise
-INFILE=/home/brian/Desktop/583final/Breakout/VGA.ncd
-OUTFILE=/home/brian/Desktop/583final/Breakout/VGA.bit
-FAMILY=Spartan3E
-PART=xc3s1200e-5ft256
-WORKINGDIR=/home/brian/Desktop/583final/Breakout
-LICENSE=WebPack
-USER_INFO=210824434_0_0_037
