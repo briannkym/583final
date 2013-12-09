@@ -103,8 +103,9 @@ architecture top_level of top_module is
   end Component;
 
   --signals declaration
+ signal reset: std_logic :='1';
+ signal count: unsigned(7 downto 0) := (others => '0'); 
  
- signal reset           : std_logic;
 --Keyboard signals
  signal scan_ready      : std_logic;
  signal scan_code       : std_logic_vector(7 downto 0);
@@ -126,7 +127,6 @@ architecture top_level of top_module is
   
 
 begin  -- top_level
- reset    <= '0', '1' after 25 ns, '0' after 75 ns;
 
  keyboard : kbd port map (
     clock         => clk,
@@ -187,11 +187,23 @@ clk25mhz <= clkdv when lock='1' else '0';
 
  Inst_DCM: DCM PORT MAP(
    CLKIN_IN   => clk,
-   RST_IN     => reset,
+   RST_IN     => '0',
    CLKDV_OUT  => clkdv ,
    CLK0_OUT   => clk50mhz,
    LOCKED_OUT => lock);
  
+ 
+ 
+ ToggleReset: process(clk)
+ begin
+ if(rising_edge(clk) and reset = '1') then
+ count <= count +1;
+	if(count = 100) then
+	  reset <='0';
+	end if;
+ end if;
+ 
+ end process ToggleReset;
 end top_level;
   
 
