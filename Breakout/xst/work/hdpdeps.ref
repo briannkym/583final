@@ -3,69 +3,69 @@ FL /home/brian/Desktop/583final/Breakout/Breakout_config.vhd 2013/12/02.14:28:02
 FL /home/brian/Desktop/583final/Breakout/BreakRaster.vhd 2013/12/04.18:12:57 P.20131013
 FL /home/brian/Desktop/583final/Breakout/Controller.vhd 2013/12/02.21:40:13 P.20131013
 FL /home/brian/Desktop/583final/Breakout/DCM.vhd 2013/12/07.15:49:21 P.20131013
-EN work/DCM 1386617766 FL /home/brian/Desktop/583final/Breakout/DCM.vhd \
+EN work/DCM 1386618964 FL /home/brian/Desktop/583final/Breakout/DCM.vhd \
       PB ieee/std_logic_1164 1381692176 PB ieee/NUMERIC_STD 1381692181 LB UNISIM \
       PH unisim/VCOMPONENTS 1381692182
-AR work/DCM/BEHAVIORAL 1386617767 \
-      FL /home/brian/Desktop/583final/Breakout/DCM.vhd EN work/DCM 1386617766 \
+AR work/DCM/BEHAVIORAL 1386618965 \
+      FL /home/brian/Desktop/583final/Breakout/DCM.vhd EN work/DCM 1386618964 \
       CP BUFG CP DCM_SP
 FL /home/brian/Desktop/583final/Breakout/Game_logic.vhd 2013/12/04.19:43:01 P.20131013
 FL /home/brian/Desktop/583final/Breakout/Kbd.vhd 2013/12/04.20:47:00 P.20131013
 FL /home/brian/Desktop/583final/Breakout/src/Breakout_config.vhd 2013/12/04.21:14:41 P.20131013
-PH work/breakout_config 1386617757 \
+PH work/breakout_config 1386618955 \
       FL /home/brian/Desktop/583final/Breakout/src/Breakout_config.vhd \
       PB ieee/std_logic_1164 1381692176 PB ieee/std_logic_arith 1381692177 \
       PB ieee/STD_LOGIC_UNSIGNED 1381692179 PB ieee/NUMERIC_STD 1381692181
 FL /home/brian/Desktop/583final/Breakout/src/BreakRaster.vhd 2013/12/07.16:02:26 P.20131013
-EN work/BreakRaster 1386617755 \
+EN work/BreakRaster 1386618953 \
       FL /home/brian/Desktop/583final/Breakout/src/BreakRaster.vhd \
       PB ieee/std_logic_1164 1381692176 PB ieee/NUMERIC_STD 1381692181
-AR work/BreakRaster/dataflow 1386617756 \
+AR work/BreakRaster/dataflow 1386618954 \
       FL /home/brian/Desktop/583final/Breakout/src/BreakRaster.vhd \
-      EN work/BreakRaster 1386617755
+      EN work/BreakRaster 1386618953
 FL /home/brian/Desktop/583final/Breakout/src/Controller.vhd 2013/12/04.21:14:41 P.20131013
-EN work/controller 1386617760 \
+EN work/controller 1386618958 \
       FL /home/brian/Desktop/583final/Breakout/src/Controller.vhd \
       PB ieee/std_logic_1164 1381692176 PB ieee/std_logic_arith 1381692177 \
       PB ieee/STD_LOGIC_UNSIGNED 1381692179 PB ieee/NUMERIC_STD 1381692181 \
-      PH work/breakout_config 1386617757
-AR work/controller/behavioral 1386617761 \
+      PH work/breakout_config 1386618955
+AR work/controller/behavioral 1386618959 \
       FL /home/brian/Desktop/583final/Breakout/src/Controller.vhd \
-      EN work/controller 1386617760
-FL /home/brian/Desktop/583final/Breakout/src/Game_logic.vhd 2013/12/09.13:35:44 P.20131013
-EN work/game_logic 1386617762 \
+      EN work/controller 1386618958
+FL /home/brian/Desktop/583final/Breakout/src/Game_logic.vhd 2013/12/09.13:55:33 P.20131013
+EN work/game_logic 1386618960 \
       FL /home/brian/Desktop/583final/Breakout/src/Game_logic.vhd \
       PB ieee/std_logic_1164 1381692176 PB ieee/NUMERIC_STD 1381692181 \
-      PH work/breakout_config 1386617757
-AR work/game_logic/behavioral 1386617763 \
+      PH work/breakout_config 1386618955
+AR work/game_logic/behavioral 1386618961 \
       FL /home/brian/Desktop/583final/Breakout/src/Game_logic.vhd \
-      EN work/game_logic 1386617762
+      EN work/game_logic 1386618960
 FL /home/brian/Desktop/583final/Breakout/src/Kbd.vhd 2013/12/04.21:14:41 P.20131013
-EN work/kbd 1386617758 FL /home/brian/Desktop/583final/Breakout/src/Kbd.vhd \
+EN work/kbd 1386618956 FL /home/brian/Desktop/583final/Breakout/src/Kbd.vhd \
       PB ieee/std_logic_1164 1381692176 PB ieee/std_logic_arith 1381692177 \
       PB ieee/STD_LOGIC_UNSIGNED 1381692179 PB ieee/NUMERIC_STD 1381692181
-AR work/kbd/behavioral 1386617759 \
-      FL /home/brian/Desktop/583final/Breakout/src/Kbd.vhd EN work/kbd 1386617758
+AR work/kbd/behavioral 1386618957 \
+      FL /home/brian/Desktop/583final/Breakout/src/Kbd.vhd EN work/kbd 1386618956
 FL /home/brian/Desktop/583final/Breakout/src/Sync.vhd 2013/12/09.10:33:39 P.20131013
-EN work/Sync 1386617753 FL /home/brian/Desktop/583final/Breakout/src/Sync.vhd \
+EN work/Sync 1386618951 FL /home/brian/Desktop/583final/Breakout/src/Sync.vhd \
       PB ieee/std_logic_1164 1381692176 PB ieee/NUMERIC_STD 1381692181
-AR work/Sync/behavioral 1386617754 \
-      FL /home/brian/Desktop/583final/Breakout/src/Sync.vhd EN work/Sync 1386617753
+AR work/Sync/behavioral 1386618952 \
+      FL /home/brian/Desktop/583final/Breakout/src/Sync.vhd EN work/Sync 1386618951
 FL /home/brian/Desktop/583final/Breakout/src/Top_module.vhd 2013/12/09.13:14:10 P.20131013
-EN work/Top_module 1386617768 \
+EN work/Top_module 1386618966 \
       FL /home/brian/Desktop/583final/Breakout/src/Top_module.vhd \
       PB ieee/std_logic_1164 1381692176 PB ieee/std_logic_arith 1381692177 \
       PB ieee/STD_LOGIC_UNSIGNED 1381692179 PB ieee/NUMERIC_STD 1381692181 \
-      PH work/breakout_config 1386617757
-AR work/top_module/top_level 1386617769 \
+      PH work/breakout_config 1386618955
+AR work/top_module/top_level 1386618967 \
       FL /home/brian/Desktop/583final/Breakout/src/Top_module.vhd \
-      EN work/Top_module 1386617768 CP kbd CP Controller CP game_logic CP VGA CP DCM
+      EN work/Top_module 1386618966 CP kbd CP Controller CP game_logic CP VGA CP DCM
 FL /home/brian/Desktop/583final/Breakout/src/VGA_Breakout.vhd 2013/12/04.21:14:41 P.20131013
-EN work/VGA 1386617764 \
+EN work/VGA 1386618962 \
       FL /home/brian/Desktop/583final/Breakout/src/VGA_Breakout.vhd \
       PB ieee/std_logic_1164 1381692176 PB ieee/NUMERIC_STD 1381692181
-AR work/VGA/structural 1386617765 \
-      FL /home/brian/Desktop/583final/Breakout/src/VGA_Breakout.vhd EN work/VGA 1386617764 \
+AR work/VGA/structural 1386618963 \
+      FL /home/brian/Desktop/583final/Breakout/src/VGA_Breakout.vhd EN work/VGA 1386618962 \
       CP Sync CP BreakRaster
 FL /home/brian/Desktop/583final/Breakout/Sync.vhd 2013/12/04.18:12:54 P.20131013
 FL /home/brian/Desktop/583final/Breakout/Top_module.vhd 2013/12/04.20:46:52 P.20131013
