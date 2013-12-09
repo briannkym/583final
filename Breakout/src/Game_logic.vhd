@@ -1,4 +1,3 @@
-
 library ieee;
 use ieee.STD_LOGIC_1164.all;
 use ieee.numeric_std.all;
@@ -47,6 +46,8 @@ signal speed_reg: speed;
 
 
 begin -- game_logic
+  
+paddle_moving <= control_en;
 
 Delay: process (clock, reset)
   begin  -- process FSM
@@ -72,14 +73,28 @@ begin
 	 end if;
   end process OtherStuff;
   
-	 
- Paddle: process (reset, clk50hz)
+In_Signals:process (reset,clk50hz)
+begin  -- process
+  if reset = '0' then
+    paddle_x_dir <= '0';
+  elsif (rising_edge(clk50hz)) then
+    case (control_signal) is
+      when  go_left=>
+        paddle_x_dir <= '0';
+      when go_right =>
+        paddle_x_dir <= '1';
+      when others => null;
+    end case;
+  end if;  
+end process;	 
+
+
+Paddle: process (reset, clk50hz)
 begin --Begin Paddle Logic
    if (reset='0') then
       paddle_x_reg 	<= x"0D8";
-      
-		paddle_x_dir <='1';
-		paddle_moving <='1';
+     -- paddle_x_dir <='1';
+   --   paddle_moving <='0';
 	elsif(rising_edge(clk50hz)) then
 	 
 		case speed_reg is
@@ -105,12 +120,12 @@ begin --Begin Paddle Logic
 			when '0' =>
 				if(paddle_x_reg <= 32) then
 					paddle_x_reg <= x"020";
-					paddle_x_dir<='1';
+				--	paddle_x_dir<='1';
 				end if;
 			when '1' =>
 				if(paddle_x_reg >= 560) then
 					paddle_x_reg <= x"230";
-					paddle_x_dir<='0';
+				--	paddle_x_dir<='0';
 				end if;
 			when others => null;
 		end case; 
@@ -232,7 +247,7 @@ begin --Logic of the Ball
   ball_y <= std_logic_vector(ball_y_reg);
   bricks <= std_logic_vector(bricks_reg); 
   draw_mode <= std_logic_vector(draw_mode_reg);
-
+  
   -- End: output registers to the signals
 end behavioral;
   
