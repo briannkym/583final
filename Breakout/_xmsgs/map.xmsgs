@@ -23,5 +23,8 @@ To see the details of these <arg fmt="%s" index="4">info</arg> messages, please 
 <arg fmt="%s" index="2">Pin I1 of clk25mhz1</arg>
 </msg>
 
+<msg type="warning" file="Pack" num="266" delta="old" >The function generator <arg fmt="%s" index="1">VGA_impl/BreakRaster_Imp/R&lt;2&gt;15_SW0</arg> failed to merge with F5 multiplexer <arg fmt="%s" index="2">VGA_impl/BreakRaster_Imp/B&lt;3&gt;1176_SW0</arg>.  <arg fmt="%z" index="3">There is a conflict for the FXMUX.</arg>  The design will exhibit suboptimal timing.
+</msg>
+
 </messages>
 

@@ -47,7 +47,7 @@ y <= std_logic_vector(y_pos - 45) when (y_pos > 44) else
 			else
 				Vsync <='1';
 			end if;
-			if((x_pos > 0 and x_pos < 160) or (y_pos > 0 and y_pos < 45)) then
+			if((x_pos >= 0 and x_pos < 160) or (y_pos >= 0 and y_pos < 45)) then
 			
 				R <= (others => '0');
 				G <= (others => '0');

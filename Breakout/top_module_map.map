@@ -9,7 +9,7 @@ Target Device  : xc3s1200e
 Target Package : fg320
 Target Speed   : -5
 Mapper Version : spartan3e -- $Revision: 1.55 $
-Mapped Date    : Wed Dec  4 21:29:57 2013
+Mapped Date    : Mon Dec  9 12:03:39 2013
 
 Mapping design into LUTs...
 WARNING:LIT:178 - Clock buffer BUFGMUX symbol
@@ -19,6 +19,10 @@ WARNING:LIT:178 - Clock buffer BUFGMUX symbol
    wasted. The non-clock loads are:
    Pin I1 of clk25mhz1
 Running directed packing...
+WARNING:Pack:266 - The function generator VGA_impl/BreakRaster_Imp/R<2>15_SW0
+   failed to merge with F5 multiplexer VGA_impl/BreakRaster_Imp/B<3>1176_SW0. 
+   There is a conflict for the FXMUX.  The design will exhibit suboptimal
+   timing.
 Running delay-based LUT packing...
 Running related packing...
 Updating timing models...
@@ -28,30 +32,30 @@ Design Summary
 
 Design Summary:
 Number of errors:      0
-Number of warnings:    1
+Number of warnings:    2
 Logic Utilization:
-  Number of Slice Flip Flops:           129 out of  17,344    1%
-  Number of 4 input LUTs:               287 out of  17,344    1%
+  Number of Slice Flip Flops:           175 out of  17,344    1%
+  Number of 4 input LUTs:               411 out of  17,344    2%
 Logic Distribution:
-  Number of occupied Slices:            204 out of   8,672    2%
-    Number of Slices containing only related logic:     204 out of     204 100%
-    Number of Slices containing unrelated logic:          0 out of     204   0%
+  Number of occupied Slices:            286 out of   8,672    3%
+    Number of Slices containing only related logic:     286 out of     286 100%
+    Number of Slices containing unrelated logic:          0 out of     286   0%
       *See NOTES below for an explanation of the effects of unrelated logic.
-  Total Number of 4 input LUTs:         362 out of  17,344    2%
-    Number used as logic:               287
-    Number used as a route-thru:         75
+  Total Number of 4 input LUTs:         516 out of  17,344    2%
+    Number used as logic:               411
+    Number used as a route-thru:        105
 
   The Slice Logic Distribution report is not meaningful if the design is
   over-mapped for a non-slice resource or if Placement fails.
 
   Number of bonded IOBs:                 19 out of     250    7%
-  Number of BUFGMUXs:                     5 out of      24   20%
+  Number of BUFGMUXs:                     6 out of      24   25%
   Number of DCMs:                         1 out of       8   12%
   Number of MULT18X18SIOs:                1 out of      28    3%
 
-Average Fanout of Non-Clock Nets:                3.18
+Average Fanout of Non-Clock Nets:                3.05
 
-Peak Memory Usage:  629 MB
+Peak Memory Usage:  630 MB
 Total REAL time to MAP completion:  3 secs 
 Total CPU time to MAP completion:   3 secs 
 

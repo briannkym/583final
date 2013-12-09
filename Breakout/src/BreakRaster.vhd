@@ -59,9 +59,36 @@ by<= unsigned(ball_y);
 			vx := "00000" & vx(11 downto 5);
 			vy := "000" & vy(11 downto 3);
 			if(bricks(to_integer(unsigned(vy) * 18 + unsigned(vx))) = '1' ) then
-				R <= "0000";
-				G <= "0000";
-				B <= "1100";
+				case vy is
+					when x"000" => 
+						R <= "1110";
+						G <= "0000";
+						B <= "0000";
+					when x"001" => 
+						R <= "1110";
+						G <= "0110";
+						B <= "0000";
+					when x"002" => 
+						R <= "1110";
+						G <= "1110";
+						B <= "0000";
+					when x"003" =>
+						R <= "0000";
+						G <= "1110";
+						B <= "0000";
+					when x"004" =>
+						R <= "0000";
+						G <= "0000";
+						B <= "1100";
+					when x"005" => 
+						R <= "1000";
+						G <= "0000";
+						B <= "1100";
+					when others => 
+						R <= "1110";
+						G <= "1110";
+						B <= "1100";
+				end case;
 			end if;
 		end if;
 	elsif(y < 456) then

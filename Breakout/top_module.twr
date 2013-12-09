@@ -45,7 +45,7 @@ Setup/Hold to clock PS2C
             |Max Setup to|Max Hold to |                  | Clock  |
 Source      | clk (edge) | clk (edge) |Internal Clock(s) | Phase  |
 ------------+------------+------------+------------------+--------+
-PS2D        |    1.508(F)|    1.560(F)|PS2C_BUFGP        |   0.000|
+PS2D        |    1.648(F)|    1.864(F)|PS2C_BUFGP        |   0.000|
 ------------+------------+------------+------------------+--------+
 
 Clock PS2C to Pad
@@ -53,9 +53,9 @@ Clock PS2C to Pad
             | clk (edge) |                  | Clock  |
 Destination |   to PAD   |Internal Clock(s) | Phase  |
 ------------+------------+------------------+--------+
-LEDs<0>     |    9.633(F)|PS2C_BUFGP        |   0.000|
-LEDs<1>     |    9.820(F)|PS2C_BUFGP        |   0.000|
-LEDs<2>     |    9.393(F)|PS2C_BUFGP        |   0.000|
+LEDs<0>     |    9.297(F)|PS2C_BUFGP        |   0.000|
+LEDs<1>     |    9.203(F)|PS2C_BUFGP        |   0.000|
+LEDs<2>     |    8.909(F)|PS2C_BUFGP        |   0.000|
 ------------+------------+------------------+--------+
 
 Clock clk to Pad
@@ -63,16 +63,19 @@ Clock clk to Pad
             | clk (edge) |                  | Clock  |
 Destination |   to PAD   |Internal Clock(s) | Phase  |
 ------------+------------+------------------+--------+
-Hsync       |   10.097(R)|clk25mhz          |   0.000|
-LEDs<3>     |    8.397(R)|clk_IBUFG         |   0.000|
-LEDs<4>     |    8.569(R)|clk_IBUFG         |   0.000|
-LEDs<6>     |    8.184(R)|clk_IBUFG         |   0.000|
-Vsync       |   10.400(R)|clk25mhz          |   0.000|
-vgaBlue<2>  |   10.713(R)|clk25mhz          |   0.000|
-vgaBlue<3>  |   10.260(R)|clk25mhz          |   0.000|
-vgaGreen<3> |   10.395(R)|clk25mhz          |   0.000|
-vgaRed<2>   |   10.997(R)|clk25mhz          |   0.000|
-vgaRed<3>   |   11.156(R)|clk25mhz          |   0.000|
+Hsync       |    8.670(R)|clk25mhz          |   0.000|
+LEDs<3>     |    8.780(R)|clk_IBUFG         |   0.000|
+LEDs<4>     |    8.490(R)|clk_IBUFG         |   0.000|
+LEDs<6>     |    8.730(R)|clk_IBUFG         |   0.000|
+Vsync       |    8.028(R)|clk25mhz          |   0.000|
+vgaBlue<2>  |    8.449(R)|clk25mhz          |   0.000|
+vgaBlue<3>  |    8.339(R)|clk25mhz          |   0.000|
+vgaGreen<1> |    8.921(R)|clk25mhz          |   0.000|
+vgaGreen<2> |    9.628(R)|clk25mhz          |   0.000|
+vgaGreen<3> |    8.313(R)|clk25mhz          |   0.000|
+vgaRed<1>   |   10.460(R)|clk25mhz          |   0.000|
+vgaRed<2>   |    8.743(R)|clk25mhz          |   0.000|
+vgaRed<3>   |    8.810(R)|clk25mhz          |   0.000|
 ------------+------------+------------------+--------+
 
 Clock to Setup on destination clock PS2C
@@ -80,8 +83,8 @@ Clock to Setup on destination clock PS2C
                | Src:Rise| Src:Fall| Src:Rise| Src:Fall|
 Source Clock   |Dest:Rise|Dest:Rise|Dest:Fall|Dest:Fall|
 ---------------+---------+---------+---------+---------+
-PS2C           |         |         |         |    4.151|
-clk            |         |         |         |    5.336|
+PS2C           |         |         |         |    4.323|
+clk            |         |         |         |    5.948|
 ---------------+---------+---------+---------+---------+
 
 Clock to Setup on destination clock clk
@@ -89,19 +92,19 @@ Clock to Setup on destination clock clk
                | Src:Rise| Src:Fall| Src:Rise| Src:Fall|
 Source Clock   |Dest:Rise|Dest:Rise|Dest:Fall|Dest:Fall|
 ---------------+---------+---------+---------+---------+
-PS2C           |         |   10.110|         |    5.932|
-clk            |   13.297|    3.819|         |    4.601|
+PS2C           |         |   10.095|         |    5.071|
+clk            |   14.270|    3.675|         |    5.002|
 ---------------+---------+---------+---------+---------+
 
 
-Analysis completed Wed Dec  4 21:30:23 2013 
+Analysis completed Mon Dec  9 12:04:07 2013 
 --------------------------------------------------------------------------------
 
 Trace Settings:
 -------------------------
 Trace Settings 
 
-Peak Memory Usage: 363 MB
+Peak Memory Usage: 365 MB
 
 
 
