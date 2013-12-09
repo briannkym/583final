@@ -5,13 +5,13 @@
      behavior or data corruption.  It is strongly advised that
      users do not edit the contents of this file. -->
 <messages>
-<msg type="warning" file="Xst" num="790" delta="old" >&quot;<arg fmt="%s" index="1">/home/brian/Desktop/583final/Breakout/src/Game_logic.vhd</arg>&quot; line <arg fmt="%d" index="2">220</arg>: Index value(s) does not match array range, simulation mismatch.
+<msg type="warning" file="Xst" num="790" delta="new" >&quot;<arg fmt="%s" index="1">/home/brian/Desktop/583final/Breakout/src/Game_logic.vhd</arg>&quot; line <arg fmt="%d" index="2">349</arg>: Index value(s) does not match array range, simulation mismatch.
 </msg>
 
 <msg type="info" file="Xst" num="1433" delta="old" >Contents of array &lt;<arg fmt="%s" index="1">bricks_reg</arg>&gt; may be accessed with an index that exceeds the array size. This could cause simulation mismatch.
 </msg>
 
-<msg type="warning" file="Xst" num="790" delta="old" >&quot;<arg fmt="%s" index="1">/home/brian/Desktop/583final/Breakout/src/Game_logic.vhd</arg>&quot; line <arg fmt="%d" index="2">221</arg>: Index value(s) does not match array range, simulation mismatch.
+<msg type="warning" file="Xst" num="790" delta="new" >&quot;<arg fmt="%s" index="1">/home/brian/Desktop/583final/Breakout/src/Game_logic.vhd</arg>&quot; line <arg fmt="%d" index="2">350</arg>: Index value(s) does not match array range, simulation mismatch.
 </msg>
 
 <msg type="info" file="Xst" num="2679" delta="old" >Register &lt;<arg fmt="%s" index="1">speed_reg</arg>&gt; in unit &lt;<arg fmt="%s" index="2">game_logic</arg>&gt; has a constant value of <arg fmt="%s" index="3">000</arg> during circuit operation. The register is replaced by logic.
@@ -59,40 +59,28 @@
 <msg type="info" file="Xst" num="2679" delta="old" >Register &lt;<arg fmt="%s" index="1">bricks_reg&lt;116&gt;</arg>&gt; in unit &lt;<arg fmt="%s" index="2">game_logic</arg>&gt; has a constant value of <arg fmt="%s" index="3">0</arg> during circuit operation. The register is replaced by logic.
 </msg>
 
-<msg type="info" file="Xst" num="2679" delta="new" >Register &lt;<arg fmt="%s" index="1">bricks_reg&lt;115&gt;</arg>&gt; in unit &lt;<arg fmt="%s" index="2">game_logic</arg>&gt; has a constant value of <arg fmt="%s" index="3">0</arg> during circuit operation. The register is replaced by logic.
+<msg type="info" file="Xst" num="2679" delta="old" >Register &lt;<arg fmt="%s" index="1">bricks_reg&lt;115&gt;</arg>&gt; in unit &lt;<arg fmt="%s" index="2">game_logic</arg>&gt; has a constant value of <arg fmt="%s" index="3">0</arg> during circuit operation. The register is replaced by logic.
 </msg>
 
-<msg type="info" file="Xst" num="2679" delta="new" >Register &lt;<arg fmt="%s" index="1">bricks_reg&lt;114&gt;</arg>&gt; in unit &lt;<arg fmt="%s" index="2">game_logic</arg>&gt; has a constant value of <arg fmt="%s" index="3">0</arg> during circuit operation. The register is replaced by logic.
+<msg type="info" file="Xst" num="2679" delta="old" >Register &lt;<arg fmt="%s" index="1">bricks_reg&lt;114&gt;</arg>&gt; in unit &lt;<arg fmt="%s" index="2">game_logic</arg>&gt; has a constant value of <arg fmt="%s" index="3">0</arg> during circuit operation. The register is replaced by logic.
 </msg>
 
-<msg type="info" file="Xst" num="2679" delta="new" >Register &lt;<arg fmt="%s" index="1">bricks_reg&lt;113&gt;</arg>&gt; in unit &lt;<arg fmt="%s" index="2">game_logic</arg>&gt; has a constant value of <arg fmt="%s" index="3">0</arg> during circuit operation. The register is replaced by logic.
+<msg type="info" file="Xst" num="2679" delta="old" >Register &lt;<arg fmt="%s" index="1">bricks_reg&lt;113&gt;</arg>&gt; in unit &lt;<arg fmt="%s" index="2">game_logic</arg>&gt; has a constant value of <arg fmt="%s" index="3">0</arg> during circuit operation. The register is replaced by logic.
 </msg>
 
-<msg type="info" file="Xst" num="2679" delta="new" >Register &lt;<arg fmt="%s" index="1">bricks_reg&lt;112&gt;</arg>&gt; in unit &lt;<arg fmt="%s" index="2">game_logic</arg>&gt; has a constant value of <arg fmt="%s" index="3">0</arg> during circuit operation. The register is replaced by logic.
+<msg type="info" file="Xst" num="2679" delta="old" >Register &lt;<arg fmt="%s" index="1">bricks_reg&lt;112&gt;</arg>&gt; in unit &lt;<arg fmt="%s" index="2">game_logic</arg>&gt; has a constant value of <arg fmt="%s" index="3">0</arg> during circuit operation. The register is replaced by logic.
 </msg>
 
-<msg type="info" file="Xst" num="2679" delta="new" >Register &lt;<arg fmt="%s" index="1">bricks_reg&lt;111&gt;</arg>&gt; in unit &lt;<arg fmt="%s" index="2">game_logic</arg>&gt; has a constant value of <arg fmt="%s" index="3">0</arg> during circuit operation. The register is replaced by logic.
+<msg type="info" file="Xst" num="2679" delta="old" >Register &lt;<arg fmt="%s" index="1">bricks_reg&lt;111&gt;</arg>&gt; in unit &lt;<arg fmt="%s" index="2">game_logic</arg>&gt; has a constant value of <arg fmt="%s" index="3">0</arg> during circuit operation. The register is replaced by logic.
 </msg>
 
-<msg type="info" file="Xst" num="2679" delta="new" >Register &lt;<arg fmt="%s" index="1">bricks_reg&lt;110&gt;</arg>&gt; in unit &lt;<arg fmt="%s" index="2">game_logic</arg>&gt; has a constant value of <arg fmt="%s" index="3">0</arg> during circuit operation. The register is replaced by logic.
+<msg type="info" file="Xst" num="2679" delta="old" >Register &lt;<arg fmt="%s" index="1">bricks_reg&lt;110&gt;</arg>&gt; in unit &lt;<arg fmt="%s" index="2">game_logic</arg>&gt; has a constant value of <arg fmt="%s" index="3">0</arg> during circuit operation. The register is replaced by logic.
 </msg>
 
-<msg type="info" file="Xst" num="2679" delta="new" >Register &lt;<arg fmt="%s" index="1">bricks_reg&lt;109&gt;</arg>&gt; in unit &lt;<arg fmt="%s" index="2">game_logic</arg>&gt; has a constant value of <arg fmt="%s" index="3">0</arg> during circuit operation. The register is replaced by logic.
+<msg type="info" file="Xst" num="2679" delta="old" >Register &lt;<arg fmt="%s" index="1">bricks_reg&lt;109&gt;</arg>&gt; in unit &lt;<arg fmt="%s" index="2">game_logic</arg>&gt; has a constant value of <arg fmt="%s" index="3">0</arg> during circuit operation. The register is replaced by logic.
 </msg>
 
-<msg type="info" file="Xst" num="2679" delta="new" >Register &lt;<arg fmt="%s" index="1">bricks_reg&lt;108&gt;</arg>&gt; in unit &lt;<arg fmt="%s" index="2">game_logic</arg>&gt; has a constant value of <arg fmt="%s" index="3">0</arg> during circuit operation. The register is replaced by logic.
-</msg>
-
-<msg type="info" file="Xst" num="2679" delta="new" >Register &lt;<arg fmt="%s" index="1">bricks_reg&lt;107&gt;</arg>&gt; in unit &lt;<arg fmt="%s" index="2">game_logic</arg>&gt; has a constant value of <arg fmt="%s" index="3">0</arg> during circuit operation. The register is replaced by logic.
-</msg>
-
-<msg type="info" file="Xst" num="2679" delta="new" >Register &lt;<arg fmt="%s" index="1">bricks_reg&lt;106&gt;</arg>&gt; in unit &lt;<arg fmt="%s" index="2">game_logic</arg>&gt; has a constant value of <arg fmt="%s" index="3">0</arg> during circuit operation. The register is replaced by logic.
-</msg>
-
-<msg type="info" file="Xst" num="2679" delta="new" >Register &lt;<arg fmt="%s" index="1">bricks_reg&lt;105&gt;</arg>&gt; in unit &lt;<arg fmt="%s" index="2">game_logic</arg>&gt; has a constant value of <arg fmt="%s" index="3">0</arg> during circuit operation. The register is replaced by logic.
-</msg>
-
-<msg type="info" file="Xst" num="2679" delta="new" >Register &lt;<arg fmt="%s" index="1">bricks_reg&lt;104&gt;</arg>&gt; in unit &lt;<arg fmt="%s" index="2">game_logic</arg>&gt; has a constant value of <arg fmt="%s" index="3">0</arg> during circuit operation. The register is replaced by logic.
+<msg type="info" file="Xst" num="2679" delta="old" >Register &lt;<arg fmt="%s" index="1">bricks_reg&lt;108&gt;</arg>&gt; in unit &lt;<arg fmt="%s" index="2">game_logic</arg>&gt; has a constant value of <arg fmt="%s" index="3">0</arg> during circuit operation. The register is replaced by logic.
 </msg>
 
 <msg type="warning" file="Xst" num="790" delta="old" >&quot;<arg fmt="%s" index="1">/home/brian/Desktop/583final/Breakout/src/BreakRaster.vhd</arg>&quot; line <arg fmt="%d" index="2">61</arg>: Index value(s) does not match array range, simulation mismatch.
