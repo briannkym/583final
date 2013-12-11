@@ -48,6 +48,7 @@ architecture top_level of top_module is
       scan_code       : in std_logic_vector(7 downto 0);
       LEDs            : out std_logic_vector(2 downto 0);
       control_en      : out std_logic;
+      control_mode    : out std_logic;
       control_signal  : out control_signal_out);
     
   end component;
@@ -57,7 +58,8 @@ architecture top_level of top_module is
       clock           : in std_logic; 
       reset           : in std_logic;
       control_en      : in std_logic;
-      control_signal	: in control_signal_out;
+      control_mode    : in std_logic;
+      control_signal  : in control_signal_out;
         
 --Things specific to the game
       paddle_x        : out std_logic_vector(11 downto 0); 
@@ -113,6 +115,7 @@ architecture top_level of top_module is
 --Controller signals
  signal control_en      : std_logic;
  signal control_signal  : control_signal_out;
+ signal control_mode    : std_logic; 
 --BreakRaster signals
  signal paddle_x        : std_logic_vector(11 downto 0); 
  signal ball_x          : std_logic_vector(11 downto 0);  
@@ -147,12 +150,14 @@ begin  -- top_level
     LEDs(1)       => LEDs (4),
     LEDs(2)       => LEDs (6),
     control_en    => control_en,
+    control_mode  => control_mode,
     control_signal=> control_signal);
 
  game_log : game_logic port map (
     clock          => clk,
     reset          => not reset,
     control_en     => control_en,
+    control_mode   => control_mode,
     control_signal => control_signal,
         
 --Things specific to the game

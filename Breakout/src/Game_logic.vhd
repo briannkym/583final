@@ -9,6 +9,7 @@ entity game_logic is
   port( clock           : in std_logic; 
         reset           : in std_logic;
         control_en      : in std_logic;
+        control_mode    : in std_logic;
         control_signal	: in control_signal_out;
         
 --Things specific to the game
@@ -38,12 +39,11 @@ signal draw_mode_reg : std_logic_vector(3 downto 0);
 signal ball_x_dir, ball_y_dir, paddle_x_dir, paddle_moving: std_logic;
 type angle is (low, med, hi);
 type speed is (slow, normal, fast, faster, fastest);
+--type mode is (start, play, pause, game_over);
 
-signal angle_reg: angle;
-signal speed_reg: speed;
-
-
-
+signal mode_entry : control_signal_out;
+signal angle_reg  : angle;
+signal speed_reg  : speed;
 
 begin -- game_logic
   
@@ -68,8 +68,8 @@ Delay: process (clock, reset)
  OtherStuff: process (reset, clk50hz) 
 begin
    if (reset='0') then
-      speed_reg <= slow;
-      draw_mode_reg <= x"1";
+    --  speed_reg     <= normal;
+      
 	 end if;
   end process OtherStuff;
   
@@ -77,14 +77,48 @@ In_Signals:process (reset,clk50hz)
 begin  -- process
   if reset = '0' then
     paddle_x_dir <= '0';
+
   elsif (rising_edge(clk50hz)) then
+         
     case (control_signal) is
       when  go_left=>
-        paddle_x_dir <= '0';
+        paddle_x_dir   <= '0';
+        
       when go_right =>
-        paddle_x_dir <= '1';
+        paddle_x_dir   <= '1';
+        
       when others => null;
     end case;
+   
+  end if;  
+end process;	 
+  
+Mode_Signals:process (reset,control_mode)
+begin  -- process
+  if reset = '0' then
+    draw_mode_reg <= x"0";
+
+  elsif (control_mode = '1') then
+         
+    case (control_signal) is
+      when end_game =>
+        draw_mode_reg  <= x"3";
+        
+      when pause    =>
+        if draw_mode_reg = x"1" then
+          draw_mode_reg  <= x"2";
+        elsif draw_mode_reg = x"2" then
+          draw_mode_reg  <= x"1";
+        end if;
+
+      when launch   =>
+        if draw_mode_reg = x"0" then
+          draw_mode_reg  <= x"1";
+        end if;
+        
+      when others => null;
+    end case;
+   
   end if;  
 end process;	 
 
@@ -96,7 +130,9 @@ begin --Begin Paddle Logic
      -- paddle_x_dir <='1';
    --   paddle_moving <='0';
 	elsif(rising_edge(clk50hz)) then
-	 
+          if draw_mode_reg = x"1" then
+            
+          
 		case speed_reg is
 			when slow =>
 				if (paddle_moving = '0') then
@@ -153,7 +189,8 @@ begin --Begin Paddle Logic
 				end if;
 			when others => null;
 		end case; 
-	 
+         
+          end if;
 	end if;
 	 --End: Logic of the Paddle.
   end process paddle;
@@ -164,15 +201,16 @@ begin --Begin Paddle Logic
 begin --Logic of the Ball
    if (reset='0') then
       ball_x_reg <= x"0EC";
-      ball_y_reg <= x"1BA";
-		ball_x_dir <= '1';
-		ball_y_dir <= '0';
-		angle_reg <= med;
-		
+      ball_y_reg <= x"1BA";     
+      ball_x_dir <= '1';
+      ball_y_dir <= '0';
+      angle_reg <= low;
+      speed_reg     <= slow;		
       bricks_reg       <= x"00000FFFFFFFFFFFFFFFFFFFFFFFFFFF";
+   elsif(rising_edge(clk50hz)) then
 
-	elsif(rising_edge(clk50hz)) then
-		case speed_reg is
+          if draw_mode_reg = x"1" then
+               case speed_reg is
 			when slow =>
 				case angle_reg is
 							when low =>
@@ -346,9 +384,49 @@ begin --Logic of the Ball
 					ball_y_reg <= x"040";
 				end if;
 			when '1' =>
-				if(ball_y_reg >= 444) then
-					ball_y_dir <= '0';
-					ball_y_reg <= x"1BC";
+			
+                                if(ball_y_reg > 440) then
+                                  if (ball_x_reg >= paddle_x_reg - 7 and ball_x_reg < paddle_x_reg + 4) or
+                                   (ball_x_reg >= paddle_x_reg + 36 and ball_x_reg < paddle_x_reg + 52) then
+                                    ball_x_dir <= '0';
+                                    ball_y_dir <= '0';
+                                    ball_y_reg <= x"1BC";
+                                    angle_reg <= low;
+
+                                  elsif (ball_x_reg >= paddle_x_reg + 36 and ball_x_reg < paddle_x_reg + 52) then
+                                    ball_x_dir <= '1';
+                                    ball_y_dir <= '0';
+                                    ball_y_reg <= x"1BC";
+                                    angle_reg <= low;
+                                    
+
+                                  elsif (ball_x_reg >= paddle_x_reg + 4 and ball_x_reg < paddle_x_reg + 12) then
+                                    ball_x_dir <= '0';
+                                    ball_y_dir <= '0';
+                                    ball_y_reg <= x"1BC";
+                                    angle_reg <= med;
+
+                                  elsif (ball_x_reg >= paddle_x_reg + 29 and ball_x_reg < paddle_x_reg + 36) then
+                                    ball_x_dir <= '1';
+                                    ball_y_dir <= '0';
+                                    ball_y_reg <= x"1BC";
+                                    angle_reg <= med;
+
+                                  elsif (ball_x_reg >= paddle_x_reg +12 and ball_x_reg < paddle_x_reg + 20) then
+                                    ball_x_dir <= '0';
+                                    ball_y_dir <= '0';
+                                    ball_y_reg <= x"1BC";
+                                    angle_reg <= hi;
+
+                                  elsif (ball_x_reg >= paddle_x_reg +20 and ball_x_reg < paddle_x_reg + 29) then
+                                    ball_x_dir <= '1';
+                                    ball_y_dir <= '0';
+                                    ball_y_reg <= x"1BC";
+                                    angle_reg <= hi;  
+
+                                  else
+                                    ball_y_reg <= x"1FF";
+                                  end if;
 				end if;
 			when others => null;
 		end case;
@@ -361,13 +439,31 @@ begin --Logic of the Ball
 			vy := "000" & vy(11 downto 3);
 			result := to_integer(unsigned(vy) * 18 + unsigned(vx));
 			
+                        if angle_reg = med then
+                          bricks_reg(0) <='0';
+                        end if;
 			if(bricks_reg(result) = '1') then
-				bricks_reg(result) <= '0';
-				ball_y_dir <= not ball_y_dir;
+                          case (vy) is
+                            when x"000" =>
+                              speed_reg <= fastest;
+                            when x"001" =>
+                              speed_reg <= faster;
+                            when x"002" =>
+                              speed_reg <= fast;
+                            when x"003" =>
+                              speed_reg <= normal;
+                            when x"004" =>
+                              speed_reg <= slow;
+                            when others => null;
+                          end case;
+                          bricks_reg(result) <= '0';
+                          ball_y_dir <= not ball_y_dir;
 			end if;
 	
 		end if;
-		
+	    
+          end if;
+	 
 	end if;
 	 --End: Logic of the Ball.
   end process Ball;
