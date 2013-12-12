@@ -221,7 +221,7 @@ clk25mhz <= clkdv when lock='1' else '0';
        reset <='0';
      end if;
    elsif dead = '1' then
-     count <= 0;
+     count <= (others => '0');
    end if;
   
  end if;
