@@ -73,7 +73,7 @@ constant nine: std_logic_vector(63 downto 0):=
 "0011110011100111110000110111111000001100000110000011000001110000";
 
 
-signal pixel: std_logic :=0;
+signal pixel: std_logic :='0';
 
 begin 
 
@@ -140,6 +140,8 @@ begin
 			else
 				pixel<='0';
 			end if;
+		when others =>
+			pixel<='0';
 	end case;
 		
 end process;
@@ -191,5 +193,5 @@ begin
 end process;
 
 
-end Behavioral;
+end dataflow;
 

@@ -52,13 +52,13 @@ xSymbol <= std_logic_vector(x(5 downto 3));
 ySymbol <= std_logic_vector(y(5 downto 3));
 
 		digit_impl : Digit port map (	 
-		rainbow <= '1',
-		number <= number,
-		x <= xSymbol,
-		y <= ySymbol,
-		R <= rSymbol,
-		G <= gSymbol,
-		B <= BSymbol);
+		rainbow => '1',
+		number => number,
+		x => xSymbol,
+		y => ySymbol,
+		R => rSymbol,
+		G => gSymbol,
+		B => BSymbol);
 
 	process(x, y, px, bx, by, bricks, draw_mode)
 	variable vx, vy : std_logic_vector(11 downto 0);

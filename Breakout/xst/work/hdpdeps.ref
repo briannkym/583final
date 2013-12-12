@@ -1,4 +1,4 @@
-V3 46
+V3 50
 FL /home/brian/Desktop/583final/Breakout/Breakout_config.vhd 2013/12/02.14:28:02 P.20131013
 FL /home/brian/Desktop/583final/Breakout/BreakRaster.vhd 2013/12/04.18:12:57 P.20131013
 FL /home/brian/Desktop/583final/Breakout/Controller.vhd 2013/12/02.21:40:13 P.20131013
@@ -12,56 +12,61 @@ AR work/DCM/BEHAVIORAL 1386816091 \
 FL /home/brian/Desktop/583final/Breakout/Game_logic.vhd 2013/12/04.19:43:01 P.20131013
 FL /home/brian/Desktop/583final/Breakout/Kbd.vhd 2013/12/04.20:47:00 P.20131013
 FL /home/brian/Desktop/583final/Breakout/src/Breakout_config.vhd 2013/12/04.21:14:41 P.20131013
-PH work/breakout_config 1386816081 \
+PH work/breakout_config 1386818436 \
       FL /home/brian/Desktop/583final/Breakout/src/Breakout_config.vhd \
       PB ieee/std_logic_1164 1381692176 PB ieee/std_logic_arith 1381692177 \
       PB ieee/STD_LOGIC_UNSIGNED 1381692179 PB ieee/NUMERIC_STD 1381692181
-FL /home/brian/Desktop/583final/Breakout/src/BreakRaster.vhd 2013/12/11.20:02:08 P.20131013
-EN work/BreakRaster 1386816079 \
+FL /home/brian/Desktop/583final/Breakout/src/BreakRaster.vhd 2013/12/11.21:19:37 P.20131013
+EN work/BreakRaster 1386818434 \
       FL /home/brian/Desktop/583final/Breakout/src/BreakRaster.vhd \
       PB ieee/std_logic_1164 1381692176 PB ieee/NUMERIC_STD 1381692181 \
-      PH work/screen_pkg 1386816076
-AR work/BreakRaster/dataflow 1386816080 \
+      PH work/screen_pkg 1386818429
+AR work/BreakRaster/dataflow 1386818435 \
       FL /home/brian/Desktop/583final/Breakout/src/BreakRaster.vhd \
-      EN work/BreakRaster 1386816079
-FL /home/brian/Desktop/583final/Breakout/src/Controller.vhd 2013/12/11.19:46:27 P.20131013
-EN work/controller 1386816084 \
+      EN work/BreakRaster 1386818434 CP Digit
+FL /home/brian/Desktop/583final/Breakout/src/Controller.vhd 2013/12/11.20:44:53 P.20131013
+EN work/controller 1386818439 \
       FL /home/brian/Desktop/583final/Breakout/src/Controller.vhd \
       PB ieee/std_logic_1164 1381692176 PB ieee/std_logic_arith 1381692177 \
       PB ieee/STD_LOGIC_UNSIGNED 1381692179 PB ieee/NUMERIC_STD 1381692181 \
-      PH work/breakout_config 1386816081
-AR work/controller/behavioral 1386816085 \
+      PH work/breakout_config 1386818436
+AR work/controller/behavioral 1386818440 \
       FL /home/brian/Desktop/583final/Breakout/src/Controller.vhd \
-      EN work/controller 1386816084
+      EN work/controller 1386818439
+FL /home/brian/Desktop/583final/Breakout/src/Digit.vhd 2013/12/11.21:17:50 P.20131013
+EN work/Digit 1386818430 FL /home/brian/Desktop/583final/Breakout/src/Digit.vhd \
+      PB ieee/std_logic_1164 1381692176 PB ieee/NUMERIC_STD 1381692181
+AR work/Digit/dataflow 1386818431 \
+      FL /home/brian/Desktop/583final/Breakout/src/Digit.vhd EN work/Digit 1386818430
 FL /home/brian/Desktop/583final/Breakout/src/Game_logic.vhd 2013/12/11.20:41:09 P.20131013
 EN work/game_logic 1386816086 \
       FL /home/brian/Desktop/583final/Breakout/src/Game_logic.vhd \
       PB ieee/std_logic_1164 1381692176 PB ieee/NUMERIC_STD 1381692181 \
-      PH work/breakout_config 1386816081 PH work/screen_pkg 1386816076
+      PH work/breakout_config 1386818436 PH work/screen_pkg 1386818429
 AR work/game_logic/behavioral 1386816087 \
       FL /home/brian/Desktop/583final/Breakout/src/Game_logic.vhd \
       EN work/game_logic 1386816086
 FL /home/brian/Desktop/583final/Breakout/src/Kbd.vhd 2013/12/04.21:14:41 P.20131013
-EN work/kbd 1386816082 FL /home/brian/Desktop/583final/Breakout/src/Kbd.vhd \
+EN work/kbd 1386818437 FL /home/brian/Desktop/583final/Breakout/src/Kbd.vhd \
       PB ieee/std_logic_1164 1381692176 PB ieee/std_logic_arith 1381692177 \
       PB ieee/STD_LOGIC_UNSIGNED 1381692179 PB ieee/NUMERIC_STD 1381692181
-AR work/kbd/behavioral 1386816083 \
-      FL /home/brian/Desktop/583final/Breakout/src/Kbd.vhd EN work/kbd 1386816082
+AR work/kbd/behavioral 1386818438 \
+      FL /home/brian/Desktop/583final/Breakout/src/Kbd.vhd EN work/kbd 1386818437
 FL /home/brian/Desktop/583final/Breakout/src/screen_pkg.vhd 2013/12/11.20:06:34 P.20131013
-PH work/screen_pkg 1386816076 \
+PH work/screen_pkg 1386818429 \
       FL /home/brian/Desktop/583final/Breakout/src/screen_pkg.vhd \
       PB ieee/std_logic_1164 1381692176 PB ieee/NUMERIC_STD 1381692181
 FL /home/brian/Desktop/583final/Breakout/src/Sync.vhd 2013/12/09.10:33:39 P.20131013
-EN work/Sync 1386816077 FL /home/brian/Desktop/583final/Breakout/src/Sync.vhd \
+EN work/Sync 1386818432 FL /home/brian/Desktop/583final/Breakout/src/Sync.vhd \
       PB ieee/std_logic_1164 1381692176 PB ieee/NUMERIC_STD 1381692181
-AR work/Sync/behavioral 1386816078 \
-      FL /home/brian/Desktop/583final/Breakout/src/Sync.vhd EN work/Sync 1386816077
+AR work/Sync/behavioral 1386818433 \
+      FL /home/brian/Desktop/583final/Breakout/src/Sync.vhd EN work/Sync 1386818432
 FL /home/brian/Desktop/583final/Breakout/src/Top_module.vhd 2013/12/11.19:46:27 P.20131013
 EN work/Top_module 1386816092 \
       FL /home/brian/Desktop/583final/Breakout/src/Top_module.vhd \
       PB ieee/std_logic_1164 1381692176 PB ieee/std_logic_arith 1381692177 \
       PB ieee/STD_LOGIC_UNSIGNED 1381692179 PB ieee/NUMERIC_STD 1381692181 \
-      PH work/breakout_config 1386816081
+      PH work/breakout_config 1386818436
 AR work/top_module/top_level 1386816093 \
       FL /home/brian/Desktop/583final/Breakout/src/Top_module.vhd \
       EN work/Top_module 1386816092 CP kbd CP Controller CP game_logic CP VGA CP DCM
