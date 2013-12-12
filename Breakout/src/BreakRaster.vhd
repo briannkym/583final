@@ -2,6 +2,9 @@ library ieee;
 use ieee.std_logic_1164.all;
 use ieee.numeric_std.all;
 
+
+use screen_pkg.all;
+
 Entity BreakRaster is
 Port(
 score: in std_logic_vector(11 downto 0);
@@ -41,26 +44,26 @@ by<= unsigned(ball_y);
 	G <= x"0";
 	B <= x"0";
 	
-	if(y < 48) then
+	if(y < SCREEN_Y_BEGIN) then
 		R <= x"0";
 		G <= x"0";
 		B <= x"0";
-	elsif(y < 64) then
+	elsif(y < SCREEN_Y_END) then
 		R <= "1000";
 		G <= "1000";
 		B <= "1000";
-	elsif(y< 450) then
-		if((x < 32) or (608 <= x)) then
+	elsif(y< SCREEN_PADDLE_BEGIN) then
+		if((x < SCREEN_X_BEGIN) or (SCREEN_X_END <= x)) then
 		R <= "1000";
 		G <= "1000";
 		B <= "1000";
-		elsif((bx <= x) and (x < bx + 8) and (by <= y) and (y < by + 6)) then
+		elsif((bx <= x) and (x < bx + BALL_WIDTH) and (by <= y) and (y < by + BALL_HEIGHT)) then
 		R <= "1100";
 		G <= "0000";
 		B <= "0000";
-		elsif((100 <= y) and (y < 148)) then
-			vx := std_logic_vector(x - 32);
-			vy := std_logic_vector(y - 100);
+		elsif((SCREEN_BRICK_BEGIN <= y) and (y < SCREEN_BRICK_END)) then
+			vx := std_logic_vector(x - SCREEN_X_BEGIN);
+			vy := std_logic_vector(y - SCREEN_BRICK_BEGIN);
 			vx := "00000" & vx(11 downto 5);
 			vy := "000" & vy(11 downto 3);
 			if(bricks(to_integer(unsigned(vy) * 18 + unsigned(vx))) = '1' ) then
@@ -96,12 +99,12 @@ by<= unsigned(ball_y);
 				end case;
 			end if;
 		end if;
-	elsif(y < 456) then
-		if((x < 32) or (608 <= x))then
+	elsif(y < SCREEN_PADDLE_END) then
+		if((x < SCREEN_X_BEGIN) or (SCREEN_X_END <= x))then
 		R <= "0000";
 		G <= "1000";
 		B <= "1000";
-		elsif ((px <= x) and (x < px + 48)) then
+		elsif ((px <= x) and (x < px + PADDLE_WIDTH)) then
 		R <= "1100";
 		G <= "0000";
 		B <= "0000";
