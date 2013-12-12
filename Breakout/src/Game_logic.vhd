@@ -17,7 +17,10 @@ entity game_logic is
         paddle_x        : out std_logic_vector(11 downto 0); 
         ball_x          : out std_logic_vector(11 downto 0);  
         ball_y          : out std_logic_vector(11 downto 0);
-        bricks          : out std_logic_vector(127 downto 0); 
+        bricks          : out std_logic_vector(127 downto 0);
+        lives           : out std_logic_vector(3 downto 0);
+        score           : out std_logic_vector(11 downto 0);
+        dead            : out std_logic;
         draw_mode       : out std_logic_vector(3 downto 0));
 
 end game_logic;
@@ -35,6 +38,7 @@ signal clk50hz : std_logic;
 signal paddle_x_reg, ball_x_reg, ball_y_reg : unsigned(11 downto 0);
 signal bricks_reg : std_logic_vector(127 downto 0); 
 signal draw_mode_reg : std_logic_vector(3 downto 0);
+signal draw_mode_in  : std_lofic_vector (3 downto 0);
 
 --Registers for movement of game objects.
 signal ball_x_dir, ball_y_dir, paddle_x_dir, paddle_moving: std_logic;
@@ -45,11 +49,16 @@ type speed is (slow, normal, fast, faster, fastest);
 signal mode_entry : control_signal_out;
 signal angle_reg  : angle;
 signal speed_reg  : speed;
+signal score_reg  : std_logic_vector(11 downto 0);
+signal lives_reg  : std_logic_vector(3 downto 0);
+signal dead_reg   : std_logic;
+signal restart    : std_logic;
+
 
 begin -- game_logic
   
 paddle_moving <= control_en;
-
+--read_en       <= control_mode;
 Delay: process (clock, reset)
   begin  -- process FSM
     if(reset = '0') then
@@ -94,27 +103,27 @@ begin  -- process
   end if;  
 end process;	 
   
-Mode_Signals:process (reset,control_mode)
+ModeIN_Signals:process (reset, clk50hz, control_mode)
 begin  -- process
   if reset = '0' then
-    draw_mode_reg <= x"0";
+    draw_mode_in <= x"0";
 
-  elsif (control_mode = '1') then
+  elsif (rising_edge(control_mode)) then
          
     case (control_signal) is
       when end_game =>
-        draw_mode_reg  <= x"3";
+        draw_mode_in  <= x"3";
         
       when pause    =>
         if draw_mode_reg = x"1" then
-          draw_mode_reg  <= x"2";
+          draw_mode_in  <= x"2";
         elsif draw_mode_reg = x"2" then
-          draw_mode_reg  <= x"1";
+          draw_mode_in  <= x"1";
         end if;
 
       when launch   =>
         if draw_mode_reg = x"0" then
-          draw_mode_reg  <= x"1";
+          draw_mode_in  <= x"1";
         end if;
         
       when others => null;
@@ -123,13 +132,27 @@ begin  -- process
   end if;  
 end process;	 
 
+Mode_Signals:process (reset, clk50hz)
+begin  -- process
+  if reset = '0' then
+    draw_mode_reg <= x"0";
+
+  elsif (rising_edge(clock)) then
+         
+    draw_mode_reg  <= draw_mode_in;
+    if dead_reg = '1' then
+       draw_mode_reg <= x"3";
+    end if; 
+       
+  end if;  
+end process;	 
+
 
 Paddle: process (reset, clk50hz)
 begin --Begin Paddle Logic
    if (reset='0') then
       paddle_x_reg 	<= x"0D8";
-     -- paddle_x_dir <='1';
-   --   paddle_moving <='0';
+   
 	elsif(rising_edge(clk50hz)) then
           if draw_mode_reg = x"1" then
             
@@ -205,12 +228,16 @@ begin --Logic of the Ball
       ball_y_reg <= x"1BA";     
       ball_x_dir <= '1';
       ball_y_dir <= '0';
-      angle_reg <= low;
-      speed_reg     <= slow;		
-      bricks_reg       <= x"00000FFFFFFFFFFFFFFFFFFFFFFFFFFF";
+      angle_reg  <= low;
+      speed_reg  <= slow;		
+      bricks_reg <= x"00000FFFFFFFFFFFFFFFFFFFFFFFFFFF";
+      lives_reg  <= x"111";
+      score_reg  <= x"000";
+      dead_reg   <= '0';
+      restart    <= '0';
    elsif(rising_edge(clk50hz)) then
 
-          if draw_mode_reg = x"1" then
+          if draw_mode_reg = x"1" and restart = '0' then
                case speed_reg is
 			when slow =>
 				case angle_reg is
@@ -421,7 +448,14 @@ begin --Logic of the Ball
                                     angle_reg <= hi;  
 
                                   else
-                                    ball_y_reg <= x"1FF";
+                                    if lives > 0 then
+                                      lives_reg <= lives_reg - 1;
+                                      restart   <= '1';
+                                    else
+                                      dead_reg <= '1';
+                                    end if;
+                                   
+                                    
                                   end if;
 				end if;
 			when others => null;
@@ -436,10 +470,8 @@ begin --Logic of the Ball
 			vy := "000" & vy(11 downto 3);
 			result := to_integer(unsigned(vy) * 18 + unsigned(vx));
 			
-                        if angle_reg = med then
-                          bricks_reg(0) <='0';
-                        end if;
-			if(bricks_reg(result) = '1') then
+                        if(bricks_reg(result) = '1') then
+                          --change the speed of the ball depending the brick hit
                           case (vy) is
                             when x"000" =>
                               speed_reg <= fastest;
@@ -453,12 +485,31 @@ begin --Logic of the Ball
                               speed_reg <= slow;
                             when others => null;
                           end case;
+                          if score_reg (3 downto 0) = x"9" then
+                            score_reg (3 downto 0) <= x"0";
+                            if score_reg (7 downto 4) = x"9" then
+                              score_reg (7 downto 4) <= x"0";
+                              score_reg (11 downto 8) <= score_reg (11 downto 8) + 1;
+                            else
+                              score_reg (7 downto 4) <= score (7 downto 4) + 1;
+                            end if;
+                          else
+                            score_reg (3 downto 0) <= score_reg (3 downto 0) + 1;
+                          end if;
                           bricks_reg(result) <= '0';
                           ball_y_dir <= not ball_y_dir;
-			end if;
+                          
+                        end if;
 	
 		end if;
-	    
+	  elsif restart = '1' then
+            restart <= '0';
+            ball_x_reg <= paddle_x_reg + 24;
+            ball_y_reg <= x"1BA";     
+            ball_x_dir <= '1';
+            ball_y_dir <= '0';
+            angle_reg  <= low;
+            speed_reg  <= slow;
           end if;
 	 
 	end if;
@@ -466,12 +517,14 @@ begin --Logic of the Ball
   end process Ball;
    
   -- Begin: output registers to the signals
-  paddle_x <= std_logic_vector(paddle_x_reg);
-  ball_x <= std_logic_vector(ball_x_reg);
-  ball_y <= std_logic_vector(ball_y_reg);
-  bricks <= std_logic_vector(bricks_reg); 
+  paddle_x  <= std_logic_vector(paddle_x_reg);
+  ball_x    <= std_logic_vector(ball_x_reg);
+  ball_y    <= std_logic_vector(ball_y_reg);
+  bricks    <= std_logic_vector(bricks_reg); 
   draw_mode <= std_logic_vector(draw_mode_reg);
-  
+  score     <= score_reg;
+  lives     <= lives_reg;
+  dead      <= dead_reg;
   -- End: output registers to the signals
 end behavioral;
   

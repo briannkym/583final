@@ -65,7 +65,10 @@ architecture top_level of top_module is
       paddle_x        : out std_logic_vector(11 downto 0); 
       ball_x          : out std_logic_vector(11 downto 0);  
       ball_y          : out std_logic_vector(11 downto 0);
-      bricks          : out std_logic_vector(127 downto 0); 
+      bricks          : out std_logic_vector(127 downto 0);
+      lives           : out std_logic_vector(3 downto 0);
+      score           : out std_logic_vector(11 downto 0);
+      dead            : out std_logic;
       draw_mode       : out std_logic_vector(3 downto 0));
 
   end component;
@@ -121,13 +124,16 @@ architecture top_level of top_module is
  signal ball_x          : std_logic_vector(11 downto 0);  
  signal ball_y          : std_logic_vector(11 downto 0);
  signal bricks          : std_logic_vector(127 downto 0); 
+ signal lives           : std_logic_vector(3 downto 0);
+ signal score           : std_logic_vector(11 downto 0);
  signal draw_mode       : std_logic_vector(3 downto 0);
 
  signal lock            : std_logic;
  signal clk25mhz        : std_logic;
  signal clk50mhz        : std_logic;
  signal clkdv           : std_logic;
-  
+--Game logic signal
+ signal dead           : std_logic;
 
 begin  -- top_level
 
@@ -165,6 +171,9 @@ begin  -- top_level
     ball_x         => ball_x,
     ball_y         => ball_y,
     bricks         => bricks,
+    lives          => lives,
+    score          => score,
+    dead           => dead,
     draw_mode      => draw_mode);
  
  --The 25mhz clock is only working properly when lock is 1. 
@@ -201,14 +210,21 @@ clk25mhz <= clkdv when lock='1' else '0';
  
  ToggleReset: process(clk)
  begin
- if(rising_edge(clk) and reset = '1') then
- count <= count +1;
-	if(count = 100) then
-	  reset <='0';
-	end if;
+ if(rising_edge(clk)) then
+   if reset = '1' then
+     count <= count +1;
+     if(count = 100) then
+       reset <='0';
+     end if;
+   elsif dead = '1' then
+     count <= 0;
+   end if;
+  
  end if;
  
  end process ToggleReset;
+
+
 end top_level;
   
 
