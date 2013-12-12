@@ -413,9 +413,8 @@ begin --Logic of the Ball
 			when '1' =>
 			
                                 if(ball_y_reg > (SCREEN_PADDLE_BEGIN - BALL_HEIGHT)) then
-											 ball_y_reg <= to_unsigned((SCREEN_PADDLE_BEGIN - BALL_HEIGHT), 12);
-                                  if (ball_x_reg >= paddle_x_reg - 7 and ball_x_reg < paddle_x_reg + 4) or
-                                   (ball_x_reg >= paddle_x_reg + 36 and ball_x_reg < paddle_x_reg + 52) then
+                                  ball_y_reg <= to_unsigned((SCREEN_PADDLE_BEGIN - BALL_HEIGHT), 12);
+                                  if (ball_x_reg >= paddle_x_reg - 7 and ball_x_reg < paddle_x_reg + 4) then
                                     ball_x_dir <= '0';
                                     ball_y_dir <= '0';
                                     angle_reg <= low;
@@ -448,7 +447,7 @@ begin --Logic of the Ball
 
                                   else
                                     if lives_reg > x"0" then
-                                      lives_reg <= lives_reg - 1;
+                                      lives_reg <= std_logic_vector(unsigned(lives_reg)-1);
                                       restart   <= '1';
                                     else
                                       dead_reg <= '1';
@@ -467,10 +466,9 @@ begin --Logic of the Ball
 			vy := std_logic_vector(ball_y_reg - SCREEN_BRICK_BEGIN);
 			
 			if(unsigned(vx and x"1F") < 4 or unsigned(vx and x"1F") >= 28) then
-               ball_x_dir <= not ball_x_dir;
+                          ball_x_dir <= not ball_x_dir;
 			end if;
-			
-			
+
 			vx := "00000" & vx(11 downto 5);
 			vy := "000" & vy(11 downto 3);
 			result := to_integer(unsigned(vy) * 18 + unsigned(vx));
@@ -494,16 +492,14 @@ begin --Logic of the Ball
                             score_reg (3 downto 0) <= x"0";
                             if score_reg (7 downto 4) = x"9" then
                               score_reg (7 downto 4) <= x"0";
-                              score_reg (11 downto 8) <= score_reg (11 downto 8) + 1;
+                              score_reg (11 downto 8) <= std_logic_vector(unsigned(score_reg (11 downto 8)) + 1);
                             else
-                              score_reg (7 downto 4) <= score (7 downto 4) + 1;
+                              score_reg (7 downto 4) <= std_logic_vector(unsigned(score_reg (7 downto 4)) + 1);
                             end if;
                           else
-                            score_reg (3 downto 0) <= score_reg (3 downto 0) + 1;
+                            score_reg (3 downto 0) <= std_logic_vector(unsigned(score_reg (3 downto 0)) + 1);
                           end if;
                           bricks_reg(result) <= '0';
-								  
-								  
                           ball_y_dir <= not ball_y_dir;
                           
                         end if;
