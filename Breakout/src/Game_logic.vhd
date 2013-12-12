@@ -465,6 +465,12 @@ begin --Logic of the Ball
 			bricks_reg <= bricks_reg;
 			vx := std_logic_vector(ball_x_reg - SCREEN_X_BEGIN);
 			vy := std_logic_vector(ball_y_reg - SCREEN_BRICK_BEGIN);
+			
+			if(unsigned(vx and x"1F") < 4 or unsigned(vx and x"1F") >= 28) then
+			
+			end if;
+			
+			
 			vx := "00000" & vx(11 downto 5);
 			vy := "000" & vy(11 downto 3);
 			result := to_integer(unsigned(vy) * 18 + unsigned(vx));
@@ -496,6 +502,8 @@ begin --Logic of the Ball
                             score_reg (3 downto 0) <= score_reg (3 downto 0) + 1;
                           end if;
                           bricks_reg(result) <= '0';
+								  
+								  
                           ball_y_dir <= not ball_y_dir;
                           
                         end if;
