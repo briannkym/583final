@@ -4,15 +4,15 @@ Copyright (c) 1995-2013 Xilinx, Inc.  All rights reserved.
 Parameter TMPDIR set to xst/projnav.tmp
 
 
-Total REAL time to Xst completion: 0.00 secs
-Total CPU time to Xst completion: 0.17 secs
+Total REAL time to Xst completion: 1.00 secs
+Total CPU time to Xst completion: 0.16 secs
  
 --> 
 Parameter xsthdpdir set to xst
 
 
-Total REAL time to Xst completion: 0.00 secs
-Total CPU time to Xst completion: 0.17 secs
+Total REAL time to Xst completion: 1.00 secs
+Total CPU time to Xst completion: 0.16 secs
  
 --> 
 Reading design: top_module.prj
@@ -110,16 +110,18 @@ Slice Utilization Ratio Delta      : 5
 Compiling vhdl file "/home/brian/Desktop/583final/Breakout/src/Breakout_config.vhd" in Library work.
 Compiling vhdl file "/home/brian/Desktop/583final/Breakout/src/Digit.vhd" in Library work.
 Architecture dataflow of Entity digit is up to date.
+Compiling vhdl file "/home/brian/Desktop/583final/Breakout/src/Character.vhd" in Library work.
+Architecture dataflow of Entity char is up to date.
 Compiling vhdl file "/home/brian/Desktop/583final/Breakout/src/Sync.vhd" in Library work.
 Architecture behavioral of Entity sync is up to date.
 Compiling vhdl file "/home/brian/Desktop/583final/Breakout/src/BreakRaster.vhd" in Library work.
-Architecture dataflow of Entity breakraster is up to date.
+Entity <breakraster> compiled.
+Entity <breakraster> (Architecture <dataflow>) compiled.
 Compiling vhdl file "/home/brian/Desktop/583final/Breakout/src/Kbd.vhd" in Library work.
 Architecture behavioral of Entity kbd is up to date.
 Compiling vhdl file "/home/brian/Desktop/583final/Breakout/src/Controller.vhd" in Library work.
 Architecture behavioral of Entity controller is up to date.
 Compiling vhdl file "/home/brian/Desktop/583final/Breakout/src/Game_logic.vhd" in Library work.
-Entity <game_logic> compiled.
 ERROR:HDLParsers:808 - "/home/brian/Desktop/583final/Breakout/src/Game_logic.vhd" Line 451. - can not have such operands in this context.
 ERROR:HDLParsers:808 - "/home/brian/Desktop/583final/Breakout/src/Game_logic.vhd" Line 497. + can not have such operands in this context.
 ERROR:HDLParsers:808 - "/home/brian/Desktop/583final/Breakout/src/Game_logic.vhd" Line 499. + can not have such operands in this context.
@@ -127,7 +129,7 @@ ERROR:HDLParsers:808 - "/home/brian/Desktop/583final/Breakout/src/Game_logic.vhd
 --> 
 
 
-Total memory usage is 498168 kilobytes
+Total memory usage is 498772 kilobytes
 
 Number of errors   :    4 (   0 filtered)
 Number of warnings :    0 (   0 filtered)

@@ -35,11 +35,25 @@ G       : out std_logic_vector(3 downto 0);
 B       : out std_logic_vector(3 downto 0));
 end component;
 
+component Char is
+port(
+rainbow : in std_logic;
+charnum : in std_logic_vector(7 downto 0);
+x : in std_logic_vector(2 downto 0);
+y : in std_logic_vector(2 downto 0);
+R : out std_logic_vector(3 downto 0);
+G : out std_logic_vector(3 downto 0);
+B : out std_logic_vector(3 downto 0));
+end component;
+
+
 signal x,y,px,bx,by : unsigned(11 downto 0);
 
 signal xSymbol, ySymbol: std_logic_vector(2 downto 0);
-signal rSymbol, gSymbol, bSymbol, number : std_logic_vector(3 downto 0);
+signal rSymbol, gSymbol, bSymbol, number,
+rLetter, gLetter, bLetter : std_logic_vector(3 downto 0);
 signal letter: std_logic_vector(7 downto 0);
+signal rainbow: std_logic;
 
 begin
 
@@ -50,7 +64,7 @@ bx  <= unsigned(ball_x);
 by  <= unsigned(ball_y);
 
 xSymbol <= std_logic_vector(x(5 downto 3));
-ySymbol <= std_logic_vector(y(5 downto 3));
+ySymbol <= std_logic_vector(y(2 downto 0));
 
 		digit_impl : Digit port map (	 
 		rainbow => '1',
@@ -60,7 +74,16 @@ ySymbol <= std_logic_vector(y(5 downto 3));
 		R => rSymbol,
 		G => gSymbol,
 		B => BSymbol);
-
+	
+		char_impl : Char port map (	 
+		rainbow => rainbow,
+		charnum => letter,
+		x => xSymbol,
+		y => ySymbol,
+		R => rLetter,
+		G => gLetter,
+		B => BLetter);
+		
 	process(x, y, px, bx, by, bricks, draw_mode)
 	variable vx, vy : std_logic_vector(11 downto 0);
 	begin
