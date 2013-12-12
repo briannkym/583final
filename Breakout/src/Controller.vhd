@@ -70,17 +70,17 @@ begin
             case (scan_code) is
               when   x"29" =>            -- space
                 out_reg     <= pause;
-                control_mode  <= '1';
+              
                 next_state  <= wait_akn;
                 LEDs_reg <= LEDs_reg + 1;
               when   x"76" =>            -- ESC
                 out_reg     <= end_game;
-                control_mode  <= '1';
+              
                 next_state  <= wait_akn;
 
               when   x"5A" =>            -- Enter
                 out_reg     <= launch;
-                control_mode  <= '1';
+              
                 next_state  <= wait_akn;
 
               when   x"E0"=>          -- arrow
@@ -101,7 +101,7 @@ begin
         
               next_state <= wait_akn;
             elsif scan_code = x"F0"  then
-              control_mode <= '0';
+              control_mode <= '1';
               next_state  <= release;
             else
               control_mode <= '0';
@@ -114,11 +114,7 @@ begin
           if scan_ready = '1'then
             if scan_code = scan_code_reg then
               next_state <= wait_start_scan;
-              
-            else
-            --  control_en <= '0';
-              next_state  <= wait_start_scan;
-            
+              control_mode <= '0';
             end if;
           end if;
           out_reg <= none;
