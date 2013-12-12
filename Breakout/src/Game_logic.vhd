@@ -467,7 +467,7 @@ begin --Logic of the Ball
 			vy := std_logic_vector(ball_y_reg - SCREEN_BRICK_BEGIN);
 			
 			if(unsigned(vx and x"1F") < 4 or unsigned(vx and x"1F") >= 28) then
-			
+               ball_x_dir <= not ball_x_dir;
 			end if;
 			
 			

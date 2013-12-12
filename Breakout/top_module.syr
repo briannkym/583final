@@ -5,14 +5,14 @@ Parameter TMPDIR set to xst/projnav.tmp
 
 
 Total REAL time to Xst completion: 0.00 secs
-Total CPU time to Xst completion: 0.16 secs
+Total CPU time to Xst completion: 0.17 secs
  
 --> 
 Parameter xsthdpdir set to xst
 
 
 Total REAL time to Xst completion: 0.00 secs
-Total CPU time to Xst completion: 0.16 secs
+Total CPU time to Xst completion: 0.17 secs
  
 --> 
 Reading design: top_module.prj
@@ -107,32 +107,29 @@ Slice Utilization Ratio Delta      : 5
 =========================================================================
 *                          HDL Compilation                              *
 =========================================================================
-Compiling vhdl file "/home/brian/Desktop/583final/Breakout/src/screen_pkg.vhd" in Library work.
+Compiling vhdl file "/home/brian/Desktop/583final/Breakout/src/Breakout_config.vhd" in Library work.
 Compiling vhdl file "/home/brian/Desktop/583final/Breakout/src/Digit.vhd" in Library work.
 Architecture dataflow of Entity digit is up to date.
 Compiling vhdl file "/home/brian/Desktop/583final/Breakout/src/Sync.vhd" in Library work.
 Architecture behavioral of Entity sync is up to date.
 Compiling vhdl file "/home/brian/Desktop/583final/Breakout/src/BreakRaster.vhd" in Library work.
 Architecture dataflow of Entity breakraster is up to date.
-Compiling vhdl file "/home/brian/Desktop/583final/Breakout/src/Breakout_config.vhd" in Library work.
 Compiling vhdl file "/home/brian/Desktop/583final/Breakout/src/Kbd.vhd" in Library work.
 Architecture behavioral of Entity kbd is up to date.
 Compiling vhdl file "/home/brian/Desktop/583final/Breakout/src/Controller.vhd" in Library work.
 Architecture behavioral of Entity controller is up to date.
 Compiling vhdl file "/home/brian/Desktop/583final/Breakout/src/Game_logic.vhd" in Library work.
 Entity <game_logic> compiled.
-ERROR:HDLParsers:3384 - "/home/brian/Desktop/583final/Breakout/src/Game_logic.vhd" Line 234. Size mismatch.  String literal "000100010001" is of size 12 but is expected to be of size 4.
-ERROR:HDLParsers:808 - "/home/brian/Desktop/583final/Breakout/src/Game_logic.vhd" Line 451. > can not have such operands in this context.
-ERROR:HDLParsers:808 - "/home/brian/Desktop/583final/Breakout/src/Game_logic.vhd" Line 452. - can not have such operands in this context.
-ERROR:HDLParsers:808 - "/home/brian/Desktop/583final/Breakout/src/Game_logic.vhd" Line 498. + can not have such operands in this context.
-ERROR:HDLParsers:808 - "/home/brian/Desktop/583final/Breakout/src/Game_logic.vhd" Line 500. + can not have such operands in this context.
-ERROR:HDLParsers:808 - "/home/brian/Desktop/583final/Breakout/src/Game_logic.vhd" Line 503. + can not have such operands in this context.
+ERROR:HDLParsers:808 - "/home/brian/Desktop/583final/Breakout/src/Game_logic.vhd" Line 451. - can not have such operands in this context.
+ERROR:HDLParsers:808 - "/home/brian/Desktop/583final/Breakout/src/Game_logic.vhd" Line 497. + can not have such operands in this context.
+ERROR:HDLParsers:808 - "/home/brian/Desktop/583final/Breakout/src/Game_logic.vhd" Line 499. + can not have such operands in this context.
+ERROR:HDLParsers:808 - "/home/brian/Desktop/583final/Breakout/src/Game_logic.vhd" Line 502. + can not have such operands in this context.
 --> 
 
 
-Total memory usage is 498272 kilobytes
+Total memory usage is 498168 kilobytes
 
-Number of errors   :    6 (   0 filtered)
+Number of errors   :    4 (   0 filtered)
 Number of warnings :    0 (   0 filtered)
 Number of infos    :    0 (   0 filtered)
 
