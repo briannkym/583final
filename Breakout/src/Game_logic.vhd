@@ -227,10 +227,10 @@ begin --Logic of the Ball
       ball_y_reg <= x"1BA";     
       ball_x_dir <= '1';
       ball_y_dir <= '0';
-      angle_reg  <= low;
+      angle_reg  <= hi;
       speed_reg  <= slow;		
       bricks_reg <= x"00000FFFFFFFFFFFFFFFFFFFFFFFFFFF";
-      lives_reg  <= x"9";
+      lives_reg  <= x"1";
       score_reg  <= x"000";
       dead_reg   <= '0';
       restart    <= '0';
@@ -465,17 +465,11 @@ begin --Logic of the Ball
 			vx := std_logic_vector(ball_x_reg - SCREEN_X_BEGIN);
 			vy := std_logic_vector(ball_y_reg - SCREEN_BRICK_BEGIN);
 			
-			if(unsigned(vx and x"1F") < 4 or unsigned(vx and x"1F") >= 28) then
-                          ball_x_dir <= not ball_x_dir;
-			end if;
-
-			vx := "00000" & vx(11 downto 5);
-			vy := "000" & vy(11 downto 3);
-			result := to_integer(unsigned(vy) * 18 + unsigned(vx));
+			result := to_integer(unsigned("000" & vy(11 downto 3)) * 18 + unsigned("00000" & vx(11 downto 5)));
 			
                         if(bricks_reg(result) = '1') then
                           --change the speed of the ball depending the brick hit
-                          case (vy) is
+                          case ("000" & vy(11 downto 3)) is
                             when x"000" =>
                               speed_reg <= fastest;
                             when x"001" =>
@@ -499,9 +493,13 @@ begin --Logic of the Ball
                           else
                             score_reg (3 downto 0) <= std_logic_vector(unsigned(score_reg (3 downto 0)) + 1);
                           end if;
+
                           bricks_reg(result) <= '0';
                           ball_y_dir <= not ball_y_dir;
-                          
+                          if(unsigned(vx and x"01F") < 4 or unsigned(vx and x"01F") >= 28) then
+                            ball_x_dir <= not ball_x_dir;
+                          end if;
+                        
                         end if;
 	
 		end if;
@@ -511,7 +509,7 @@ begin --Logic of the Ball
             ball_y_reg <= x"1BA";     
             ball_x_dir <= '1';
             ball_y_dir <= '0';
-            angle_reg  <= low;
+            angle_reg  <= hi;
             speed_reg  <= slow;
           end if;
 	 
