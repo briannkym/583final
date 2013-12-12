@@ -3,7 +3,6 @@ use ieee.STD_LOGIC_1164.all;
 use ieee.numeric_std.all;
 library work;
 use work.breakout_config.all;
-use screen_pkg.all;
 
 
 entity game_logic is
@@ -231,7 +230,7 @@ begin --Logic of the Ball
       angle_reg  <= low;
       speed_reg  <= slow;		
       bricks_reg <= x"00000FFFFFFFFFFFFFFFFFFFFFFFFFFF";
-      lives_reg  <= x"111";
+      lives_reg  <= x"9";
       score_reg  <= x"000";
       dead_reg   <= '0';
       restart    <= '0';
@@ -448,7 +447,7 @@ begin --Logic of the Ball
                                     angle_reg <= hi;  
 
                                   else
-                                    if lives > 0 then
+                                    if lives_reg > x"0" then
                                       lives_reg <= lives_reg - 1;
                                       restart   <= '1';
                                     else
