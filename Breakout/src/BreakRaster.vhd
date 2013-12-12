@@ -24,6 +24,17 @@ end BreakRaster;
 
 Architecture dataflow of BreakRaster is
 
+component Digit is
+port(
+rainbow : in std_logic;
+number : in std_logic_vector(3 downto 0);
+x : in std_logic_vector(2 downto 0);
+y : in std_logic_vector(2 downto 0);
+R : out std_logic_vector(3 downto 0);
+G : out std_logic_vector(3 downto 0);
+B : out std_logic_vector(3 downto 0));
+end component;
+
 signal x,y,px,bx,by : unsigned(11 downto 0);
 
 signal xSymbol, ySymbol: std_logic_vector(2 downto 0);
@@ -38,6 +49,18 @@ px  <= unsigned(paddle_x);
 bx  <= unsigned(ball_x);
 by  <= unsigned(ball_y);
 
+xSymbol <= std_logic_vector(x(5 downto 3));
+ySymbol <= std_logic_vector(y(5 downto 3));
+
+		digit_impl : Digit port map (	 
+		rainbow <= '1',
+		number <= number,
+		x <= xSymbol,
+		y <= ySymbol,
+		R <= rSymbol,
+		G <= gSymbol,
+		B <= BSymbol);
+
 	process(x, y, px, bx, by, bricks, draw_mode)
 	variable vx, vy : std_logic_vector(11 downto 0);
 	begin
@@ -46,9 +69,27 @@ by  <= unsigned(ball_y);
 	B <= x"0";
 	
 	if(y < SCREEN_Y_BEGIN) then
-		R <= x"0";
-		G <= x"0";
-		B <= x"0";
+		if(x < 64) then
+			number <= score(11 downto 8);			
+			R <= rSymbol;
+			G <= gSymbol;
+			B <= bSymbol;
+		elsif (x < 128) then
+			number <= score(7 downto 4);
+			R <= rSymbol;
+			G <= gSymbol;
+			B <= bSymbol;
+		elsif (x < 192) then
+			number <= score(3 downto 0);
+			R <= rSymbol;
+			G <= gSymbol;
+			B <= bSymbol;
+		elsif(576<=x) then
+			number <= lives;
+			R <= rSymbol;
+			G <= gSymbol;
+			B <= bSymbol;
+		end if;
 	elsif(y < SCREEN_Y_END) then
 		R <= "1000";
 		G <= "1000";
