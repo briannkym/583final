@@ -395,3 +395,8 @@ xst -intstyle ise -ifn "/home/brian/Desktop/583final/Breakout/top_module.xst" -o
 xst -intstyle ise -ifn "/home/brian/Desktop/583final/Breakout/top_module.xst" -ofn "/home/brian/Desktop/583final/Breakout/top_module.syr" 
 xst -intstyle ise -ifn "/home/brian/Desktop/583final/Breakout/top_module.xst" -ofn "/home/brian/Desktop/583final/Breakout/top_module.syr" 
 xst -intstyle ise -ifn "/home/brian/Desktop/583final/Breakout/top_module.xst" -ofn "/home/brian/Desktop/583final/Breakout/top_module.syr" 
+xst -intstyle ise -ifn "/home/brian/Desktop/583final/Breakout/top_module.xst" -ofn "/home/brian/Desktop/583final/Breakout/top_module.syr" 
+xst -intstyle ise -ifn "/home/brian/Desktop/583final/Breakout/top_module.xst" -ofn "/home/brian/Desktop/583final/Breakout/top_module.syr" 
+xst -intstyle ise -ifn "/home/brian/Desktop/583final/Breakout/top_module.xst" -ofn "/home/brian/Desktop/583final/Breakout/top_module.syr" 
+xst -intstyle ise -ifn "/home/brian/Desktop/583final/Breakout/top_module.xst" -ofn "/home/brian/Desktop/583final/Breakout/top_module.syr" 
+xst -intstyle ise -ifn "/home/brian/Desktop/583final/Breakout/top_module.xst" -ofn "/home/brian/Desktop/583final/Breakout/top_module.syr" 

@@ -1,4 +1,5 @@
 vhdl work "src/Digit.vhd"
+vhdl work "src/Character.vhd"
 vhdl work "src/Breakout_config.vhd"
 vhdl work "src/Sync.vhd"
 vhdl work "src/BreakRaster.vhd"

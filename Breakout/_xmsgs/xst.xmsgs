@@ -5,16 +5,16 @@
      behavior or data corruption.  It is strongly advised that
      users do not edit the contents of this file. -->
 <messages>
-<msg type="error" file="HDLParsers" num="808" delta="old" >&quot;<arg fmt="%s" index="1">/home/brian/Desktop/583final/Breakout/src/Game_logic.vhd</arg>&quot; Line <arg fmt="%d" index="2">451</arg>. <arg fmt="%s" index="3">-</arg> can not have such operands in this context.
+<msg type="error" file="HDLParsers" num="808" delta="new" >&quot;<arg fmt="%s" index="1">/home/brian/Desktop/583final/Breakout/src/Game_logic.vhd</arg>&quot; Line <arg fmt="%d" index="2">451</arg>. <arg fmt="%s" index="3">-</arg> can not have such operands in this context.
 </msg>
 
-<msg type="error" file="HDLParsers" num="808" delta="old" >&quot;<arg fmt="%s" index="1">/home/brian/Desktop/583final/Breakout/src/Game_logic.vhd</arg>&quot; Line <arg fmt="%d" index="2">497</arg>. <arg fmt="%s" index="3">+</arg> can not have such operands in this context.
+<msg type="error" file="HDLParsers" num="808" delta="new" >&quot;<arg fmt="%s" index="1">/home/brian/Desktop/583final/Breakout/src/Game_logic.vhd</arg>&quot; Line <arg fmt="%d" index="2">497</arg>. <arg fmt="%s" index="3">+</arg> can not have such operands in this context.
 </msg>
 
-<msg type="error" file="HDLParsers" num="808" delta="old" >&quot;<arg fmt="%s" index="1">/home/brian/Desktop/583final/Breakout/src/Game_logic.vhd</arg>&quot; Line <arg fmt="%d" index="2">499</arg>. <arg fmt="%s" index="3">+</arg> can not have such operands in this context.
+<msg type="error" file="HDLParsers" num="808" delta="new" >&quot;<arg fmt="%s" index="1">/home/brian/Desktop/583final/Breakout/src/Game_logic.vhd</arg>&quot; Line <arg fmt="%d" index="2">499</arg>. <arg fmt="%s" index="3">+</arg> can not have such operands in this context.
 </msg>
 
-<msg type="error" file="HDLParsers" num="808" delta="old" >&quot;<arg fmt="%s" index="1">/home/brian/Desktop/583final/Breakout/src/Game_logic.vhd</arg>&quot; Line <arg fmt="%d" index="2">502</arg>. <arg fmt="%s" index="3">+</arg> can not have such operands in this context.
+<msg type="error" file="HDLParsers" num="808" delta="new" >&quot;<arg fmt="%s" index="1">/home/brian/Desktop/583final/Breakout/src/Game_logic.vhd</arg>&quot; Line <arg fmt="%d" index="2">502</arg>. <arg fmt="%s" index="3">+</arg> can not have such operands in this context.
 </msg>
 
 </messages>
