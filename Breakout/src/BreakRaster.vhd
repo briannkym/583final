@@ -4,6 +4,8 @@ use ieee.numeric_std.all;
 
 Entity BreakRaster is
 Port(
+score: in std_logic_vector(11 downto 0);
+lives: in std_logic_vector(3 downto 0);
 x_pos: in std_logic_vector(11 downto 0);
 y_pos: in std_logic_vector(11 downto 0);
 paddle_x : in std_logic_vector(11 downto 0); --This will change based off the paddle's width.
@@ -20,6 +22,9 @@ Architecture dataflow of BreakRaster is
 
 signal x,y,px,bx,by : unsigned(11 downto 0);
 
+signal xSymbol, ySymbol: std_logic_vector(2 downto 0);
+signal rSymbol, gSymbol, bSymbol, number : std_logic_vector(3 downto 0);
+signal letter: std_logic_vector(7 downto 0);
 
 begin
 
