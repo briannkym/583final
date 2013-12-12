@@ -5,14 +5,14 @@ Parameter TMPDIR set to xst/projnav.tmp
 
 
 Total REAL time to Xst completion: 0.00 secs
-Total CPU time to Xst completion: 0.16 secs
+Total CPU time to Xst completion: 0.17 secs
  
 --> 
 Parameter xsthdpdir set to xst
 
 
 Total REAL time to Xst completion: 0.00 secs
-Total CPU time to Xst completion: 0.16 secs
+Total CPU time to Xst completion: 0.17 secs
  
 --> 
 Reading design: top_module.prj
@@ -108,18 +108,15 @@ Slice Utilization Ratio Delta      : 5
 *                          HDL Compilation                              *
 =========================================================================
 Compiling vhdl file "/home/brian/Desktop/583final/Breakout/src/screen_pkg.vhd" in Library work.
-Package <screen_pkg> compiled.
 Compiling vhdl file "/home/brian/Desktop/583final/Breakout/src/Sync.vhd" in Library work.
 Architecture behavioral of Entity sync is up to date.
 Compiling vhdl file "/home/brian/Desktop/583final/Breakout/src/BreakRaster.vhd" in Library work.
-Entity <breakraster> compiled.
-Entity <breakraster> (Architecture <dataflow>) compiled.
+Architecture dataflow of Entity breakraster is up to date.
 Compiling vhdl file "/home/brian/Desktop/583final/Breakout/src/Breakout_config.vhd" in Library work.
 Compiling vhdl file "/home/brian/Desktop/583final/Breakout/src/Kbd.vhd" in Library work.
 Architecture behavioral of Entity kbd is up to date.
 Compiling vhdl file "/home/brian/Desktop/583final/Breakout/src/Controller.vhd" in Library work.
-Entity <controller> compiled.
-Entity <controller> (Architecture <behavioral>) compiled.
+Architecture behavioral of Entity controller is up to date.
 Compiling vhdl file "/home/brian/Desktop/583final/Breakout/src/Game_logic.vhd" in Library work.
 Entity <game_logic> compiled.
 Entity <game_logic> (Architecture <behavioral>) compiled.
@@ -128,8 +125,7 @@ Architecture structural of Entity vga is up to date.
 Compiling vhdl file "/home/brian/Desktop/583final/Breakout/DCM.vhd" in Library work.
 Architecture behavioral of Entity dcm is up to date.
 Compiling vhdl file "/home/brian/Desktop/583final/Breakout/src/Top_module.vhd" in Library work.
-Entity <top_module> compiled.
-Entity <top_module> (Architecture <top_level>) compiled.
+Architecture top_level of Entity top_module is up to date.
 
 =========================================================================
 *                     Design Hierarchy Analysis                         *
@@ -164,11 +160,11 @@ Analyzing Entity <controller> in library <work> (Architecture <behavioral>).
 Entity <controller> analyzed. Unit <controller> generated.
 
 Analyzing Entity <game_logic> in library <work> (Architecture <behavioral>).
-WARNING:Xst:819 - "/home/brian/Desktop/583final/Breakout/src/Game_logic.vhd" line 96: One or more signals are missing in the process sensitivity list. To enable synthesis of FPGA/CPLD hardware, XST will assume that all necessary signals are present in the sensitivity list. Please note that the result of the synthesis may differ from the initial design specification. The missing signals are:
+WARNING:Xst:819 - "/home/brian/Desktop/583final/Breakout/src/Game_logic.vhd" line 97: One or more signals are missing in the process sensitivity list. To enable synthesis of FPGA/CPLD hardware, XST will assume that all necessary signals are present in the sensitivity list. Please note that the result of the synthesis may differ from the initial design specification. The missing signals are:
    <control_signal>
-WARNING:Xst:790 - "/home/brian/Desktop/583final/Breakout/src/Game_logic.vhd" line 445: Index value(s) does not match array range, simulation mismatch.
+WARNING:Xst:790 - "/home/brian/Desktop/583final/Breakout/src/Game_logic.vhd" line 442: Index value(s) does not match array range, simulation mismatch.
 INFO:Xst:1433 - Contents of array <bricks_reg> may be accessed with an index that exceeds the array size. This could cause simulation mismatch.
-WARNING:Xst:790 - "/home/brian/Desktop/583final/Breakout/src/Game_logic.vhd" line 459: Index value(s) does not match array range, simulation mismatch.
+WARNING:Xst:790 - "/home/brian/Desktop/583final/Breakout/src/Game_logic.vhd" line 456: Index value(s) does not match array range, simulation mismatch.
 INFO:Xst:2679 - Register <bricks_reg<127>> in unit <game_logic> has a constant value of 0 during circuit operation. The register is replaced by logic.
 INFO:Xst:2679 - Register <bricks_reg<126>> in unit <game_logic> has a constant value of 0 during circuit operation. The register is replaced by logic.
 INFO:Xst:2679 - Register <bricks_reg<125>> in unit <game_logic> has a constant value of 0 during circuit operation. The register is replaced by logic.
@@ -274,63 +270,63 @@ WARNING:Xst:1780 - Signal <mode_entry> is never used or assigned. This unconnect
 WARNING:Xst:737 - Found 4-bit latch for signal <draw_mode_reg>. Latches may be generated from incomplete case or if statements. We do not recommend the use of latches in FPGA/CPLD designs, as they may lead to timing problems.
     Using one-hot encoding for signal <speed_reg>.
     Using one-hot encoding for signal <angle_reg>.
-    Found 1-bit 128-to-1 multiplexer for signal <$varindex0000> created at line 445.
+    Found 1-bit 128-to-1 multiplexer for signal <$varindex0000> created at line 442.
     Found 3-bit register for signal <angle_reg>.
-    Found 12-bit comparator greatequal for signal <angle_reg$cmp_ge0000> created at line 394.
-    Found 12-bit comparator lessequal for signal <angle_reg$cmp_le0000> created at line 388.
-    Found 12-bit comparator less for signal <angle_reg$cmp_lt0000> created at line 389.
+    Found 12-bit comparator greatequal for signal <angle_reg$cmp_ge0000> created at line 395.
+    Found 12-bit comparator lessequal for signal <angle_reg$cmp_le0000> created at line 389.
+    Found 12-bit comparator less for signal <angle_reg$cmp_lt0000> created at line 391.
     Found 1-bit register for signal <ball_x_dir>.
     Found 12-bit register for signal <ball_x_reg>.
     Found 12-bit addsub for signal <ball_x_reg$addsub0000>.
-    Found 12-bit comparator lessequal for signal <ball_x_reg$cmp_le0000> created at line 373.
+    Found 12-bit comparator lessequal for signal <ball_x_reg$cmp_le0000> created at line 374.
     Found 1-bit register for signal <ball_y_dir>.
-    Found 12-bit comparator greatequal for signal <ball_y_dir$cmp_ge0000> created at line 434.
-    Found 12-bit comparator greatequal for signal <ball_y_dir$cmp_ge0001> created at line 434.
-    Found 12-bit comparator greater for signal <ball_y_dir$cmp_gt0000> created at line 382.
-    Found 12-bit comparator less for signal <ball_y_dir$cmp_lt0000> created at line 434.
-    Found 12-bit comparator less for signal <ball_y_dir$cmp_lt0001> created at line 434.
+    Found 12-bit comparator greatequal for signal <ball_y_dir$cmp_ge0000> created at line 430.
+    Found 12-bit comparator greatequal for signal <ball_y_dir$cmp_ge0001> created at line 430.
+    Found 12-bit comparator greater for signal <ball_y_dir$cmp_gt0000> created at line 383.
+    Found 12-bit comparator less for signal <ball_y_dir$cmp_lt0000> created at line 430.
+    Found 12-bit comparator less for signal <ball_y_dir$cmp_lt0001> created at line 430.
     Found 12-bit register for signal <ball_y_reg>.
-    Found 12-bit adder for signal <ball_y_reg$add0000> created at line 252.
-    Found 12-bit adder for signal <ball_y_reg$add0001> created at line 389.
-    Found 12-bit adder for signal <ball_y_reg$add0002> created at line 389.
+    Found 12-bit adder for signal <ball_y_reg$add0000> created at line 253.
+    Found 12-bit adder for signal <ball_y_reg$add0001> created at line 391.
+    Found 12-bit adder for signal <ball_y_reg$add0002> created at line 391.
     Found 12-bit adder for signal <ball_y_reg$add0003> created at line 400.
-    Found 12-bit adder for signal <ball_y_reg$add0004> created at line 407.
-    Found 12-bit adder for signal <ball_y_reg$add0005> created at line 413.
-    Found 12-bit comparator greatequal for signal <ball_y_reg$cmp_ge0000> created at line 389.
-    Found 12-bit comparator greatequal for signal <ball_y_reg$cmp_ge0001> created at line 389.
+    Found 12-bit adder for signal <ball_y_reg$add0004> created at line 406.
+    Found 12-bit adder for signal <ball_y_reg$add0005> created at line 411.
+    Found 12-bit comparator greatequal for signal <ball_y_reg$cmp_ge0000> created at line 391.
+    Found 12-bit comparator greatequal for signal <ball_y_reg$cmp_ge0001> created at line 391.
     Found 12-bit comparator greatequal for signal <ball_y_reg$cmp_ge0002> created at line 400.
-    Found 12-bit comparator greatequal for signal <ball_y_reg$cmp_ge0003> created at line 407.
-    Found 12-bit comparator greatequal for signal <ball_y_reg$cmp_ge0004> created at line 413.
-    Found 12-bit comparator greatequal for signal <ball_y_reg$cmp_ge0005> created at line 419.
-    Found 12-bit comparator greater for signal <ball_y_reg$cmp_gt0000> created at line 388.
-    Found 12-bit comparator lessequal for signal <ball_y_reg$cmp_le0000> created at line 382.
-    Found 12-bit comparator less for signal <ball_y_reg$cmp_lt0000> created at line 389.
-    Found 12-bit comparator less for signal <ball_y_reg$cmp_lt0001> created at line 389.
+    Found 12-bit comparator greatequal for signal <ball_y_reg$cmp_ge0003> created at line 406.
+    Found 12-bit comparator greatequal for signal <ball_y_reg$cmp_ge0004> created at line 411.
+    Found 12-bit comparator greatequal for signal <ball_y_reg$cmp_ge0005> created at line 416.
+    Found 12-bit comparator greater for signal <ball_y_reg$cmp_gt0000> created at line 389.
+    Found 12-bit comparator lessequal for signal <ball_y_reg$cmp_le0000> created at line 383.
+    Found 12-bit comparator less for signal <ball_y_reg$cmp_lt0000> created at line 391.
+    Found 12-bit comparator less for signal <ball_y_reg$cmp_lt0001> created at line 391.
     Found 12-bit comparator less for signal <ball_y_reg$cmp_lt0002> created at line 400.
-    Found 12-bit comparator less for signal <ball_y_reg$cmp_lt0003> created at line 407.
-    Found 12-bit comparator less for signal <ball_y_reg$cmp_lt0004> created at line 413.
-    Found 12-bit comparator less for signal <ball_y_reg$cmp_lt0005> created at line 419.
-    Found 12-bit addsub for signal <ball_y_reg$share0000> created at line 213.
-    Found 12-bit subtractor for signal <ball_y_reg$sub0000> created at line 253.
+    Found 12-bit comparator less for signal <ball_y_reg$cmp_lt0003> created at line 406.
+    Found 12-bit comparator less for signal <ball_y_reg$cmp_lt0004> created at line 411.
+    Found 12-bit comparator less for signal <ball_y_reg$cmp_lt0005> created at line 416.
+    Found 12-bit addsub for signal <ball_y_reg$share0000> created at line 214.
+    Found 12-bit subtractor for signal <ball_y_reg$sub0000> created at line 254.
     Found 108-bit register for signal <bricks_reg<107:0>>.
-    Found 12-bit comparator greatequal for signal <bricks_reg_4$cmp_ge0000> created at line 434.
-    Found 12-bit comparator greatequal for signal <bricks_reg_4$cmp_ge0001> created at line 434.
-    Found 12-bit comparator less for signal <bricks_reg_4$cmp_lt0000> created at line 434.
-    Found 12-bit comparator less for signal <bricks_reg_4$cmp_lt0001> created at line 434.
+    Found 12-bit comparator greatequal for signal <bricks_reg_4$cmp_ge0000> created at line 430.
+    Found 12-bit comparator greatequal for signal <bricks_reg_4$cmp_ge0001> created at line 430.
+    Found 12-bit comparator less for signal <bricks_reg_4$cmp_lt0000> created at line 430.
+    Found 12-bit comparator less for signal <bricks_reg_4$cmp_lt0001> created at line 430.
     Found 1-bit register for signal <clk50hz>.
     Found 20-bit up counter for signal <clk50MhzCounter>.
     Found 1-bit register for signal <paddle_x_dir>.
     Found 12-bit register for signal <paddle_x_reg>.
-    Found 12-bit adder for signal <paddle_x_reg$add0000> created at line 149.
-    Found 12-bit comparator greatequal for signal <paddle_x_reg$cmp_ge0000> created at line 186.
-    Found 12-bit comparator lessequal for signal <paddle_x_reg$cmp_le0000> created at line 181.
-    Found 12-bit addsub for signal <paddle_x_reg$share0000> created at line 136.
-    Found 12-bit subtractor for signal <paddle_x_reg$sub0000> created at line 175.
-    Found 24-bit adder for signal <result$add0000> created at line 440.
-    Found 12x12-bit multiplier for signal <result$mult0000> created at line 440.
+    Found 12-bit adder for signal <paddle_x_reg$add0000> created at line 150.
+    Found 12-bit comparator greatequal for signal <paddle_x_reg$cmp_ge0000> created at line 187.
+    Found 12-bit comparator lessequal for signal <paddle_x_reg$cmp_le0000> created at line 182.
+    Found 12-bit addsub for signal <paddle_x_reg$share0000> created at line 137.
+    Found 12-bit subtractor for signal <paddle_x_reg$sub0000> created at line 176.
+    Found 24-bit adder for signal <result$add0000> created at line 437.
+    Found 12x12-bit multiplier for signal <result$mult0000> created at line 437.
     Found 5-bit register for signal <speed_reg>.
-    Found 12-bit subtractor for signal <vx$sub0000> created at line 436.
-    Found 12-bit subtractor for signal <vy$sub0000> created at line 437.
+    Found 12-bit subtractor for signal <vx$sub0000> created at line 433.
+    Found 12-bit subtractor for signal <vy$sub0000> created at line 434.
     Summary:
 	inferred   1 Counter(s).
 	inferred 112 D-type flip-flop(s).
@@ -690,20 +686,20 @@ Design Statistics
 # IOs                              : 21
 
 Cell Usage :
-# BELS                             : 2084
+# BELS                             : 2085
 #      GND                         : 1
 #      INV                         : 75
-#      LUT1                        : 153
+#      LUT1                        : 155
 #      LUT2                        : 247
 #      LUT2_D                      : 3
-#      LUT3                        : 219
-#      LUT3_D                      : 13
+#      LUT3                        : 218
+#      LUT3_D                      : 14
 #      LUT3_L                      : 5
-#      LUT4                        : 425
-#      LUT4_D                      : 15
+#      LUT4                        : 423
+#      LUT4_D                      : 16
 #      LUT4_L                      : 13
-#      MUXCY                       : 483
-#      MUXF5                       : 94
+#      MUXCY                       : 484
+#      MUXF5                       : 93
 #      MUXF6                       : 27
 #      MUXF7                       : 13
 #      MUXF8                       : 6
@@ -740,9 +736,9 @@ Device utilization summary:
 
 Selected Device : 3s1200efg320-5 
 
- Number of Slices:                      614  out of   8672     7%  
+ Number of Slices:                      613  out of   8672     7%  
  Number of Slice Flip Flops:            304  out of  17344     1%  
- Number of 4 input LUTs:               1168  out of  17344     6%  
+ Number of 4 input LUTs:               1169  out of  17344     6%  
  Number of IOs:                          21
  Number of bonded IOBs:                  19  out of    250     7%  
  Number of MULT18X18SIOs:                 2  out of     28     7%  
@@ -896,7 +892,7 @@ Delay:               4.768ns (Levels of Logic = 4)
 =========================================================================
 Timing constraint: Default period analysis for Clock 'game_log/clk50hz1'
   Clock period: 18.228ns (frequency: 54.861MHz)
-  Total number of paths / destination ports: 929341 / 164
+  Total number of paths / destination ports: 929253 / 164
 -------------------------------------------------------------------------
 Delay:               18.228ns (Levels of Logic = 15)
   Source:            game_log/ball_y_reg_2 (FF)
@@ -1033,13 +1029,13 @@ Offset:              4.182ns (Levels of Logic = 1)
 =========================================================================
 
 
-Total REAL time to Xst completion: 23.00 secs
-Total CPU time to Xst completion: 16.92 secs
+Total REAL time to Xst completion: 18.00 secs
+Total CPU time to Xst completion: 17.54 secs
  
 --> 
 
 
-Total memory usage is 567652 kilobytes
+Total memory usage is 567164 kilobytes
 
 Number of errors   :    0 (   0 filtered)
 Number of warnings :  136 (   0 filtered)

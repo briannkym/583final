@@ -3,6 +3,7 @@ use ieee.STD_LOGIC_1164.all;
 use ieee.numeric_std.all;
 library work;
 use work.breakout_config.all;
+use screen_pkg.all;
 
 
 entity game_logic is
@@ -178,13 +179,13 @@ begin --Begin Paddle Logic
 	
 		case paddle_x_dir is
 			when '0' =>
-				if(paddle_x_reg <= 32) then
-					paddle_x_reg <= x"020";
+				if(paddle_x_reg <= SCREEN_X_BEGIN) then
+					paddle_x_reg <=  to_unsigned(SCREEN_X_BEGIN, 12);
 				--	paddle_x_dir<='1';
 				end if;
 			when '1' =>
-				if(paddle_x_reg >= 560) then
-					paddle_x_reg <= x"230";
+				if(paddle_x_reg >= (SCREEN_X_END-PADDLE_WIDTH)) then
+					paddle_x_reg <= to_unsigned((SCREEN_X_END-PADDLE_WIDTH), 12);
 				--	paddle_x_dir<='0';
 				end if;
 			when others => null;
@@ -365,13 +366,13 @@ begin --Logic of the Ball
 		
 		case ball_x_dir is
 			when '1' =>
-				if(ball_x_reg >= 600) then
-					ball_x_reg <= x"258";
+				if(ball_x_reg >= (SCREEN_X_END-BALL_WIDTH)) then
+					ball_x_reg <= to_unsigned((SCREEN_X_END-BALL_WIDTH), 12);
 					ball_x_dir <= '0';
 				end if;
 			when '0' =>
-				if(ball_x_reg <= 32) then
-					ball_x_reg <= x"020";
+				if(ball_x_reg <= SCREEN_X_BEGIN) then
+					ball_x_reg <= to_unsigned(SCREEN_X_BEGIN, 12);
 					ball_x_dir <= '1';
 				end if;
 			when others => null;
@@ -379,49 +380,44 @@ begin --Logic of the Ball
 		
 		case ball_y_dir is
 			when '0' =>
-				if(ball_y_reg <= 64) then
+				if(ball_y_reg <= SCREEN_Y_END) then
 					ball_y_dir <= '1';
-					ball_y_reg <= x"040";
+					ball_y_reg <= to_unsigned(SCREEN_Y_END, 12);
 				end if;
 			when '1' =>
 			
-                                if(ball_y_reg > 440) then
+                                if(ball_y_reg > (SCREEN_PADDLE_BEGIN - BALL_HEIGHT)) then
+											 ball_y_reg <= to_unsigned((SCREEN_PADDLE_BEGIN - BALL_HEIGHT), 12);
                                   if (ball_x_reg >= paddle_x_reg - 7 and ball_x_reg < paddle_x_reg + 4) or
                                    (ball_x_reg >= paddle_x_reg + 36 and ball_x_reg < paddle_x_reg + 52) then
                                     ball_x_dir <= '0';
                                     ball_y_dir <= '0';
-                                    ball_y_reg <= x"1BC";
                                     angle_reg <= low;
 
                                   elsif (ball_x_reg >= paddle_x_reg + 36 and ball_x_reg < paddle_x_reg + 52) then
                                     ball_x_dir <= '1';
                                     ball_y_dir <= '0';
-                                    ball_y_reg <= x"1BC";
                                     angle_reg <= low;
                                     
 
                                   elsif (ball_x_reg >= paddle_x_reg + 4 and ball_x_reg < paddle_x_reg + 12) then
                                     ball_x_dir <= '0';
                                     ball_y_dir <= '0';
-                                    ball_y_reg <= x"1BC";
                                     angle_reg <= med;
 
                                   elsif (ball_x_reg >= paddle_x_reg + 29 and ball_x_reg < paddle_x_reg + 36) then
                                     ball_x_dir <= '1';
                                     ball_y_dir <= '0';
-                                    ball_y_reg <= x"1BC";
                                     angle_reg <= med;
 
                                   elsif (ball_x_reg >= paddle_x_reg +12 and ball_x_reg < paddle_x_reg + 20) then
                                     ball_x_dir <= '0';
                                     ball_y_dir <= '0';
-                                    ball_y_reg <= x"1BC";
                                     angle_reg <= hi;
 
                                   elsif (ball_x_reg >= paddle_x_reg +20 and ball_x_reg < paddle_x_reg + 29) then
                                     ball_x_dir <= '1';
                                     ball_y_dir <= '0';
-                                    ball_y_reg <= x"1BC";
                                     angle_reg <= hi;  
 
                                   else
@@ -431,10 +427,11 @@ begin --Logic of the Ball
 			when others => null;
 		end case;
 		
-		if ((ball_y_reg >= 100) and (ball_y_reg < 148) and (ball_x_reg >= 32) and (ball_x_reg < 600)) then
+		if ((ball_y_reg >= SCREEN_BRICK_BEGIN) and (ball_y_reg < SCREEN_BRICK_END) and 
+		(ball_x_reg >= SCREEN_X_BEGIN) and (ball_x_reg < (SCREEN_X_END-BALL_WIDTH))) then
 			bricks_reg <= bricks_reg;
-			vx := std_logic_vector(ball_x_reg - 32);
-			vy := std_logic_vector(ball_y_reg - 100);
+			vx := std_logic_vector(ball_x_reg - SCREEN_X_BEGIN);
+			vy := std_logic_vector(ball_y_reg - SCREEN_BRICK_BEGIN);
 			vx := "00000" & vx(11 downto 5);
 			vy := "000" & vy(11 downto 3);
 			result := to_integer(unsigned(vy) * 18 + unsigned(vx));
