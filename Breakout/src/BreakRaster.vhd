@@ -27,12 +27,12 @@ Architecture dataflow of BreakRaster is
 component Digit is
 port(
 rainbow : in std_logic;
-number : in std_logic_vector(3 downto 0);
-x : in std_logic_vector(2 downto 0);
-y : in std_logic_vector(2 downto 0);
-R : out std_logic_vector(3 downto 0);
-G : out std_logic_vector(3 downto 0);
-B : out std_logic_vector(3 downto 0));
+number  : in std_logic_vector(3 downto 0);
+x       : in std_logic_vector(2 downto 0);
+y       : in std_logic_vector(2 downto 0);
+R       : out std_logic_vector(3 downto 0);
+G       : out std_logic_vector(3 downto 0);
+B       : out std_logic_vector(3 downto 0));
 end component;
 
 signal x,y,px,bx,by : unsigned(11 downto 0);
