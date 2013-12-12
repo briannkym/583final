@@ -92,7 +92,9 @@ architecture top_level of top_module is
       paddle_x  : in std_logic_vector(11 downto 0); 
       ball_x    : in std_logic_vector(11 downto 0);  
       ball_y    : in std_logic_vector(11 downto 0);
-      bricks    : in std_logic_vector(127 downto 0); 
+      bricks    : in std_logic_vector(127 downto 0);
+      lives     : in std_logic_vector(3 downto 0);
+      score     : in std_logic_vector(11 downto 0);
       draw_mode : in std_logic_vector(3 downto 0)
       );
   End Component VGA;
@@ -133,7 +135,7 @@ architecture top_level of top_module is
  signal clk50mhz        : std_logic;
  signal clkdv           : std_logic;
 --Game logic signal
- signal dead           : std_logic;
+ signal dead            : std_logic;
 
 begin  -- top_level
 
@@ -196,6 +198,8 @@ clk25mhz <= clkdv when lock='1' else '0';
    ball_x    => ball_x,
    ball_y    => ball_y,
    bricks    => bricks,
+   lives     => lives,
+   score     => score,
    draw_mode => draw_mode);
 
 

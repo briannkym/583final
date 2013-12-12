@@ -3,20 +3,21 @@ use ieee.std_logic_1164.all;
 use ieee.numeric_std.all;
 
 
-use screen_pkg.all;
+use work.breakout_config.all;
 
 Entity BreakRaster is
 Port(
-score: in std_logic_vector(11 downto 0);
-lives: in std_logic_vector(3 downto 0);
-x_pos: in std_logic_vector(11 downto 0);
-y_pos: in std_logic_vector(11 downto 0);
-paddle_x : in std_logic_vector(11 downto 0); --This will change based off the paddle's width.
-ball_x : in std_logic_vector(11 downto 0);  --These values will also change based off of the balls acceptable space
-ball_y : in std_logic_vector(11 downto 0);
-bricks : in std_logic_vector(127 downto 0); -- For now this will be the map of acceptable brick coordinates. May change.
-draw_mode : in std_logic_vector(3 downto 0); -- We may wish to draw things multiple ways...
-R, G, B : out std_logic_vector(3 downto 0)
+
+x_pos       : in std_logic_vector(11 downto 0);
+y_pos       : in std_logic_vector(11 downto 0);
+paddle_x    : in std_logic_vector(11 downto 0); --This will change based off the paddle's width.
+ball_x      : in std_logic_vector(11 downto 0);  --These values will also change based off of the balls acceptable space
+ball_y      : in std_logic_vector(11 downto 0);
+bricks      : in std_logic_vector(127 downto 0); -- For now this will be the map of acceptable brick coordinates. May change.
+score       : in std_logic_vector(11 downto 0);
+lives       : in std_logic_vector(3 downto 0);
+draw_mode   : in std_logic_vector(3 downto 0); -- We may wish to draw things multiple ways...
+R, G, B     : out std_logic_vector(3 downto 0)
 );
 
 end BreakRaster;
@@ -31,11 +32,11 @@ signal letter: std_logic_vector(7 downto 0);
 
 begin
 
-x<= unsigned(x_pos);
-y<= unsigned(y_pos);
-px<= unsigned(paddle_x);
-bx<= unsigned(ball_x);
-by<= unsigned(ball_y);
+x   <= unsigned(x_pos);
+y   <= unsigned(y_pos);
+px  <= unsigned(paddle_x);
+bx  <= unsigned(ball_x);
+by  <= unsigned(ball_y);
 
 	process(x, y, px, bx, by, bricks, draw_mode)
 	variable vx, vy : std_logic_vector(11 downto 0);

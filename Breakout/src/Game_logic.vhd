@@ -3,7 +3,6 @@ use ieee.STD_LOGIC_1164.all;
 use ieee.numeric_std.all;
 library work;
 use work.breakout_config.all;
-use screen_pkg.all;
 
 
 entity game_logic is
@@ -38,7 +37,7 @@ signal clk50hz : std_logic;
 signal paddle_x_reg, ball_x_reg, ball_y_reg : unsigned(11 downto 0);
 signal bricks_reg : std_logic_vector(127 downto 0); 
 signal draw_mode_reg : std_logic_vector(3 downto 0);
-signal draw_mode_in  : std_lofic_vector (3 downto 0);
+signal draw_mode_in  : std_logic_vector (3 downto 0);
 
 --Registers for movement of game objects.
 signal ball_x_dir, ball_y_dir, paddle_x_dir, paddle_moving: std_logic;
@@ -231,7 +230,7 @@ begin --Logic of the Ball
       angle_reg  <= low;
       speed_reg  <= slow;		
       bricks_reg <= x"00000FFFFFFFFFFFFFFFFFFFFFFFFFFF";
-      lives_reg  <= x"111";
+      lives_reg  <= x"9";
       score_reg  <= x"000";
       dead_reg   <= '0';
       restart    <= '0';
@@ -448,7 +447,7 @@ begin --Logic of the Ball
                                     angle_reg <= hi;  
 
                                   else
-                                    if lives > 0 then
+                                    if lives_reg > x"0" then
                                       lives_reg <= lives_reg - 1;
                                       restart   <= '1';
                                     else
