@@ -9,13 +9,13 @@
          <ClosedNodesVersion>2</ClosedNodesVersion>
       </ClosedNodes>
       <SelectedItems>
-         <SelectedItem>BreakRaster_Imp - BreakRaster - dataflow (/home/brian/Desktop/583final/Breakout/src/BreakRaster.vhd)</SelectedItem>
+         <SelectedItem>Sync_Imp - Sync - behavioral (/home/brian/Desktop/583final/Breakout/src/Sync.vhd)</SelectedItem>
       </SelectedItems>
-      <ScrollbarPosition orientation="vertical" >1</ScrollbarPosition>
+      <ScrollbarPosition orientation="vertical" >5</ScrollbarPosition>
       <ScrollbarPosition orientation="horizontal" >0</ScrollbarPosition>
       <ViewHeaderState orientation="horizontal" >000000ff000000000000000100000001000000000000000000000000000000000202000000010000000100000064000001d6000000020000000000000000000000000200000064ffffffff000000810000000300000002000001d60000000100000003000000000000000100000003</ViewHeaderState>
       <UserChangedColumnWidths orientation="horizontal" >true</UserChangedColumnWidths>
-      <CurrentItem>BreakRaster_Imp - BreakRaster - dataflow (/home/brian/Desktop/583final/Breakout/src/BreakRaster.vhd)</CurrentItem>
+      <CurrentItem>Sync_Imp - Sync - behavioral (/home/brian/Desktop/583final/Breakout/src/Sync.vhd)</CurrentItem>
    </ItemView>
    <ItemView engineview="SynthesisOnly" sourcetype="" guiview="Process" >
       <ClosedNodes>
