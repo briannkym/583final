@@ -1,0 +1,1216 @@
+Release 14.7 - xst P.20131013 (lin64)
+Copyright (c) 1995-2013 Xilinx, Inc.  All rights reserved.
+--> 
+Parameter TMPDIR set to xst/projnav.tmp
+
+
+Total REAL time to Xst completion: 0.00 secs
+Total CPU time to Xst completion: 0.18 secs
+ 
+--> 
+Parameter xsthdpdir set to xst
+
+
+Total REAL time to Xst completion: 0.00 secs
+Total CPU time to Xst completion: 0.18 secs
+ 
+--> 
+Reading design: top_module.prj
+
+TABLE OF CONTENTS
+  1) Synthesis Options Summary
+  2) HDL Compilation
+  3) Design Hierarchy Analysis
+  4) HDL Analysis
+  5) HDL Synthesis
+     5.1) HDL Synthesis Report
+  6) Advanced HDL Synthesis
+     6.1) Advanced HDL Synthesis Report
+  7) Low Level Synthesis
+  8) Partition Report
+  9) Final Report
+	9.1) Device utilization summary
+	9.2) Partition Resource Summary
+	9.3) TIMING REPORT
+
+
+=========================================================================
+*                      Synthesis Options Summary                        *
+=========================================================================
+---- Source Parameters
+Input File Name                    : "top_module.prj"
+Input Format                       : mixed
+Ignore Synthesis Constraint File   : NO
+
+---- Target Parameters
+Output File Name                   : "top_module"
+Output Format                      : NGC
+Target Device                      : xc3s1200e-5-fg320
+
+---- Source Options
+Top Module Name                    : top_module
+Automatic FSM Extraction           : YES
+FSM Encoding Algorithm             : Auto
+Safe Implementation                : No
+FSM Style                          : LUT
+RAM Extraction                     : Yes
+RAM Style                          : Auto
+ROM Extraction                     : Yes
+Mux Style                          : Auto
+Decoder Extraction                 : YES
+Priority Encoder Extraction        : Yes
+Shift Register Extraction          : YES
+Logical Shifter Extraction         : YES
+XOR Collapsing                     : YES
+ROM Style                          : Auto
+Mux Extraction                     : Yes
+Resource Sharing                   : YES
+Asynchronous To Synchronous        : NO
+Multiplier Style                   : Auto
+Automatic Register Balancing       : No
+
+---- Target Options
+Add IO Buffers                     : YES
+Global Maximum Fanout              : 100000
+Add Generic Clock Buffer(BUFG)     : 24
+Register Duplication               : YES
+Slice Packing                      : YES
+Optimize Instantiated Primitives   : NO
+Use Clock Enable                   : Yes
+Use Synchronous Set                : Yes
+Use Synchronous Reset              : Yes
+Pack IO Registers into IOBs        : Auto
+Equivalent register Removal        : YES
+
+---- General Options
+Optimization Goal                  : Speed
+Optimization Effort                : 1
+Keep Hierarchy                     : No
+Netlist Hierarchy                  : As_Optimized
+RTL Output                         : Yes
+Global Optimization                : AllClockNets
+Read Cores                         : YES
+Write Timing Constraints           : NO
+Cross Clock Analysis               : NO
+Hierarchy Separator                : /
+Bus Delimiter                      : <>
+Case Specifier                     : Maintain
+Slice Utilization Ratio            : 100
+BRAM Utilization Ratio             : 100
+Verilog 2001                       : YES
+Auto BRAM Packing                  : NO
+Slice Utilization Ratio Delta      : 5
+
+=========================================================================
+
+
+=========================================================================
+*                          HDL Compilation                              *
+=========================================================================
+Compiling vhdl file "/home/brian/Desktop/583final/Breakout/src/Breakout_config.vhd" in Library work.
+Compiling vhdl file "/home/brian/Desktop/583final/Breakout/src/Digit.vhd" in Library work.
+Architecture dataflow of Entity digit is up to date.
+Compiling vhdl file "/home/brian/Desktop/583final/Breakout/src/Character.vhd" in Library work.
+Architecture dataflow of Entity char is up to date.
+Compiling vhdl file "/home/brian/Desktop/583final/Breakout/src/Sync.vhd" in Library work.
+Architecture behavioral of Entity sync is up to date.
+Compiling vhdl file "/home/brian/Desktop/583final/Breakout/src/BreakRaster.vhd" in Library work.
+Architecture dataflow of Entity breakraster is up to date.
+Compiling vhdl file "/home/brian/Desktop/583final/Breakout/src/Kbd.vhd" in Library work.
+Architecture behavioral of Entity kbd is up to date.
+Compiling vhdl file "/home/brian/Desktop/583final/Breakout/src/Controller.vhd" in Library work.
+Architecture behavioral of Entity controller is up to date.
+Compiling vhdl file "/home/brian/Desktop/583final/Breakout/src/Game_logic.vhd" in Library work.
+Entity <game_logic> compiled.
+Entity <game_logic> (Architecture <behavioral>) compiled.
+Compiling vhdl file "/home/brian/Desktop/583final/Breakout/src/VGA_Breakout.vhd" in Library work.
+Architecture structural of Entity vga is up to date.
+Compiling vhdl file "/home/brian/Desktop/583final/Breakout/DCM.vhd" in Library work.
+Architecture behavioral of Entity dcm is up to date.
+Compiling vhdl file "/home/brian/Desktop/583final/Breakout/src/Top_module.vhd" in Library work.
+Architecture top_level of Entity top_module is up to date.
+
+=========================================================================
+*                     Design Hierarchy Analysis                         *
+=========================================================================
+Analyzing hierarchy for entity <top_module> in library <work> (architecture <top_level>).
+
+Analyzing hierarchy for entity <kbd> in library <work> (architecture <behavioral>).
+
+Analyzing hierarchy for entity <controller> in library <work> (architecture <behavioral>).
+
+Analyzing hierarchy for entity <game_logic> in library <work> (architecture <behavioral>).
+
+Analyzing hierarchy for entity <VGA> in library <work> (architecture <structural>).
+
+Analyzing hierarchy for entity <DCM> in library <work> (architecture <behavioral>).
+
+Analyzing hierarchy for entity <Sync> in library <work> (architecture <behavioral>).
+
+Analyzing hierarchy for entity <BreakRaster> in library <work> (architecture <dataflow>).
+
+Analyzing hierarchy for entity <Digit> in library <work> (architecture <dataflow>).
+
+Analyzing hierarchy for entity <Char> in library <work> (architecture <dataflow>).
+
+
+=========================================================================
+*                            HDL Analysis                               *
+=========================================================================
+Analyzing Entity <top_module> in library <work> (Architecture <top_level>).
+Entity <top_module> analyzed. Unit <top_module> generated.
+
+Analyzing Entity <kbd> in library <work> (Architecture <behavioral>).
+Entity <kbd> analyzed. Unit <kbd> generated.
+
+Analyzing Entity <controller> in library <work> (Architecture <behavioral>).
+Entity <controller> analyzed. Unit <controller> generated.
+
+Analyzing Entity <game_logic> in library <work> (Architecture <behavioral>).
+WARNING:Xst:819 - "/home/brian/Desktop/583final/Breakout/src/Game_logic.vhd" line 137: One or more signals are missing in the process sensitivity list. To enable synthesis of FPGA/CPLD hardware, XST will assume that all necessary signals are present in the sensitivity list. Please note that the result of the synthesis may differ from the initial design specification. The missing signals are:
+   <clock>
+WARNING:Xst:790 - "/home/brian/Desktop/583final/Breakout/src/Game_logic.vhd" line 528: Index value(s) does not match array range, simulation mismatch.
+INFO:Xst:1433 - Contents of array <bricks_reg> may be accessed with an index that exceeds the array size. This could cause simulation mismatch.
+WARNING:Xst:790 - "/home/brian/Desktop/583final/Breakout/src/Game_logic.vhd" line 528: Index value(s) does not match array range, simulation mismatch.
+INFO:Xst:1433 - Contents of array <bricks_reg> may be accessed with an index that exceeds the array size. This could cause simulation mismatch.
+WARNING:Xst:790 - "/home/brian/Desktop/583final/Breakout/src/Game_logic.vhd" line 528: Index value(s) does not match array range, simulation mismatch.
+INFO:Xst:1433 - Contents of array <bricks_reg> may be accessed with an index that exceeds the array size. This could cause simulation mismatch.
+WARNING:Xst:790 - "/home/brian/Desktop/583final/Breakout/src/Game_logic.vhd" line 557: Index value(s) does not match array range, simulation mismatch.
+INFO:Xst:1433 - Contents of array <bricks_reg> may be accessed with an index that exceeds the array size. This could cause simulation mismatch.
+WARNING:Xst:790 - "/home/brian/Desktop/583final/Breakout/src/Game_logic.vhd" line 559: Index value(s) does not match array range, simulation mismatch.
+WARNING:Xst:790 - "/home/brian/Desktop/583final/Breakout/src/Game_logic.vhd" line 560: Index value(s) does not match array range, simulation mismatch.
+INFO:Xst:1433 - Contents of array <bricks_reg> may be accessed with an index that exceeds the array size. This could cause simulation mismatch.
+WARNING:Xst:790 - "/home/brian/Desktop/583final/Breakout/src/Game_logic.vhd" line 562: Index value(s) does not match array range, simulation mismatch.
+WARNING:Xst:790 - "/home/brian/Desktop/583final/Breakout/src/Game_logic.vhd" line 563: Index value(s) does not match array range, simulation mismatch.
+INFO:Xst:1433 - Contents of array <bricks_reg> may be accessed with an index that exceeds the array size. This could cause simulation mismatch.
+WARNING:Xst:790 - "/home/brian/Desktop/583final/Breakout/src/Game_logic.vhd" line 566: Index value(s) does not match array range, simulation mismatch.
+INFO:Xst:2679 - Register <bricks_reg<127>> in unit <game_logic> has a constant value of 0 during circuit operation. The register is replaced by logic.
+INFO:Xst:2679 - Register <bricks_reg<126>> in unit <game_logic> has a constant value of 0 during circuit operation. The register is replaced by logic.
+INFO:Xst:2679 - Register <bricks_reg<125>> in unit <game_logic> has a constant value of 0 during circuit operation. The register is replaced by logic.
+INFO:Xst:2679 - Register <bricks_reg<124>> in unit <game_logic> has a constant value of 0 during circuit operation. The register is replaced by logic.
+INFO:Xst:2679 - Register <bricks_reg<123>> in unit <game_logic> has a constant value of 0 during circuit operation. The register is replaced by logic.
+INFO:Xst:2679 - Register <bricks_reg<122>> in unit <game_logic> has a constant value of 0 during circuit operation. The register is replaced by logic.
+INFO:Xst:2679 - Register <bricks_reg<121>> in unit <game_logic> has a constant value of 0 during circuit operation. The register is replaced by logic.
+INFO:Xst:2679 - Register <bricks_reg<120>> in unit <game_logic> has a constant value of 0 during circuit operation. The register is replaced by logic.
+INFO:Xst:2679 - Register <bricks_reg<119>> in unit <game_logic> has a constant value of 0 during circuit operation. The register is replaced by logic.
+INFO:Xst:2679 - Register <bricks_reg<118>> in unit <game_logic> has a constant value of 0 during circuit operation. The register is replaced by logic.
+INFO:Xst:2679 - Register <bricks_reg<117>> in unit <game_logic> has a constant value of 0 during circuit operation. The register is replaced by logic.
+INFO:Xst:2679 - Register <bricks_reg<116>> in unit <game_logic> has a constant value of 0 during circuit operation. The register is replaced by logic.
+INFO:Xst:2679 - Register <bricks_reg<115>> in unit <game_logic> has a constant value of 0 during circuit operation. The register is replaced by logic.
+INFO:Xst:2679 - Register <bricks_reg<114>> in unit <game_logic> has a constant value of 0 during circuit operation. The register is replaced by logic.
+INFO:Xst:2679 - Register <bricks_reg<113>> in unit <game_logic> has a constant value of 0 during circuit operation. The register is replaced by logic.
+INFO:Xst:2679 - Register <bricks_reg<112>> in unit <game_logic> has a constant value of 0 during circuit operation. The register is replaced by logic.
+INFO:Xst:2679 - Register <bricks_reg<111>> in unit <game_logic> has a constant value of 0 during circuit operation. The register is replaced by logic.
+INFO:Xst:2679 - Register <bricks_reg<110>> in unit <game_logic> has a constant value of 0 during circuit operation. The register is replaced by logic.
+INFO:Xst:2679 - Register <bricks_reg<109>> in unit <game_logic> has a constant value of 0 during circuit operation. The register is replaced by logic.
+INFO:Xst:2679 - Register <bricks_reg<108>> in unit <game_logic> has a constant value of 0 during circuit operation. The register is replaced by logic.
+Entity <game_logic> analyzed. Unit <game_logic> generated.
+
+Analyzing Entity <VGA> in library <work> (Architecture <structural>).
+Entity <VGA> analyzed. Unit <VGA> generated.
+
+Analyzing Entity <Sync> in library <work> (Architecture <behavioral>).
+Entity <Sync> analyzed. Unit <Sync> generated.
+
+Analyzing Entity <BreakRaster> in library <work> (Architecture <dataflow>).
+WARNING:Xst:790 - "/home/brian/Desktop/583final/Breakout/src/BreakRaster.vhd" line 182: Index value(s) does not match array range, simulation mismatch.
+WARNING:Xst:819 - "/home/brian/Desktop/583final/Breakout/src/BreakRaster.vhd" line 85: One or more signals are missing in the process sensitivity list. To enable synthesis of FPGA/CPLD hardware, XST will assume that all necessary signals are present in the sensitivity list. Please note that the result of the synthesis may differ from the initial design specification. The missing signals are:
+   <rLetter>, <gLetter>, <bLetter>, <score>, <rSymbol>, <gSymbol>, <bSymbol>, <lives>
+Entity <BreakRaster> analyzed. Unit <BreakRaster> generated.
+
+Analyzing Entity <Digit> in library <work> (Architecture <dataflow>).
+WARNING:Xst:819 - "/home/brian/Desktop/583final/Breakout/src/Digit.vhd" line 159: One or more signals are missing in the process sensitivity list. To enable synthesis of FPGA/CPLD hardware, XST will assume that all necessary signals are present in the sensitivity list. Please note that the result of the synthesis may differ from the initial design specification. The missing signals are:
+   <y>
+Entity <Digit> analyzed. Unit <Digit> generated.
+
+Analyzing Entity <Char> in library <work> (Architecture <dataflow>).
+WARNING:Xst:819 - "/home/brian/Desktop/583final/Breakout/src/Character.vhd" line 300: One or more signals are missing in the process sensitivity list. To enable synthesis of FPGA/CPLD hardware, XST will assume that all necessary signals are present in the sensitivity list. Please note that the result of the synthesis may differ from the initial design specification. The missing signals are:
+   <y>
+Entity <Char> analyzed. Unit <Char> generated.
+
+Analyzing Entity <DCM> in library <work> (Architecture <behavioral>).
+    Set user-defined property "CLKDV_DIVIDE =  2.0000000000000000" for instance <DCM_SP_INST> in unit <DCM>.
+    Set user-defined property "CLKFX_DIVIDE =  1" for instance <DCM_SP_INST> in unit <DCM>.
+    Set user-defined property "CLKFX_MULTIPLY =  4" for instance <DCM_SP_INST> in unit <DCM>.
+    Set user-defined property "CLKIN_DIVIDE_BY_2 =  FALSE" for instance <DCM_SP_INST> in unit <DCM>.
+    Set user-defined property "CLKIN_PERIOD =  20.0000000000000000" for instance <DCM_SP_INST> in unit <DCM>.
+    Set user-defined property "CLKOUT_PHASE_SHIFT =  NONE" for instance <DCM_SP_INST> in unit <DCM>.
+    Set user-defined property "CLK_FEEDBACK =  1X" for instance <DCM_SP_INST> in unit <DCM>.
+    Set user-defined property "DESKEW_ADJUST =  SYSTEM_SYNCHRONOUS" for instance <DCM_SP_INST> in unit <DCM>.
+    Set user-defined property "DFS_FREQUENCY_MODE =  LOW" for instance <DCM_SP_INST> in unit <DCM>.
+    Set user-defined property "DLL_FREQUENCY_MODE =  LOW" for instance <DCM_SP_INST> in unit <DCM>.
+    Set user-defined property "DSS_MODE =  NONE" for instance <DCM_SP_INST> in unit <DCM>.
+    Set user-defined property "DUTY_CYCLE_CORRECTION =  TRUE" for instance <DCM_SP_INST> in unit <DCM>.
+    Set user-defined property "FACTORY_JF =  C080" for instance <DCM_SP_INST> in unit <DCM>.
+    Set user-defined property "PHASE_SHIFT =  0" for instance <DCM_SP_INST> in unit <DCM>.
+    Set user-defined property "STARTUP_WAIT =  FALSE" for instance <DCM_SP_INST> in unit <DCM>.
+Entity <DCM> analyzed. Unit <DCM> generated.
+
+
+=========================================================================
+*                           HDL Synthesis                               *
+=========================================================================
+
+Performing bidirectional port resolution...
+
+Synthesizing Unit <kbd>.
+    Related source file is "/home/brian/Desktop/583final/Breakout/src/Kbd.vhd".
+    Using one-hot encoding for signal <current_state>.
+    Found 4-bit up counter for signal <bit_index>.
+    Found 4-bit register for signal <current_state>.
+    Found 3-bit register for signal <LEDs_reg>.
+    Found 3-bit up counter for signal <main_counter>.
+    Found 4-bit register for signal <next_state>.
+    Found 32-bit register for signal <one_counter>.
+    Found 8-bit register for signal <scan_code_reg>.
+    Found 32-bit up counter for signal <scan_counter>.
+    Found 1-bit register for signal <scan_flag>.
+    Found 1-bit register for signal <scan_ready_reg>.
+    Found 32-bit register for signal <sum>.
+    Found 32-bit adder for signal <sum$add0000> created at line 108.
+    Summary:
+	inferred   3 Counter(s).
+	inferred  81 D-type flip-flop(s).
+	inferred   1 Adder/Subtractor(s).
+Unit <kbd> synthesized.
+
+
+Synthesizing Unit <controller>.
+    Related source file is "/home/brian/Desktop/583final/Breakout/src/Controller.vhd".
+    Using one-hot encoding for signal <current_state>.
+    Found 1-bit register for signal <control_mode>.
+    Found 1-bit register for signal <control_en>.
+    Found 8-bit comparator equal for signal <control_mode$cmp_eq0000> created at line 100.
+    Found 5-bit register for signal <current_state>.
+    Found 3-bit up counter for signal <LEDs_reg>.
+    Found 5-bit register for signal <next_state>.
+    Found 3-bit register for signal <out_reg>.
+    Found 8-bit register for signal <scan_code_reg>.
+    Summary:
+	inferred   1 Counter(s).
+	inferred  13 D-type flip-flop(s).
+	inferred   1 Comparator(s).
+Unit <controller> synthesized.
+
+
+Synthesizing Unit <game_logic>.
+    Related source file is "/home/brian/Desktop/583final/Breakout/src/Game_logic.vhd".
+WARNING:Xst:1780 - Signal <mode_entry> is never used or assigned. This unconnected signal will be trimmed during the optimization process.
+    Using one-hot encoding for signal <speed_reg>.
+    Using one-hot encoding for signal <angle_reg>.
+    Found 1-bit 128-to-1 multiplexer for signal <$varindex0000> created at line 528.
+    Found 1-bit 128-to-1 multiplexer for signal <$varindex0001> created at line 528.
+    Found 1-bit 128-to-1 multiplexer for signal <$varindex0002> created at line 528.
+    Found 3-bit register for signal <angle_reg>.
+    Found 12-bit comparator greatequal for signal <angle_reg$cmp_ge0000> created at line 462.
+    Found 12-bit comparator less for signal <angle_reg$cmp_lt0000> created at line 459.
+    Found 1-bit register for signal <ball_x_dir>.
+    Found 12-bit comparator greatequal for signal <ball_x_dir$cmp_ge0000> created at line 505.
+    Found 12-bit comparator greatequal for signal <ball_x_dir$cmp_ge0001> created at line 505.
+    Found 12-bit comparator greater for signal <ball_x_dir$cmp_gt0000> created at line 443.
+    Found 12-bit comparator less for signal <ball_x_dir$cmp_lt0000> created at line 505.
+    Found 12-bit comparator less for signal <ball_x_dir$cmp_lt0001> created at line 505.
+    Found 12-bit register for signal <ball_x_reg>.
+    Found 12-bit adder for signal <ball_x_reg$addsub0000> created at line 574.
+    Found 12-bit comparator lessequal for signal <ball_x_reg$cmp_le0000> created at line 443.
+    Found 12-bit adder for signal <ball_x_reg$mux0000> created at line 424.
+    Found 1-bit register for signal <ball_y_dir>.
+    Found 12-bit comparator greater for signal <ball_y_dir$cmp_gt0000> created at line 452.
+    Found 12-bit register for signal <ball_y_reg>.
+    Found 12-bit comparator greater for signal <ball_y_reg$cmp_gt0000> created at line 457.
+    Found 4-bit comparator greater for signal <ball_y_reg$cmp_gt0001> created at line 430.
+    Found 12-bit comparator lessequal for signal <ball_y_reg$cmp_le0000> created at line 452.
+    Found 12-bit adder for signal <ball_y_reg$mux0000> created at line 430.
+    Found 108-bit register for signal <bricks_reg<107:0>>.
+    Found 12-bit comparator greatequal for signal <bricks_reg_4$cmp_ge0000> created at line 505.
+    Found 12-bit comparator greatequal for signal <bricks_reg_4$cmp_ge0001> created at line 505.
+    Found 12-bit comparator less for signal <bricks_reg_4$cmp_lt0000> created at line 505.
+    Found 12-bit comparator less for signal <bricks_reg_4$cmp_lt0001> created at line 505.
+    Found 1-bit register for signal <clk50hz>.
+    Found 20-bit up counter for signal <clk50MhzCounter>.
+    Found 1-bit register for signal <dead_reg>.
+    Found 4-bit comparator greater for signal <dead_reg$cmp_gt0000> created at line 491.
+    Found 4-bit register for signal <draw_mode_in>.
+    Found 4-bit register for signal <draw_mode_reg>.
+    Found 4-bit down counter for signal <lives_reg>.
+    Found 1-bit register for signal <paddle_x_dir>.
+    Found 12-bit register for signal <paddle_x_reg>.
+    Found 12-bit adder for signal <paddle_x_reg$add0000> created at line 172.
+    Found 12-bit comparator greatequal for signal <paddle_x_reg$cmp_ge0000> created at line 209.
+    Found 12-bit comparator lessequal for signal <paddle_x_reg$cmp_le0000> created at line 204.
+    Found 12-bit addsub for signal <paddle_x_reg$share0000> created at line 159.
+    Found 12-bit subtractor for signal <paddle_x_reg$sub0000> created at line 198.
+    Found 1-bit register for signal <restart>.
+    Found 12-bit adder for signal <restart$add0000> created at line 462.
+    Found 12-bit adder for signal <restart$add0001> created at line 462.
+    Found 12-bit adder for signal <restart$add0002> created at line 467.
+    Found 12-bit adder for signal <restart$add0003> created at line 473.
+    Found 12-bit adder for signal <restart$add0004> created at line 478.
+    Found 12-bit comparator greatequal for signal <restart$cmp_ge0000> created at line 459.
+    Found 12-bit comparator greatequal for signal <restart$cmp_ge0001> created at line 462.
+    Found 12-bit comparator greatequal for signal <restart$cmp_ge0002> created at line 467.
+    Found 12-bit comparator greatequal for signal <restart$cmp_ge0003> created at line 473.
+    Found 12-bit comparator greatequal for signal <restart$cmp_ge0004> created at line 478.
+    Found 12-bit comparator greatequal for signal <restart$cmp_ge0005> created at line 483.
+    Found 4-bit comparator lessequal for signal <restart$cmp_le0000> created at line 491.
+    Found 12-bit comparator lessequal for signal <restart$cmp_le0001> created at line 457.
+    Found 12-bit comparator less for signal <restart$cmp_lt0000> created at line 459.
+    Found 12-bit comparator less for signal <restart$cmp_lt0001> created at line 462.
+    Found 12-bit comparator less for signal <restart$cmp_lt0002> created at line 467.
+    Found 12-bit comparator less for signal <restart$cmp_lt0003> created at line 473.
+    Found 12-bit comparator less for signal <restart$cmp_lt0004> created at line 478.
+    Found 12-bit comparator less for signal <restart$cmp_lt0005> created at line 483.
+    Found 24-bit adder for signal <resultx$add0000> created at line 524.
+    Found 12x12-bit multiplier for signal <resultx$mult0000> created at line 524.
+    Found 24-bit adder for signal <resultxy$add0000> created at line 526.
+    Found 12x12-bit multiplier for signal <resultxy$mult0000> created at line 526.
+    Found 24-bit adder for signal <resulty$add0000> created at line 525.
+    Found 12-bit register for signal <score_reg>.
+    Found 4-bit adder for signal <score_reg_11_8$add0000> created at line 549.
+    Found 4-bit adder for signal <score_reg_3_0$add0000> created at line 554.
+    Found 4-bit adder for signal <score_reg_7_4$add0000> created at line 551.
+    Found 5-bit register for signal <speed_reg>.
+    Found 12-bit adder for signal <vx$addsub0000> created at line 509.
+    Found 12-bit subtractor for signal <vx$sub0000> created at line 509.
+    Found 4-bit comparator greater for signal <vxn$cmp_gt0000> created at line 512.
+    Found 12-bit adder for signal <vxn$mux0000> created at line 512.
+    Found 12-bit adder for signal <vy$addsub0000> created at line 510.
+    Found 12-bit subtractor for signal <vy$sub0001> created at line 510.
+    Found 12-bit adder for signal <vyn$mux0000> created at line 519.
+    Summary:
+	inferred   2 Counter(s).
+	inferred 134 D-type flip-flop(s).
+	inferred  23 Adder/Subtractor(s).
+	inferred   2 Multiplier(s).
+	inferred  34 Comparator(s).
+	inferred   3 Multiplexer(s).
+Unit <game_logic> synthesized.
+
+
+Synthesizing Unit <Sync>.
+    Related source file is "/home/brian/Desktop/583final/Breakout/src/Sync.vhd".
+    Found 1-bit register for signal <VSync>.
+    Found 4-bit register for signal <B>.
+    Found 4-bit register for signal <G>.
+    Found 4-bit register for signal <R>.
+    Found 1-bit register for signal <HSync>.
+    Found 12-bit comparator less for signal <B$cmp_lt0000> created at line 50.
+    Found 12-bit comparator less for signal <B$cmp_lt0001> created at line 50.
+    Found 12-bit comparator greater for signal <HSync$cmp_gt0000> created at line 40.
+    Found 12-bit comparator less for signal <HSync$cmp_lt0000> created at line 40.
+    Found 12-bit comparator greater for signal <VSync$cmp_gt0000> created at line 45.
+    Found 12-bit comparator less for signal <VSync$cmp_lt0000> created at line 45.
+    Found 12-bit subtractor for signal <x$addsub0000> created at line 21.
+    Found 12-bit comparator greater for signal <x$cmp_gt0000> created at line 21.
+    Found 12-bit up counter for signal <x_pos>.
+    Found 12-bit comparator less for signal <x_pos$cmp_lt0000> created at line 29.
+    Found 12-bit subtractor for signal <y$addsub0000> created at line 23.
+    Found 12-bit comparator greater for signal <y$cmp_gt0000> created at line 23.
+    Found 12-bit up counter for signal <y_pos>.
+    Found 12-bit comparator less for signal <y_pos$cmp_lt0000> created at line 33.
+    Summary:
+	inferred   2 Counter(s).
+	inferred  14 D-type flip-flop(s).
+	inferred   2 Adder/Subtractor(s).
+	inferred  10 Comparator(s).
+Unit <Sync> synthesized.
+
+
+Synthesizing Unit <Digit>.
+    Related source file is "/home/brian/Desktop/583final/Breakout/src/Digit.vhd".
+    Found 64x1-bit ROM for signal <pixel$rom0000> created at line 84.
+    Found 64x1-bit ROM for signal <pixel$rom0001> created at line 84.
+    Found 64x1-bit ROM for signal <pixel$rom0002> created at line 91.
+    Found 64x1-bit ROM for signal <pixel$rom0003> created at line 91.
+    Found 64x1-bit ROM for signal <pixel$rom0004> created at line 98.
+    Found 64x1-bit ROM for signal <pixel$rom0005> created at line 98.
+    Found 64x1-bit ROM for signal <pixel$rom0006> created at line 105.
+    Found 64x1-bit ROM for signal <pixel$rom0007> created at line 105.
+    Found 64x1-bit ROM for signal <pixel$rom0008> created at line 112.
+    Found 64x1-bit ROM for signal <pixel$rom0009> created at line 112.
+    Found 64x1-bit ROM for signal <pixel$rom0010> created at line 119.
+    Found 64x1-bit ROM for signal <pixel$rom0011> created at line 119.
+    Found 64x1-bit ROM for signal <pixel$rom0012> created at line 126.
+    Found 64x1-bit ROM for signal <pixel$rom0013> created at line 126.
+    Found 64x1-bit ROM for signal <pixel$rom0014> created at line 133.
+    Found 64x1-bit ROM for signal <pixel$rom0015> created at line 133.
+    Found 64x1-bit ROM for signal <pixel$rom0016> created at line 140.
+    Found 64x1-bit ROM for signal <pixel$rom0017> created at line 140.
+    Found 64x1-bit ROM for signal <pixel$rom0018> created at line 147.
+    Found 64x1-bit ROM for signal <pixel$rom0019> created at line 147.
+    Found 6-bit adder for signal <$add0000> created at line 84.
+    Summary:
+	inferred  20 ROM(s).
+	inferred   1 Adder/Subtractor(s).
+Unit <Digit> synthesized.
+
+
+Synthesizing Unit <Char>.
+    Related source file is "/home/brian/Desktop/583final/Breakout/src/Character.vhd".
+    Found 64x1-bit ROM for signal <pixel$rom0000> created at line 114.
+    Found 64x1-bit ROM for signal <pixel$rom0001> created at line 114.
+    Found 64x1-bit ROM for signal <pixel$rom0002> created at line 121.
+    Found 64x1-bit ROM for signal <pixel$rom0003> created at line 121.
+    Found 64x1-bit ROM for signal <pixel$rom0004> created at line 128.
+    Found 64x1-bit ROM for signal <pixel$rom0005> created at line 128.
+    Found 64x1-bit ROM for signal <pixel$rom0006> created at line 135.
+    Found 64x1-bit ROM for signal <pixel$rom0007> created at line 135.
+    Found 64x1-bit ROM for signal <pixel$rom0008> created at line 142.
+    Found 64x1-bit ROM for signal <pixel$rom0009> created at line 142.
+    Found 64x1-bit ROM for signal <pixel$rom0010> created at line 149.
+    Found 64x1-bit ROM for signal <pixel$rom0011> created at line 149.
+    Found 64x1-bit ROM for signal <pixel$rom0012> created at line 156.
+    Found 64x1-bit ROM for signal <pixel$rom0013> created at line 156.
+    Found 64x1-bit ROM for signal <pixel$rom0014> created at line 163.
+    Found 64x1-bit ROM for signal <pixel$rom0015> created at line 163.
+    Found 64x1-bit ROM for signal <pixel$rom0016> created at line 170.
+    Found 64x1-bit ROM for signal <pixel$rom0017> created at line 170.
+    Found 64x1-bit ROM for signal <pixel$rom0018> created at line 177.
+    Found 64x1-bit ROM for signal <pixel$rom0019> created at line 177.
+    Found 64x1-bit ROM for signal <pixel$rom0020> created at line 184.
+    Found 64x1-bit ROM for signal <pixel$rom0021> created at line 184.
+    Found 64x1-bit ROM for signal <pixel$rom0022> created at line 191.
+    Found 64x1-bit ROM for signal <pixel$rom0023> created at line 191.
+    Found 64x1-bit ROM for signal <pixel$rom0024> created at line 198.
+    Found 64x1-bit ROM for signal <pixel$rom0025> created at line 198.
+    Found 64x1-bit ROM for signal <pixel$rom0026> created at line 205.
+    Found 64x1-bit ROM for signal <pixel$rom0027> created at line 205.
+    Found 64x1-bit ROM for signal <pixel$rom0028> created at line 212.
+    Found 64x1-bit ROM for signal <pixel$rom0029> created at line 212.
+    Found 64x1-bit ROM for signal <pixel$rom0030> created at line 219.
+    Found 64x1-bit ROM for signal <pixel$rom0031> created at line 219.
+    Found 64x1-bit ROM for signal <pixel$rom0032> created at line 226.
+    Found 64x1-bit ROM for signal <pixel$rom0033> created at line 226.
+    Found 64x1-bit ROM for signal <pixel$rom0034> created at line 233.
+    Found 64x1-bit ROM for signal <pixel$rom0035> created at line 233.
+    Found 64x1-bit ROM for signal <pixel$rom0036> created at line 240.
+    Found 64x1-bit ROM for signal <pixel$rom0037> created at line 240.
+    Found 64x1-bit ROM for signal <pixel$rom0038> created at line 247.
+    Found 64x1-bit ROM for signal <pixel$rom0039> created at line 247.
+    Found 64x1-bit ROM for signal <pixel$rom0040> created at line 254.
+    Found 64x1-bit ROM for signal <pixel$rom0041> created at line 254.
+    Found 64x1-bit ROM for signal <pixel$rom0042> created at line 261.
+    Found 64x1-bit ROM for signal <pixel$rom0043> created at line 261.
+    Found 64x1-bit ROM for signal <pixel$rom0044> created at line 268.
+    Found 64x1-bit ROM for signal <pixel$rom0045> created at line 268.
+    Found 64x1-bit ROM for signal <pixel$rom0046> created at line 275.
+    Found 64x1-bit ROM for signal <pixel$rom0047> created at line 275.
+    Found 64x1-bit ROM for signal <pixel$rom0048> created at line 282.
+    Found 64x1-bit ROM for signal <pixel$rom0049> created at line 282.
+    Found 64x1-bit ROM for signal <pixel$rom0050> created at line 289.
+    Found 64x1-bit ROM for signal <pixel$rom0051> created at line 289.
+WARNING:Xst:737 - Found 1-bit latch for signal <pixel>. Latches may be generated from incomplete case or if statements. We do not recommend the use of latches in FPGA/CPLD designs, as they may lead to timing problems.
+INFO:Xst:2371 - HDL ADVISOR - Logic functions respectively driving the data and gate enable inputs of this latch share common terms. This situation will potentially lead to setup/hold violations and, as a result, to simulation problems. This situation may come from an incomplete case statement (all selector values are not covered). You should carefully review if it was in your intentions to describe such a latch.
+    Found 6-bit adder for signal <$add0000> created at line 114.
+    Summary:
+	inferred  52 ROM(s).
+	inferred   1 Adder/Subtractor(s).
+Unit <Char> synthesized.
+
+
+Synthesizing Unit <DCM>.
+    Related source file is "/home/brian/Desktop/583final/Breakout/DCM.vhd".
+Unit <DCM> synthesized.
+
+
+Synthesizing Unit <BreakRaster>.
+    Related source file is "/home/brian/Desktop/583final/Breakout/src/BreakRaster.vhd".
+WARNING:Xst:646 - Signal <vy> is assigned but never used. This unconnected signal will be trimmed during the optimization process.
+WARNING:Xst:646 - Signal <vx> is assigned but never used. This unconnected signal will be trimmed during the optimization process.
+WARNING:Xst:1780 - Signal <rainbow> is never used or assigned. This unconnected signal will be trimmed during the optimization process.
+    Found 12-bit adder for signal <B$add0000> created at line 172.
+    Found 12-bit adder for signal <B$add0001> created at line 172.
+    Found 12-bit comparator greatequal for signal <B$cmp_le0000> created at line 157.
+    Found 12-bit comparator greatequal for signal <B$cmp_le0001> created at line 169.
+    Found 12-bit comparator lessequal for signal <B$cmp_le0002> created at line 172.
+    Found 12-bit comparator lessequal for signal <B$cmp_le0003> created at line 172.
+    Found 12-bit comparator greatequal for signal <B$cmp_le0004> created at line 176.
+    Found 12-bit comparator less for signal <B$cmp_lt0000> created at line 142.
+    Found 12-bit comparator less for signal <B$cmp_lt0001> created at line 143.
+    Found 12-bit comparator less for signal <B$cmp_lt0002> created at line 147.
+    Found 12-bit comparator less for signal <B$cmp_lt0003> created at line 152.
+    Found 12-bit comparator less for signal <B$cmp_lt0004> created at line 162.
+    Found 12-bit comparator less for signal <B$cmp_lt0005> created at line 167.
+    Found 12-bit comparator less for signal <B$cmp_lt0006> created at line 169.
+    Found 12-bit comparator less for signal <B$cmp_lt0007> created at line 172.
+    Found 12-bit comparator less for signal <B$cmp_lt0008> created at line 172.
+    Found 12-bit comparator less for signal <B$cmp_lt0009> created at line 176.
+    Found 12-bit comparator less for signal <B$cmp_lt0010> created at line 211.
+    Found 24-bit adder for signal <bricks$add0000> created at line 182.
+    Found 12x12-bit multiplier for signal <bricks$mult0000> created at line 182.
+    Found 1-bit 128-to-1 multiplexer for signal <bricks$mux0000> created at line 182.
+    Found 12-bit comparator lessequal for signal <letter$cmp_le0000> created at line 96.
+    Found 12-bit comparator lessequal for signal <letter$cmp_le0001> created at line 228.
+    Found 12-bit comparator greater for signal <letter$cmp_lt0000> created at line 96.
+    Found 12-bit comparator greater for signal <letter$cmp_lt0001> created at line 228.
+    Found 12-bit adder for signal <R$addsub0000> created at line 219.
+    Found 12-bit comparator lessequal for signal <R$cmp_le0000> created at line 219.
+    Found 12-bit comparator less for signal <R$cmp_lt0000> created at line 219.
+    Found 12-bit subtractor for signal <vx$sub0000> created at line 178.
+    Found 12-bit subtractor for signal <vy$sub0000> created at line 179.
+    Summary:
+	inferred   6 Adder/Subtractor(s).
+	inferred   1 Multiplier(s).
+	inferred  22 Comparator(s).
+	inferred   1 Multiplexer(s).
+Unit <BreakRaster> synthesized.
+
+
+Synthesizing Unit <VGA>.
+    Related source file is "/home/brian/Desktop/583final/Breakout/src/VGA_Breakout.vhd".
+WARNING:Xst:647 - Input <rst> is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.
+WARNING:Xst:646 - Signal <VGA_R<0>> is assigned but never used. This unconnected signal will be trimmed during the optimization process.
+WARNING:Xst:646 - Signal <VGA_G<0>> is assigned but never used. This unconnected signal will be trimmed during the optimization process.
+WARNING:Xst:646 - Signal <VGA_B<1:0>> is assigned but never used. This unconnected signal will be trimmed during the optimization process.
+Unit <VGA> synthesized.
+
+
+Synthesizing Unit <top_module>.
+    Related source file is "/home/brian/Desktop/583final/Breakout/src/Top_module.vhd".
+WARNING:Xst:1306 - Output <LEDs<7>> is never assigned.
+WARNING:Xst:1306 - Output <LEDs<5>> is never assigned.
+WARNING:Xst:646 - Signal <clk50mhz> is assigned but never used. This unconnected signal will be trimmed during the optimization process.
+    Found 8-bit up counter for signal <count>.
+    Found 1-bit register for signal <reset>.
+    Summary:
+	inferred   1 Counter(s).
+	inferred   1 D-type flip-flop(s).
+Unit <top_module> synthesized.
+
+INFO:Xst:1767 - HDL ADVISOR - Resource sharing has identified that some arithmetic operations in this design can share the same physical resources for reduced device utilization. For improved clock frequency you may try to disable resource sharing.
+
+=========================================================================
+HDL Synthesis Report
+
+Macro Statistics
+# ROMs                                                 : 72
+ 64x1-bit ROM                                          : 72
+# Multipliers                                          : 3
+ 12x12-bit multiplier                                  : 3
+# Adders/Subtractors                                   : 34
+ 12-bit adder                                          : 16
+ 12-bit addsub                                         : 1
+ 12-bit subtractor                                     : 7
+ 24-bit adder                                          : 4
+ 32-bit adder                                          : 1
+ 4-bit adder                                           : 3
+ 6-bit adder                                           : 2
+# Counters                                             : 9
+ 12-bit up counter                                     : 2
+ 20-bit up counter                                     : 1
+ 3-bit up counter                                      : 2
+ 32-bit up counter                                     : 1
+ 4-bit down counter                                    : 1
+ 4-bit up counter                                      : 1
+ 8-bit up counter                                      : 1
+# Registers                                            : 162
+ 1-bit register                                        : 144
+ 12-bit register                                       : 3
+ 3-bit register                                        : 2
+ 32-bit register                                       : 2
+ 4-bit register                                        : 7
+ 5-bit register                                        : 3
+ 8-bit register                                        : 1
+# Latches                                              : 1
+ 1-bit latch                                           : 1
+# Comparators                                          : 67
+ 12-bit comparator greatequal                          : 15
+ 12-bit comparator greater                             : 9
+ 12-bit comparator less                                : 29
+ 12-bit comparator lessequal                           : 9
+ 4-bit comparator greater                              : 3
+ 4-bit comparator lessequal                            : 1
+ 8-bit comparator equal                                : 1
+# Multiplexers                                         : 4
+ 1-bit 128-to-1 multiplexer                            : 4
+
+=========================================================================
+
+=========================================================================
+*                       Advanced HDL Synthesis                          *
+=========================================================================
+
+WARNING:Xst:79 - Model 'DCM' has different characteristics in destination library
+WARNING:Xst:80 - Model name has been changed to 'DCM1'
+WARNING:Xst:1710 - FF/Latch <draw_mode_in_2> (without init value) has a constant value of 0 in block <game_log>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1710 - FF/Latch <draw_mode_in_3> (without init value) has a constant value of 0 in block <game_log>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1710 - FF/Latch <draw_mode_reg_2> (without init value) has a constant value of 0 in block <game_log>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1710 - FF/Latch <draw_mode_reg_3> (without init value) has a constant value of 0 in block <game_log>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:2677 - Node <sum_1> of sequential type is unconnected in block <keyboard>.
+WARNING:Xst:2677 - Node <sum_2> of sequential type is unconnected in block <keyboard>.
+WARNING:Xst:2677 - Node <sum_3> of sequential type is unconnected in block <keyboard>.
+WARNING:Xst:2677 - Node <sum_4> of sequential type is unconnected in block <keyboard>.
+WARNING:Xst:2677 - Node <sum_5> of sequential type is unconnected in block <keyboard>.
+WARNING:Xst:2677 - Node <sum_6> of sequential type is unconnected in block <keyboard>.
+WARNING:Xst:2677 - Node <sum_7> of sequential type is unconnected in block <keyboard>.
+WARNING:Xst:2677 - Node <sum_8> of sequential type is unconnected in block <keyboard>.
+WARNING:Xst:2677 - Node <sum_9> of sequential type is unconnected in block <keyboard>.
+WARNING:Xst:2677 - Node <sum_10> of sequential type is unconnected in block <keyboard>.
+WARNING:Xst:2677 - Node <sum_11> of sequential type is unconnected in block <keyboard>.
+WARNING:Xst:2677 - Node <sum_12> of sequential type is unconnected in block <keyboard>.
+WARNING:Xst:2677 - Node <sum_13> of sequential type is unconnected in block <keyboard>.
+WARNING:Xst:2677 - Node <sum_14> of sequential type is unconnected in block <keyboard>.
+WARNING:Xst:2677 - Node <sum_15> of sequential type is unconnected in block <keyboard>.
+WARNING:Xst:2677 - Node <sum_16> of sequential type is unconnected in block <keyboard>.
+WARNING:Xst:2677 - Node <sum_17> of sequential type is unconnected in block <keyboard>.
+WARNING:Xst:2677 - Node <sum_18> of sequential type is unconnected in block <keyboard>.
+WARNING:Xst:2677 - Node <sum_19> of sequential type is unconnected in block <keyboard>.
+WARNING:Xst:2677 - Node <sum_20> of sequential type is unconnected in block <keyboard>.
+WARNING:Xst:2677 - Node <sum_21> of sequential type is unconnected in block <keyboard>.
+WARNING:Xst:2677 - Node <sum_22> of sequential type is unconnected in block <keyboard>.
+WARNING:Xst:2677 - Node <sum_23> of sequential type is unconnected in block <keyboard>.
+WARNING:Xst:2677 - Node <sum_24> of sequential type is unconnected in block <keyboard>.
+WARNING:Xst:2677 - Node <sum_25> of sequential type is unconnected in block <keyboard>.
+WARNING:Xst:2677 - Node <sum_26> of sequential type is unconnected in block <keyboard>.
+WARNING:Xst:2677 - Node <sum_27> of sequential type is unconnected in block <keyboard>.
+WARNING:Xst:2677 - Node <sum_28> of sequential type is unconnected in block <keyboard>.
+WARNING:Xst:2677 - Node <sum_29> of sequential type is unconnected in block <keyboard>.
+WARNING:Xst:2677 - Node <sum_30> of sequential type is unconnected in block <keyboard>.
+WARNING:Xst:2677 - Node <sum_31> of sequential type is unconnected in block <keyboard>.
+WARNING:Xst:2677 - Node <B_0> of sequential type is unconnected in block <Sync_Imp>.
+WARNING:Xst:2677 - Node <B_1> of sequential type is unconnected in block <Sync_Imp>.
+WARNING:Xst:2677 - Node <G_0> of sequential type is unconnected in block <Sync_Imp>.
+WARNING:Xst:2677 - Node <R_0> of sequential type is unconnected in block <Sync_Imp>.
+WARNING:Xst:2677 - Node <sum_1> of sequential type is unconnected in block <kbd>.
+WARNING:Xst:2677 - Node <sum_2> of sequential type is unconnected in block <kbd>.
+WARNING:Xst:2677 - Node <sum_3> of sequential type is unconnected in block <kbd>.
+WARNING:Xst:2677 - Node <sum_4> of sequential type is unconnected in block <kbd>.
+WARNING:Xst:2677 - Node <sum_5> of sequential type is unconnected in block <kbd>.
+WARNING:Xst:2677 - Node <sum_6> of sequential type is unconnected in block <kbd>.
+WARNING:Xst:2677 - Node <sum_7> of sequential type is unconnected in block <kbd>.
+WARNING:Xst:2677 - Node <sum_8> of sequential type is unconnected in block <kbd>.
+WARNING:Xst:2677 - Node <sum_9> of sequential type is unconnected in block <kbd>.
+WARNING:Xst:2677 - Node <sum_10> of sequential type is unconnected in block <kbd>.
+WARNING:Xst:2677 - Node <sum_11> of sequential type is unconnected in block <kbd>.
+WARNING:Xst:2677 - Node <sum_12> of sequential type is unconnected in block <kbd>.
+WARNING:Xst:2677 - Node <sum_13> of sequential type is unconnected in block <kbd>.
+WARNING:Xst:2677 - Node <sum_14> of sequential type is unconnected in block <kbd>.
+WARNING:Xst:2677 - Node <sum_15> of sequential type is unconnected in block <kbd>.
+WARNING:Xst:2677 - Node <sum_16> of sequential type is unconnected in block <kbd>.
+WARNING:Xst:2677 - Node <sum_17> of sequential type is unconnected in block <kbd>.
+WARNING:Xst:2677 - Node <sum_18> of sequential type is unconnected in block <kbd>.
+WARNING:Xst:2677 - Node <sum_19> of sequential type is unconnected in block <kbd>.
+WARNING:Xst:2677 - Node <sum_20> of sequential type is unconnected in block <kbd>.
+WARNING:Xst:2677 - Node <sum_21> of sequential type is unconnected in block <kbd>.
+WARNING:Xst:2677 - Node <sum_22> of sequential type is unconnected in block <kbd>.
+WARNING:Xst:2677 - Node <sum_23> of sequential type is unconnected in block <kbd>.
+WARNING:Xst:2677 - Node <sum_24> of sequential type is unconnected in block <kbd>.
+WARNING:Xst:2677 - Node <sum_25> of sequential type is unconnected in block <kbd>.
+WARNING:Xst:2677 - Node <sum_26> of sequential type is unconnected in block <kbd>.
+WARNING:Xst:2677 - Node <sum_27> of sequential type is unconnected in block <kbd>.
+WARNING:Xst:2677 - Node <sum_28> of sequential type is unconnected in block <kbd>.
+WARNING:Xst:2677 - Node <sum_29> of sequential type is unconnected in block <kbd>.
+WARNING:Xst:2677 - Node <sum_30> of sequential type is unconnected in block <kbd>.
+WARNING:Xst:2677 - Node <sum_31> of sequential type is unconnected in block <kbd>.
+
+=========================================================================
+Advanced HDL Synthesis Report
+
+Macro Statistics
+# ROMs                                                 : 36
+ 64x1-bit ROM                                          : 36
+# Multipliers                                          : 3
+ 12x12-bit multiplier                                  : 3
+# Adders/Subtractors                                   : 34
+ 12-bit adder                                          : 16
+ 12-bit addsub                                         : 1
+ 12-bit subtractor                                     : 7
+ 24-bit adder                                          : 3
+ 32-bit adder                                          : 1
+ 4-bit adder                                           : 3
+ 6-bit adder                                           : 2
+ 7-bit adder                                           : 1
+# Counters                                             : 9
+ 12-bit up counter                                     : 2
+ 20-bit up counter                                     : 1
+ 3-bit up counter                                      : 2
+ 32-bit up counter                                     : 1
+ 4-bit down counter                                    : 1
+ 4-bit up counter                                      : 1
+ 8-bit up counter                                      : 1
+# Registers                                            : 267
+ Flip-Flops                                            : 267
+# Latches                                              : 1
+ 1-bit latch                                           : 1
+# Comparators                                          : 67
+ 12-bit comparator greatequal                          : 15
+ 12-bit comparator greater                             : 9
+ 12-bit comparator less                                : 29
+ 12-bit comparator lessequal                           : 9
+ 4-bit comparator greater                              : 3
+ 4-bit comparator lessequal                            : 1
+ 8-bit comparator equal                                : 1
+# Multiplexers                                         : 4
+ 1-bit 128-to-1 multiplexer                            : 4
+
+=========================================================================
+
+=========================================================================
+*                         Low Level Synthesis                           *
+=========================================================================
+WARNING:Xst:1710 - FF/Latch <draw_mode_in_2> (without init value) has a constant value of 0 in block <game_logic>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <draw_mode_in_3> (without init value) has a constant value of 0 in block <game_logic>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <draw_mode_reg_2> (without init value) has a constant value of 0 in block <game_logic>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <draw_mode_reg_3> (without init value) has a constant value of 0 in block <game_logic>. This FF/Latch will be trimmed during the optimization process.
+INFO:Xst:2146 - In block <Char>, ROM <Mrom_pixel_rom0000> <Mrom_pixel_rom0032> <Mrom_pixel_rom0046> <Mrom_pixel_rom0044> <Mrom_pixel_rom0050> are equivalent, XST will keep only <Mrom_pixel_rom0000>.
+WARNING:Xst:2677 - Node <one_counter_1> of sequential type is unconnected in block <kbd>.
+WARNING:Xst:2677 - Node <one_counter_2> of sequential type is unconnected in block <kbd>.
+WARNING:Xst:2677 - Node <one_counter_3> of sequential type is unconnected in block <kbd>.
+WARNING:Xst:2677 - Node <one_counter_4> of sequential type is unconnected in block <kbd>.
+WARNING:Xst:2677 - Node <one_counter_5> of sequential type is unconnected in block <kbd>.
+WARNING:Xst:2677 - Node <one_counter_6> of sequential type is unconnected in block <kbd>.
+WARNING:Xst:2677 - Node <one_counter_7> of sequential type is unconnected in block <kbd>.
+WARNING:Xst:2677 - Node <one_counter_8> of sequential type is unconnected in block <kbd>.
+WARNING:Xst:2677 - Node <one_counter_9> of sequential type is unconnected in block <kbd>.
+WARNING:Xst:2677 - Node <one_counter_10> of sequential type is unconnected in block <kbd>.
+WARNING:Xst:2677 - Node <one_counter_11> of sequential type is unconnected in block <kbd>.
+WARNING:Xst:2677 - Node <one_counter_12> of sequential type is unconnected in block <kbd>.
+WARNING:Xst:2677 - Node <one_counter_13> of sequential type is unconnected in block <kbd>.
+WARNING:Xst:2677 - Node <one_counter_14> of sequential type is unconnected in block <kbd>.
+WARNING:Xst:2677 - Node <one_counter_15> of sequential type is unconnected in block <kbd>.
+WARNING:Xst:2677 - Node <one_counter_16> of sequential type is unconnected in block <kbd>.
+WARNING:Xst:2677 - Node <one_counter_17> of sequential type is unconnected in block <kbd>.
+WARNING:Xst:2677 - Node <one_counter_18> of sequential type is unconnected in block <kbd>.
+WARNING:Xst:2677 - Node <one_counter_19> of sequential type is unconnected in block <kbd>.
+WARNING:Xst:2677 - Node <one_counter_20> of sequential type is unconnected in block <kbd>.
+WARNING:Xst:2677 - Node <one_counter_21> of sequential type is unconnected in block <kbd>.
+WARNING:Xst:2677 - Node <one_counter_22> of sequential type is unconnected in block <kbd>.
+WARNING:Xst:2677 - Node <one_counter_23> of sequential type is unconnected in block <kbd>.
+WARNING:Xst:2677 - Node <one_counter_24> of sequential type is unconnected in block <kbd>.
+WARNING:Xst:2677 - Node <one_counter_25> of sequential type is unconnected in block <kbd>.
+WARNING:Xst:2677 - Node <one_counter_26> of sequential type is unconnected in block <kbd>.
+WARNING:Xst:2677 - Node <one_counter_27> of sequential type is unconnected in block <kbd>.
+WARNING:Xst:2677 - Node <one_counter_28> of sequential type is unconnected in block <kbd>.
+WARNING:Xst:2677 - Node <one_counter_29> of sequential type is unconnected in block <kbd>.
+WARNING:Xst:2677 - Node <one_counter_30> of sequential type is unconnected in block <kbd>.
+WARNING:Xst:2677 - Node <one_counter_31> of sequential type is unconnected in block <kbd>.
+
+Optimizing unit <top_module> ...
+
+Optimizing unit <Sync> ...
+
+Optimizing unit <Digit> ...
+
+Optimizing unit <Char> ...
+
+Optimizing unit <kbd> ...
+WARNING:Xst:1293 - FF/Latch <bit_index_3> has a constant value of 0 in block <kbd>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1293 - FF/Latch <bit_index_3> has a constant value of 0 in block <kbd>. This FF/Latch will be trimmed during the optimization process.
+
+Optimizing unit <controller> ...
+
+Optimizing unit <game_logic> ...
+
+Optimizing unit <BreakRaster> ...
+WARNING:Xst:2677 - Node <VGA_impl/Sync_Imp/R_0> of sequential type is unconnected in block <top_module>.
+WARNING:Xst:2677 - Node <VGA_impl/Sync_Imp/G_0> of sequential type is unconnected in block <top_module>.
+WARNING:Xst:2677 - Node <VGA_impl/Sync_Imp/B_1> of sequential type is unconnected in block <top_module>.
+WARNING:Xst:2677 - Node <VGA_impl/Sync_Imp/B_0> of sequential type is unconnected in block <top_module>.
+
+Mapping all equations...
+Building and optimizing final netlist ...
+INFO:Xst:2261 - The FF/Latch <VGA_impl/Sync_Imp/G_2> in Unit <top_module> is equivalent to the following FF/Latch, which will be removed : <VGA_impl/Sync_Imp/G_1> 
+Found area constraint ratio of 100 (+ 5) on block top_module, actual ratio is 11.
+FlipFlop game_log/speed_reg_0 has been replicated 1 time(s)
+FlipFlop game_log/speed_reg_1 has been replicated 1 time(s)
+FlipFlop game_log/speed_reg_3 has been replicated 1 time(s)
+
+Final Macro Processing ...
+
+=========================================================================
+Final Register Report
+
+Macro Statistics
+# Registers                                            : 327
+ Flip-Flops                                            : 327
+
+=========================================================================
+
+=========================================================================
+*                           Partition Report                            *
+=========================================================================
+
+Partition Implementation Status
+-------------------------------
+
+  No Partitions were found in this design.
+
+-------------------------------
+
+=========================================================================
+*                            Final Report                               *
+=========================================================================
+Final Results
+RTL Top Level Output File Name     : top_module.ngr
+Top Level Output File Name         : top_module
+Output Format                      : NGC
+Optimization Goal                  : Speed
+Keep Hierarchy                     : No
+
+Design Statistics
+# IOs                              : 21
+
+Cell Usage :
+# BELS                             : 3202
+#      GND                         : 1
+#      INV                         : 72
+#      LUT1                        : 190
+#      LUT2                        : 313
+#      LUT2_D                      : 9
+#      LUT2_L                      : 2
+#      LUT3                        : 363
+#      LUT3_D                      : 9
+#      LUT3_L                      : 8
+#      LUT4                        : 844
+#      LUT4_D                      : 42
+#      LUT4_L                      : 159
+#      MUXCY                       : 546
+#      MUXF5                       : 181
+#      MUXF6                       : 73
+#      MUXF7                       : 25
+#      MUXF8                       : 13
+#      VCC                         : 1
+#      XORCY                       : 351
+# FlipFlops/Latches                : 328
+#      FDC                         : 75
+#      FDC_1                       : 6
+#      FDCE                        : 57
+#      FDCE_1                      : 9
+#      FDE                         : 1
+#      FDE_1                       : 4
+#      FDP                         : 5
+#      FDP_1                       : 1
+#      FDPE                        : 128
+#      FDR                         : 15
+#      FDRE                        : 20
+#      FDRS                        : 6
+#      LD                          : 1
+# Clock Buffers                    : 6
+#      BUFG                        : 5
+#      BUFGP                       : 1
+# IO Buffers                       : 18
+#      IBUF                        : 1
+#      IBUFG                       : 1
+#      OBUF                        : 16
+# DCMs                             : 1
+#      DCM_SP                      : 1
+# MULTs                            : 3
+#      MULT18X18SIO                : 3
+=========================================================================
+
+Device utilization summary:
+---------------------------
+
+Selected Device : 3s1200efg320-5 
+
+ Number of Slices:                     1046  out of   8672    12%  
+ Number of Slice Flip Flops:            328  out of  17344     1%  
+ Number of 4 input LUTs:               2011  out of  17344    11%  
+ Number of IOs:                          21
+ Number of bonded IOBs:                  19  out of    250     7%  
+ Number of MULT18X18SIOs:                 3  out of     28    10%  
+ Number of GCLKs:                         6  out of     24    25%  
+ Number of DCMs:                          1  out of      8    12%  
+
+---------------------------
+Partition Resource Summary:
+---------------------------
+
+  No Partitions were found in this design.
+
+---------------------------
+
+
+=========================================================================
+TIMING REPORT
+
+NOTE: THESE TIMING NUMBERS ARE ONLY A SYNTHESIS ESTIMATE.
+      FOR ACCURATE TIMING INFORMATION PLEASE REFER TO THE TRACE REPORT
+      GENERATED AFTER PLACE-and-ROUTE.
+
+Clock Information:
+------------------
+-----------------------------------------------------------------------------------------------------+--------------------------------------------------+-------+
+Clock Signal                                                                                         | Clock buffer(FF name)                            | Load  |
+-----------------------------------------------------------------------------------------------------+--------------------------------------------------+-------+
+clk                                                                                                  | IBUFG+BUFG                                       | 95    |
+clk25mhz1(clk25mhz1:O)                                                                               | BUFG(*)(VGA_impl/Sync_Imp/y_pos_11)              | 33    |
+PS2C                                                                                                 | BUFGP                                            | 21    |
+game_log/clk50hz1                                                                                    | BUFG                                             | 176   |
+control/control_mode                                                                                 | NONE(game_log/draw_mode_in_1)                    | 2     |
+VGA_impl/BreakRaster_Imp/char_impl/pixel_not0001(VGA_impl/BreakRaster_Imp/char_impl/pixel_not00011:O)| NONE(*)(VGA_impl/BreakRaster_Imp/char_impl/pixel)| 1     |
+-----------------------------------------------------------------------------------------------------+--------------------------------------------------+-------+
+(*) These 2 clock signal(s) are generated by combinatorial logic,
+and XST is not able to identify which are the primary clock signals.
+Please use the CLOCK_SIGNAL constraint to specify the clock signal(s) generated by combinatorial logic.
+INFO:Xst:2169 - HDL ADVISOR - Some clock signals were not automatically buffered by XST with BUFG/BUFR resources. Please use the buffer_type constraint in order to insert these buffers to the clock signals to help prevent skew problems.
+
+Asynchronous Control Signals Information:
+----------------------------------------
+-----------------------------------+-------------------------+-------+
+Control Signal                     | Buffer(FF name)         | Load  |
+-----------------------------------+-------------------------+-------+
+reset(reset:Q)                     | NONE(control/LEDs_reg_0)| 281   |
+-----------------------------------+-------------------------+-------+
+
+Timing Summary:
+---------------
+Speed Grade: -5
+
+   Minimum period: 21.539ns (Maximum Frequency: 46.427MHz)
+   Minimum input arrival time before clock: 3.768ns
+   Maximum output required time after clock: 4.182ns
+   Maximum combinational path delay: No path found
+
+Timing Detail:
+--------------
+All values displayed in nanoseconds (ns)
+
+=========================================================================
+Timing constraint: Default period analysis for Clock 'clk'
+  Clock period: 9.151ns (frequency: 109.273MHz)
+  Total number of paths / destination ports: 1557 / 110
+-------------------------------------------------------------------------
+Delay:               4.576ns (Levels of Logic = 3)
+  Source:            keyboard/scan_ready_reg (FF)
+  Destination:       control/out_reg_1 (FF)
+  Source Clock:      clk falling
+  Destination Clock: clk rising
+
+  Data Path: keyboard/scan_ready_reg to control/out_reg_1
+                                Gate     Net
+    Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
+    ----------------------------------------  ------------
+     FDC_1:C->Q           20   0.514   1.089  keyboard/scan_ready_reg (keyboard/scan_ready_reg)
+     LUT4:I0->O            1   0.612   0.360  control/out_reg_mux0000<1>30 (control/out_reg_mux0000<1>30)
+     LUT4:I3->O            1   0.612   0.509  control/out_reg_mux0000<1>38 (control/out_reg_mux0000<1>38)
+     LUT2:I0->O            1   0.612   0.000  control/out_reg_mux0000<1>247 (control/out_reg_mux0000<1>)
+     FDP:D                     0.268          control/out_reg_1
+    ----------------------------------------
+    Total                      4.576ns (2.618ns logic, 1.958ns route)
+                                       (57.2% logic, 42.8% route)
+
+=========================================================================
+Timing constraint: Default period analysis for Clock 'clk25mhz1'
+  Clock period: 19.330ns (frequency: 51.733MHz)
+  Total number of paths / destination ports: 257122 / 82
+-------------------------------------------------------------------------
+Delay:               19.330ns (Levels of Logic = 22)
+  Source:            VGA_impl/Sync_Imp/y_pos_2 (FF)
+  Destination:       VGA_impl/Sync_Imp/B_2 (FF)
+  Source Clock:      clk25mhz1 rising
+  Destination Clock: clk25mhz1 rising
+
+  Data Path: VGA_impl/Sync_Imp/y_pos_2 to VGA_impl/Sync_Imp/B_2
+                                Gate     Net
+    Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
+    ----------------------------------------  ------------
+     FDRE:C->Q             7   0.514   0.754  VGA_impl/Sync_Imp/y_pos_2 (VGA_impl/Sync_Imp/y_pos_2)
+     LUT2:I0->O            1   0.612   0.000  VGA_impl/Sync_Imp/Mcompar_y_cmp_gt0000_lut<1> (VGA_impl/Sync_Imp/Mcompar_y_cmp_gt0000_lut<1>)
+     MUXCY:S->O            1   0.404   0.000  VGA_impl/Sync_Imp/Mcompar_y_cmp_gt0000_cy<1> (VGA_impl/Sync_Imp/Mcompar_y_cmp_gt0000_cy<1>)
+     MUXCY:CI->O           1   0.052   0.000  VGA_impl/Sync_Imp/Mcompar_y_cmp_gt0000_cy<2> (VGA_impl/Sync_Imp/Mcompar_y_cmp_gt0000_cy<2>)
+     MUXCY:CI->O           1   0.052   0.000  VGA_impl/Sync_Imp/Mcompar_y_cmp_gt0000_cy<3> (VGA_impl/Sync_Imp/Mcompar_y_cmp_gt0000_cy<3>)
+     MUXCY:CI->O           1   0.052   0.000  VGA_impl/Sync_Imp/Mcompar_y_cmp_gt0000_cy<4> (VGA_impl/Sync_Imp/Mcompar_y_cmp_gt0000_cy<4>)
+     MUXCY:CI->O          75   0.399   1.153  VGA_impl/Sync_Imp/Mcompar_y_cmp_gt0000_cy<5> (VGA_impl/Sync_Imp/Mcompar_y_cmp_gt0000_cy<5>)
+     LUT2:I1->O            4   0.612   0.000  VGA_impl/Sync_Imp/y<2>1 (VGA_impl/y<2>)
+     MUXCY:S->O            1   0.404   0.000  VGA_impl/BreakRaster_Imp/Msub_vy_sub0000_cy<2> (VGA_impl/BreakRaster_Imp/Msub_vy_sub0000_cy<2>)
+     XORCY:CI->O           5   0.699   0.538  VGA_impl/BreakRaster_Imp/Msub_vy_sub0000_xor<3> (VGA_impl/BreakRaster_Imp/vy_sub0000<3>)
+     MULT18X18SIO:A0->P0    1   3.251   0.426  VGA_impl/BreakRaster_Imp/Mmult_bricks_mult0000 (VGA_impl/BreakRaster_Imp/bricks_mult0000<0>)
+     LUT2:I1->O            1   0.612   0.000  VGA_impl/BreakRaster_Imp/Madd_bricks_add0000_Madd_lut<0> (VGA_impl/BreakRaster_Imp/Madd_bricks_add0000_Madd_lut<0>)
+     MUXCY:S->O            1   0.404   0.000  VGA_impl/BreakRaster_Imp/Madd_bricks_add0000_Madd_cy<0> (VGA_impl/BreakRaster_Imp/Madd_bricks_add0000_Madd_cy<0>)
+     XORCY:CI->O          27   0.699   1.072  VGA_impl/BreakRaster_Imp/Madd_bricks_add0000_Madd_xor<1> (VGA_impl/BreakRaster_Imp/bricks_add0000<1>)
+     MUXF5:S->O            1   0.641   0.000  VGA_impl/BreakRaster_Imp/Mmux_bricks_mux0000_12_f5_1 (VGA_impl/BreakRaster_Imp/Mmux_bricks_mux0000_12_f52)
+     MUXF6:I0->O           1   0.451   0.000  VGA_impl/BreakRaster_Imp/Mmux_bricks_mux0000_10_f6_1 (VGA_impl/BreakRaster_Imp/Mmux_bricks_mux0000_10_f62)
+     MUXF7:I1->O           1   0.451   0.000  VGA_impl/BreakRaster_Imp/Mmux_bricks_mux0000_9_f7 (VGA_impl/BreakRaster_Imp/Mmux_bricks_mux0000_9_f7)
+     MUXF8:I0->O           1   0.451   0.387  VGA_impl/BreakRaster_Imp/Mmux_bricks_mux0000_7_f8 (VGA_impl/BreakRaster_Imp/Mmux_bricks_mux0000_7_f8)
+     LUT4:I2->O            1   0.612   0.000  VGA_impl/BreakRaster_Imp/B<2>2189_G (N1308)
+     MUXF5:I1->O           3   0.278   0.454  VGA_impl/BreakRaster_Imp/B<2>2189 (VGA_impl/BreakRaster_Imp/N65)
+     LUT4_D:I3->O          2   0.612   0.383  VGA_impl/BreakRaster_Imp/B<2>22 (VGA_impl/BreakRaster_Imp/N30)
+     LUT4_D:I3->O          2   0.612   0.410  VGA_impl/BreakRaster_Imp/B<2>31 (VGA_impl/BreakRaster_Imp/N55)
+     LUT3:I2->O            1   0.612   0.000  VGA_impl/BreakRaster_Imp/B<2>2 (VGA_impl/BreakRaster_Imp/B<2>)
+     FDRS:D                    0.268          VGA_impl/Sync_Imp/B_2
+    ----------------------------------------
+    Total                     19.330ns (13.753ns logic, 5.577ns route)
+                                       (71.1% logic, 28.9% route)
+
+=========================================================================
+Timing constraint: Default period analysis for Clock 'PS2C'
+  Clock period: 4.607ns (frequency: 217.080MHz)
+  Total number of paths / destination ports: 67 / 23
+-------------------------------------------------------------------------
+Delay:               4.607ns (Levels of Logic = 4)
+  Source:            keyboard/scan_code_reg_5 (FF)
+  Destination:       keyboard/main_counter_2 (FF)
+  Source Clock:      PS2C falling
+  Destination Clock: PS2C falling
+
+  Data Path: keyboard/scan_code_reg_5 to keyboard/main_counter_2
+                                Gate     Net
+    Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
+    ----------------------------------------  ------------
+     FDCE_1:C->Q          19   0.514   0.991  keyboard/scan_code_reg_5 (keyboard/scan_code_reg_5)
+     LUT4:I1->O            1   0.612   0.000  keyboard/main_counter_not000191 (keyboard/main_counter_not000191)
+     MUXF5:I1->O           1   0.278   0.387  keyboard/main_counter_not00019_f5 (keyboard/main_counter_not00019)
+     LUT4:I2->O            1   0.612   0.000  keyboard/main_counter_not0001241 (keyboard/main_counter_not000124)
+     MUXF5:I1->O           3   0.278   0.451  keyboard/main_counter_not000124_f5 (keyboard/main_counter_not0001)
+     FDCE:CE                   0.483          keyboard/main_counter_0
+    ----------------------------------------
+    Total                      4.607ns (2.777ns logic, 1.830ns route)
+                                       (60.3% logic, 39.7% route)
+
+=========================================================================
+Timing constraint: Default period analysis for Clock 'game_log/clk50hz1'
+  Clock period: 21.539ns (frequency: 46.427MHz)
+  Total number of paths / destination ports: 165011796 / 230
+-------------------------------------------------------------------------
+Delay:               21.539ns (Levels of Logic = 20)
+  Source:            game_log/ball_y_reg_0 (FF)
+  Destination:       game_log/bricks_reg_40 (FF)
+  Source Clock:      game_log/clk50hz1 rising
+  Destination Clock: game_log/clk50hz1 rising
+
+  Data Path: game_log/ball_y_reg_0 to game_log/bricks_reg_40
+                                Gate     Net
+    Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
+    ----------------------------------------  ------------
+     FDCE:C->Q             6   0.514   0.569  game_log/ball_y_reg_0 (game_log/ball_y_reg_0)
+     INV:I->O              1   0.612   0.000  game_log/Madd_vy_addsub0000_lut<0>_INV_0 (game_log/Madd_vy_addsub0000_lut<0>)
+     MUXCY:S->O            1   0.404   0.000  game_log/Madd_vy_addsub0000_cy<0> (game_log/Madd_vy_addsub0000_cy<0>)
+     MUXCY:CI->O           1   0.052   0.000  game_log/Madd_vy_addsub0000_cy<1> (game_log/Madd_vy_addsub0000_cy<1>)
+     XORCY:CI->O           1   0.699   0.509  game_log/Madd_vy_addsub0000_xor<2> (game_log/vy_addsub0000<2>)
+     LUT1:I0->O            1   0.612   0.000  game_log/Msub_vy_sub0001_cy<2>_rt (game_log/Msub_vy_sub0001_cy<2>_rt)
+     MUXCY:S->O            1   0.404   0.000  game_log/Msub_vy_sub0001_cy<2> (game_log/Msub_vy_sub0001_cy<2>)
+     XORCY:CI->O           8   0.699   0.643  game_log/Msub_vy_sub0001_xor<3> (game_log/vy_sub0001<3>)
+     MULT18X18SIO:A0->P0    1   3.251   0.426  game_log/Mmult_resultx_mult0000 (game_log/resultx_mult0000<0>)
+     LUT2:I1->O            1   0.612   0.000  game_log/Madd_resultx_add0000_lut<0> (game_log/Madd_resultx_add0000_lut<0>)
+     MUXCY:S->O            1   0.404   0.000  game_log/Madd_resultx_add0000_cy<0> (game_log/Madd_resultx_add0000_cy<0>)
+     XORCY:CI->O          51   0.699   1.078  game_log/Madd_resultx_add0000_xor<1> (game_log/resultx_add0000<1>)
+     MUXF5:S->O            1   0.641   0.000  game_log/Mmux__varindex0000_12_f5_0 (game_log/Mmux__varindex0000_12_f51)
+     MUXF6:I1->O           1   0.451   0.360  game_log/Mmux__varindex0000_11_f6 (game_log/Mmux__varindex0000_11_f6)
+     LUT4:I3->O            1   0.612   0.387  game_log/resultx_add0000<4> (game_log/resultx_add0000<4>1)
+     LUT3:I2->O            1   0.612   0.000  game_log/Mmux__varindex0000_2_f5_G (N1302)
+     MUXF5:I1->O           9   0.278   0.700  game_log/Mmux__varindex0000_2_f5 (game_log/_varindex00001)
+     LUT4_D:I3->O         11   0.612   0.796  game_log/bricks_reg_0_not00011114 (game_log/bricks_reg_0_not00011114)
+     LUT4:I3->O            1   0.612   0.360  game_log/bricks_reg_0_not00011148_SW7 (N1223)
+     LUT4_D:I3->O         15   0.612   0.867  game_log/bricks_reg_64_not0001111 (game_log/N193)
+     LUT4:I3->O            1   0.612   0.357  game_log/bricks_reg_92_not0001 (game_log/bricks_reg_92_not0001)
+     FDPE:CE                   0.483          game_log/bricks_reg_92
+    ----------------------------------------
+    Total                     21.539ns (14.487ns logic, 7.053ns route)
+                                       (67.3% logic, 32.7% route)
+
+=========================================================================
+Timing constraint: Default period analysis for Clock 'control/control_mode'
+  Clock period: 1.926ns (frequency: 519.224MHz)
+  Total number of paths / destination ports: 2 / 2
+-------------------------------------------------------------------------
+Delay:               1.926ns (Levels of Logic = 1)
+  Source:            game_log/draw_mode_in_1 (FF)
+  Destination:       game_log/draw_mode_in_1 (FF)
+  Source Clock:      control/control_mode rising
+  Destination Clock: control/control_mode rising
+
+  Data Path: game_log/draw_mode_in_1 to game_log/draw_mode_in_1
+                                Gate     Net
+    Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
+    ----------------------------------------  ------------
+     FDC:C->Q              2   0.514   0.532  game_log/draw_mode_in_1 (game_log/draw_mode_in_1)
+     LUT4:I0->O            1   0.612   0.000  game_log/draw_mode_in_mux0000<2> (game_log/draw_mode_in_mux0000<2>)
+     FDC:D                     0.268          game_log/draw_mode_in_1
+    ----------------------------------------
+    Total                      1.926ns (1.394ns logic, 0.532ns route)
+                                       (72.4% logic, 27.6% route)
+
+=========================================================================
+Timing constraint: Default OFFSET IN BEFORE for Clock 'PS2C'
+  Total number of paths / destination ports: 8 / 8
+-------------------------------------------------------------------------
+Offset:              3.768ns (Levels of Logic = 3)
+  Source:            PS2D (PAD)
+  Destination:       keyboard/one_counter_0 (FF)
+  Destination Clock: PS2C falling
+
+  Data Path: PS2D to keyboard/one_counter_0
+                                Gate     Net
+    Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
+    ----------------------------------------  ------------
+     IBUF:I->O             6   1.106   0.721  PS2D_IBUF (PS2D_IBUF)
+     LUT3:I0->O            2   0.612   0.449  keyboard/sum_mux0000<0>1 (keyboard/sum_mux0000<0>)
+     LUT4:I1->O            1   0.612   0.000  keyboard/one_counter_mux0000<0>1 (keyboard/one_counter_mux0000<0>)
+     FDC_1:D                   0.268          keyboard/one_counter_0
+    ----------------------------------------
+    Total                      3.768ns (2.598ns logic, 1.170ns route)
+                                       (69.0% logic, 31.0% route)
+
+=========================================================================
+Timing constraint: Default OFFSET OUT AFTER for Clock 'clk25mhz1'
+  Total number of paths / destination ports: 10 / 10
+-------------------------------------------------------------------------
+Offset:              4.063ns (Levels of Logic = 1)
+  Source:            VGA_impl/Sync_Imp/G_2 (FF)
+  Destination:       vgaGreen<2> (PAD)
+  Source Clock:      clk25mhz1 rising
+
+  Data Path: VGA_impl/Sync_Imp/G_2 to vgaGreen<2>
+                                Gate     Net
+    Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
+    ----------------------------------------  ------------
+     FDR:C->Q              2   0.514   0.380  VGA_impl/Sync_Imp/G_2 (VGA_impl/Sync_Imp/G_2)
+     OBUF:I->O                 3.169          vgaGreen_1_OBUF (vgaGreen<1>)
+    ----------------------------------------
+    Total                      4.063ns (3.683ns logic, 0.380ns route)
+                                       (90.6% logic, 9.4% route)
+
+=========================================================================
+Timing constraint: Default OFFSET OUT AFTER for Clock 'clk'
+  Total number of paths / destination ports: 3 / 3
+-------------------------------------------------------------------------
+Offset:              4.182ns (Levels of Logic = 1)
+  Source:            control/LEDs_reg_0 (FF)
+  Destination:       LEDs<3> (PAD)
+  Source Clock:      clk rising
+
+  Data Path: control/LEDs_reg_0 to LEDs<3>
+                                Gate     Net
+    Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
+    ----------------------------------------  ------------
+     FDCE:C->Q             4   0.514   0.499  control/LEDs_reg_0 (control/LEDs_reg_0)
+     OBUF:I->O                 3.169          LEDs_3_OBUF (LEDs<3>)
+    ----------------------------------------
+    Total                      4.182ns (3.683ns logic, 0.499ns route)
+                                       (88.1% logic, 11.9% route)
+
+=========================================================================
+Timing constraint: Default OFFSET OUT AFTER for Clock 'PS2C'
+  Total number of paths / destination ports: 3 / 3
+-------------------------------------------------------------------------
+Offset:              4.182ns (Levels of Logic = 1)
+  Source:            keyboard/main_counter_0 (FF)
+  Destination:       LEDs<0> (PAD)
+  Source Clock:      PS2C falling
+
+  Data Path: keyboard/main_counter_0 to LEDs<0>
+                                Gate     Net
+    Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
+    ----------------------------------------  ------------
+     FDCE:C->Q             4   0.514   0.499  keyboard/main_counter_0 (keyboard/main_counter_0)
+     OBUF:I->O                 3.169          LEDs_0_OBUF (LEDs<0>)
+    ----------------------------------------
+    Total                      4.182ns (3.683ns logic, 0.499ns route)
+                                       (88.1% logic, 11.9% route)
+
+=========================================================================
+
+
+Total REAL time to Xst completion: 37.00 secs
+Total CPU time to Xst completion: 37.21 secs
+ 
+--> 
+
+
+Total memory usage is 596964 kilobytes
+
+Number of errors   :    0 (   0 filtered)
+Number of warnings :  139 (   0 filtered)
+Number of infos    :   31 (   0 filtered)
+
