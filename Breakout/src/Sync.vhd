@@ -18,13 +18,15 @@ signal x_pos : unsigned(11 downto 0) := (others => '0');
 signal y_pos : unsigned(11 downto 0) := (others => '0');
 
 begin
+--Output the correct x and y signals when their values are going to be rendered.
 x <= std_logic_vector(x_pos - 160) when (x_pos > 159) else
 	(others => '1');
-y <= std_logic_vector(y_pos - 45) when (y_pos > 44) else
+y <= std_logic_vector(y_pos-45) when (y_pos > 44) else
 	(others => '1');
 
 	process(clk)
 	begin
+		--On the rising edge of the clock increment the x and y values.
 		if(clk'event and clk='1') then
 			if(x_pos < 800) then
 				x_pos <= x_pos + 1;

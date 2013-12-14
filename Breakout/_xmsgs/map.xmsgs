@@ -23,7 +23,7 @@ To see the details of these <arg fmt="%s" index="4">info</arg> messages, please 
 <arg fmt="%s" index="2">Pin I1 of clk25mhz1</arg>
 </msg>
 
-<msg type="warning" file="Pack" num="266" delta="old" >The function generator <arg fmt="%s" index="1">VGA_impl/BreakRaster_Imp/B_cmp_lt000012</arg> failed to merge with F5 multiplexer <arg fmt="%s" index="2">VGA_impl/BreakRaster_Imp/R&lt;3&gt;25_SW0</arg>.  <arg fmt="%z" index="3">There is a conflict for the FXMUX.</arg>  The design will exhibit suboptimal timing.
+<msg type="warning" file="PhysDesignRules" num="372" delta="old" >Gated clock. Clock net <arg fmt="%s" index="1">VGA_impl/BreakRaster_Imp/char_impl/pixel_not0001</arg> is sourced by a combinatorial pin. This is not good design practice. Use the CE pin to control the loading of data into the flip-flop.
 </msg>
 
 </messages>
