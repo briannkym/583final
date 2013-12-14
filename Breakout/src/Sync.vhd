@@ -39,6 +39,8 @@ y <= std_logic_vector(y_pos-45) when (y_pos > 44) else
 				end if;
 
 			end if;
+			
+			--for x <160 and y <45 we must follow the vga protocol.
 			if(x_pos > 15 and x_pos < 112) then
 				Hsync <= '0';
 			else
@@ -54,7 +56,7 @@ y <= std_logic_vector(y_pos-45) when (y_pos > 44) else
 				R <= (others => '0');
 				G <= (others => '0');
 				B <= (others => '0');
-			else
+			else --If we are in range, forward the red green and blue values coming in.
 				R <= R_in;
 				G <= G_in;
 				B <= B_in;
