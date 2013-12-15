@@ -31,18 +31,17 @@ signal scan_code_reg : std_logic_vector(7 downto 0);  -- register for the
 
 
 signal out_reg : control_signal_out;    -- register for the
-                                                 -- outgoing control_signal
---signal current_scan : integer;        -- Differentiates between the incoming scan_ready
+                                        -- outgoing control_signal
 
 signal LEDs_reg : std_logic_vector(2 downto 0) ;
 
 begin                                   
-
-
-  FSM:process (reset, clock)
+  -------------------------------------------------------------------------------
+  -- Process for updating FSM states
+  -------------------------------------------------------------------------------  
+  Update_FSM:process (reset, clock)
   begin  -- process
     if reset='0' then
-   --   current_scan  <= 0;
       current_state <= wait_start_scan;      
     elsif(rising_edge(clock)) then
       current_state <= next_state;
@@ -51,7 +50,9 @@ begin
   end process;
 
   
-  -- purpose: FSM for decoding the scan code 
+  -----------------------------------------------------------------------------
+  -- Process that generate the right contrl_out signal depending on the scan code 
+  -----------------------------------------------------------------------------
   control: process (clock, reset,scan_ready)
   begin  -- process control
     if reset = '0' then
@@ -63,24 +64,23 @@ begin
       control_mode  <= '0';
     elsif(rising_edge(clock)) then
       case (current_state) is
-        when  wait_start_scan =>
+        when  wait_start_scan =>        -- wait for a scan_code and when ready
+                                        -- sample the entry
                  
           if scan_ready = '1'then
             scan_code_reg <= scan_code;
             case (scan_code) is
               when   x"29" =>            -- space
                 out_reg     <= pause;
-              
-                next_state  <= wait_akn;
                 LEDs_reg <= LEDs_reg + 1;
+                next_state  <= wait_akn;
+
               when   x"76" =>            -- ESC
                 out_reg     <= end_game;
-              
                 next_state  <= wait_akn;
 
               when   x"5A" =>            -- Enter
                 out_reg     <= launch;
-              
                 next_state  <= wait_akn;
 
               when   x"E0"=>          -- arrow
@@ -92,13 +92,12 @@ begin
             end case;
           end if;
                          
-        when wait_akn =>
-       
-      
+        when wait_akn =>                   -- wait for the acknowledgement or
+                                           -- repeate of control signals 
+             
           if scan_ready = '1' then
            
             if scan_code = scan_code_reg then 
-        
               next_state <= wait_akn;
             elsif scan_code = x"F0"  then
               control_mode <= '1';
@@ -109,17 +108,8 @@ begin
             end if;
           end if;
 
-        when release =>
-           
-          if scan_ready = '1'then
-            if scan_code = scan_code_reg then
-              next_state <= wait_start_scan;
-              control_mode <= '0';
-            end if;
-          end if;
-          out_reg <= none;
-
-        when wait_scan_arrow =>
+        when wait_scan_arrow =>         -- wait for the scan code 
+                                        -- of arrows signals 
 
           if scan_ready = '1'  then
             scan_code_reg <= scan_code;
@@ -143,10 +133,9 @@ begin
             end case;
           end if;
           
-        when wait_akn_arrow =>
-          
-        
-                
+        when wait_akn_arrow =>          -- wait for the aknowledgement or
+                                        -- repeate of
+                                        -- arrows signals 
           if scan_ready = '1' then
             if scan_code = scan_code_reg then 
        
@@ -161,6 +150,16 @@ begin
               next_state  <= wait_start_scan;
             end if;
           end if;
+
+        when release =>                 -- wait for the released key scan_code
+           
+          if scan_ready = '1'then
+            if scan_code = scan_code_reg then
+              next_state <= wait_start_scan;
+              control_mode <= '0';
+            end if;
+          end if;
+          out_reg <= none;
        
       end case;
     end if;             

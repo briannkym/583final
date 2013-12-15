@@ -26,18 +26,18 @@ signal one_counter   : integer ;                      -- counter for the erro ch
 signal sum           : integer;                       -- parity checking
 signal scan_code_reg : std_logic_vector (7 downto 0); -- Register that hold the
                                                       -- byte sent
-signal scan_flag      : std_logic;
+signal scan_flag      : std_logic;                    -- signals for scan_ready process
 signal scan_ready_reg : std_logic;
 signal scan_counter   : integer;
 
 signal main_counter : std_logic_vector(2 downto 0);
 
-signal LEDs_reg : std_logic_vector(2 downto 0);
+begin                                   
 
-begin                                   --mixed
-
-
-
+-------------------------------------------------------------------------------
+-- FSM for updating the next state of the control FSM and generating the
+-- scan_ready signal
+-------------------------------------------------------------------------------
   FSM: process (clock, reset,next_state, scan_flag)
   begin  -- process FSM
     if reset='0' then
@@ -58,11 +58,14 @@ begin                                   --mixed
       end if;
     end if;
   end process FSM;
+ 
+-------------------------------------------------------------------------------
+-- FSM for sampling data received from the keyboard
+-- inputs : keyboard_clk, reset
+-- outputs: scan_flag, scan_code_reg and main_counter (debug)
+-------------------------------------------------------------------------------
 
--- purpose: FSM for receiving bytes from keyboard
-  -- type   : combinational
-  -- inputs : keyboard_clk
-  -- outputs: 
+ 
   
   control: process (keyboard_clk, reset)
   begin  -- process control
@@ -72,7 +75,6 @@ begin                                   --mixed
       bit_index     <= 0;
       one_counter   <= 0;
       sum           <= 0;
-      LEDs_reg      <= "111";
       main_counter  <= "000";
     else
       
@@ -92,8 +94,7 @@ begin                                   --mixed
             end if;
             
             if (bit_index = 7) then
-              LEDs_reg (0) <= not LEDs_reg(0);
-         
+                
               bit_index <= 0;
               next_state <= parity;
             else  
@@ -102,8 +103,8 @@ begin                                   --mixed
             scan_code_reg (6 downto 0) <= scan_code_reg (7 downto 1);
             scan_code_reg (7)           <= keyboard_data;
             
-          when parity =>
-            LEDs_reg (1) <= not LEDs_reg(1); 
+          when parity =>                  --getting the parity bit
+          
             if (keyboard_data = '1') then
               sum           <= one_counter + 1;
             else
@@ -112,8 +113,8 @@ begin                                   --mixed
             one_counter   <= 0;
             next_state <= check;
         
-          when check =>
-            LEDs_reg (2) <= not LEDs_reg(2); 
+          when check =>                 -- checking for stop_bit and parity
+        
             if ((sum mod 2) = 1) and keyboard_data = '1' then
               scan_flag <= '1';
             end if;
@@ -131,6 +132,5 @@ begin                                   --mixed
   end process control;
   scan_ready <= scan_ready_reg;             
   scan_code  <= scan_code_reg;
- -- LEDs       <= LEDs_reg;
   LEDs       <= main_counter;
 end behavioral;
