@@ -73,15 +73,6 @@ Delay: process (clock, reset)
     end if;
   end process Delay;
 		
-		
- OtherStuff: process (reset, clk50hz) 
-begin
-   if (reset='0') then
-    --  speed_reg     <= normal;
-      
-	 end if;
-  end process OtherStuff;
-  
 In_Signals:process (reset,clk50hz)
 begin  -- process
   if reset = '0' then
@@ -229,9 +220,9 @@ begin --Logic of the Ball
       ball_x_dir <= '1';
       ball_y_dir <= '0';
       angle_reg  <= hi;
-      speed_reg  <= slow;		
+      speed_reg  <= fastest;		
       bricks_reg <= x"00000FFFFFFFFFFFFFFFFFFFFFFFFFFF";
-      lives_reg  <= x"1";
+      lives_reg  <= x"9";
       score_reg  <= x"000";
       dead_reg   <= '0';
       restart    <= '0';
@@ -531,13 +522,13 @@ begin --Logic of the Ball
 				 when x"000" =>
 					speed_reg <= fastest;
 				 when x"001" =>
-					speed_reg <= faster;
+					speed_reg <= fastest;
 				 when x"002" =>
-					speed_reg <= fast;
+					speed_reg <= fastest;
 				 when x"003" =>
-					speed_reg <= normal;
+					speed_reg <= fastest;
 				 when x"004" =>
-					speed_reg <= slow;
+					speed_reg <= fastest;
 				 when others => null;
 			  end case;
 			  
