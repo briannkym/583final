@@ -1,8 +1,6 @@
 
 library ieee;
 use ieee.STD_LOGIC_1164.all;
-use ieee.std_logic_arith.all;
-use ieee.std_logic_unsigned.all;
 use ieee.numeric_std.all;
         
 package breakout_config is

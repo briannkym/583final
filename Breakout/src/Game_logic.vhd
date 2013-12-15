@@ -219,8 +219,9 @@ begin --Begin Paddle Logic
   end process paddle;
   
   Ball: process (reset, clk50hz)
-  variable vx, vy : std_logic_vector(11 downto 0);
-  variable result: integer;
+  variable vx, vy, vxn, vyn : std_logic_vector(11 downto 0);
+  variable cx, cy : signed(3 downto 0);
+  variable resultx, resulty, resultxy: integer;
 begin --Logic of the Ball
    if (reset='0') then
       ball_x_reg <= x"0EC";
@@ -236,159 +237,201 @@ begin --Logic of the Ball
       restart    <= '0';
    elsif(rising_edge(clk50hz)) then
 
-          if draw_mode_reg = x"1" and restart = '0' then
-               case speed_reg is
+   if draw_mode_reg = x"1" and restart = '0' then
+      case speed_reg is
 			when slow =>
 				case angle_reg is
-							when low =>
-								if (ball_x_dir = '1') then
-								ball_x_reg <= ball_x_reg + 3; else
-								ball_x_reg <= ball_x_reg - 3;
-								end if;
-								if (ball_y_dir = '1') then
-								ball_y_reg <= ball_y_reg + 1; else
-								ball_y_reg <= ball_y_reg - 1;
-								end if;
-							when med =>
-								if (ball_x_dir = '1') then
-									ball_x_reg <= ball_x_reg + 2; else
-									ball_x_reg <= ball_x_reg - 2;
-								end if;
-								if (ball_y_dir = '1') then
-									ball_y_reg <= ball_y_reg + 2; else
-									ball_y_reg <= ball_y_reg - 2;
-								end if;
-							when hi =>
-								if (ball_x_dir = '1') then
-								ball_x_reg <= ball_x_reg + 1; else
-								ball_x_reg <= ball_x_reg - 1;
-								end if;
-								if (ball_y_dir = '1') then 
-								ball_y_reg <= ball_y_reg + 3; else
-								ball_y_reg <= ball_y_reg - 3;
-								end if;
-						end case;
+					when low =>
+						if (ball_x_dir = '1') then
+							cx := to_signed(3, 4);
+						else
+							cx := to_signed(-3, 4);
+						end if;
+						if (ball_y_dir = '1') then
+							cy := to_signed(1, 4);
+						else
+							cy := to_signed(-1, 4);
+						end if;
+					when med =>
+						if (ball_x_dir = '1') then
+							cx := to_signed(2, 4);
+						else
+							cx := to_signed(-2, 4);
+						end if;
+						if (ball_y_dir = '1') then
+							cy := to_signed(2, 4);
+						else
+							cy := to_signed(-2, 4);
+						end if;
+					when hi =>
+						if (ball_x_dir = '1') then
+							cx := to_signed(1, 4);
+						else
+							cx := to_signed(-1, 4);
+						end if;
+						if (ball_y_dir = '1') then
+							cy := to_signed(3, 4);
+						else
+							cy := to_signed(-3, 4);
+						end if;
+				end case;
 			when normal =>
-					case angle_reg is
-							when low =>
-								if (ball_x_dir = '1') then
-								ball_x_reg <= ball_x_reg + 4; else
-								ball_x_reg <= ball_x_reg - 4;
-								end if;
-								if (ball_y_dir = '1') then
-								ball_y_reg <= ball_y_reg + 2; else
-								ball_y_reg <= ball_y_reg - 2;
-								end if;
-							when med =>
-								if (ball_x_dir = '1') then
-									ball_x_reg <= ball_x_reg + 3; else
-									ball_x_reg <= ball_x_reg - 3;
-								end if;
-								if (ball_y_dir = '1') then
-									ball_y_reg <= ball_y_reg + 3; else
-									ball_y_reg <= ball_y_reg - 3;
-								end if;
-							when hi =>
-								if (ball_x_dir = '1') then
-								ball_x_reg <= ball_x_reg + 2; else
-								ball_x_reg <= ball_x_reg - 2;
-								end if;
-								if (ball_y_dir = '1') then 
-								ball_y_reg <= ball_y_reg + 4; else
-								ball_y_reg <= ball_y_reg - 4;
-								end if;
-						end case;
+				case angle_reg is
+					when low =>
+						if (ball_x_dir = '1') then
+							cx := to_signed(4, 4);
+						else
+							cx := to_signed(-4, 4);
+						end if;
+						if (ball_y_dir = '1') then
+							cy := to_signed(2, 4);
+						else
+							cy := to_signed(-2, 4);
+						end if;
+					when med =>
+						if (ball_x_dir = '1') then
+								cx := to_signed(3, 4);
+							else
+								cx := to_signed(-3, 4);
+						end if;
+						if (ball_y_dir = '1') then
+							cy := to_signed(3, 4);
+						else
+							cy := to_signed(-3, 4);
+						end if;
+					when hi =>
+						if (ball_x_dir = '1') then
+							cx := to_signed(2, 4);
+						else
+							cx := to_signed(-2, 4);
+						end if;
+						if (ball_y_dir = '1') then 
+							cy := to_signed(4, 4);
+						else
+							cy := to_signed(-4, 4);
+						end if;
+				end case;
 			when fast =>
-					case angle_reg is
-							when low =>
-								if (ball_x_dir = '1') then
-								ball_x_reg <= ball_x_reg + 5; else
-								ball_x_reg <= ball_x_reg - 5;
-								end if;
-								if (ball_y_dir = '1') then
-								ball_y_reg <= ball_y_reg + 2; else
-								ball_y_reg <= ball_y_reg - 2;
-								end if;
-							when med =>
-								if (ball_x_dir = '1') then
-									ball_x_reg <= ball_x_reg + 4; else
-									ball_x_reg <= ball_x_reg - 4;
-								end if;
-								if (ball_y_dir = '1') then
-									ball_y_reg <= ball_y_reg + 4; else
-									ball_y_reg <= ball_y_reg - 4;
-								end if;
-							when hi =>
-								if (ball_x_dir = '1') then
-								ball_x_reg <= ball_x_reg + 2; else
-								ball_x_reg <= ball_x_reg - 2;
-								end if;
-								if (ball_y_dir = '1') then 
-								ball_y_reg <= ball_y_reg + 5; else
-								ball_y_reg <= ball_y_reg - 5;
-								end if;
-						end case;
+				case angle_reg is
+					when low =>
+						if (ball_x_dir = '1') then
+							cx := to_signed(5, 4);
+						else
+							cx := to_signed(-5, 4);
+						end if;
+						if (ball_y_dir = '1') then
+							cy := to_signed(2, 4);
+						else
+							cy := to_signed(-2, 4);
+						end if;
+					when med =>
+						if (ball_x_dir = '1') then
+							cx := to_signed(4, 4);
+						else
+							cx := to_signed(-4, 4);
+						end if;
+						if (ball_y_dir = '1') then
+							cy := to_signed(4, 4);
+						else
+							cy := to_signed(-4, 4);
+						end if;
+					when hi =>
+						if (ball_x_dir = '1') then
+							cx := to_signed(2, 4);
+						else
+							cx := to_signed(-2, 4);
+						end if;
+						if (ball_y_dir = '1') then 
+							cy := to_signed(5, 4);
+						else
+							cy := to_signed(-5, 4);
+						end if;
+				end case;
 			when faster =>
-					case angle_reg is
-							when low =>
-								if (ball_x_dir = '1') then
-								ball_x_reg <= ball_x_reg + 6; else
-								ball_x_reg <= ball_x_reg - 6;
-								end if;
-								if (ball_y_dir = '1') then
-								ball_y_reg <= ball_y_reg + 3; else
-								ball_y_reg <= ball_y_reg - 3;
-								end if;
-							when med =>
-								if (ball_x_dir = '1') then
-									ball_x_reg <= ball_x_reg + 5; else
-									ball_x_reg <= ball_x_reg - 5;
-								end if;
-								if (ball_y_dir = '1') then
-									ball_y_reg <= ball_y_reg + 5; else
-									ball_y_reg <= ball_y_reg - 5;
-								end if;
-							when hi =>
-								if (ball_x_dir = '1') then
-								ball_x_reg <= ball_x_reg + 3; else
-								ball_x_reg <= ball_x_reg - 3;
-								end if;
-								if (ball_y_dir = '1') then 
-								ball_y_reg <= ball_y_reg + 6; else
-								ball_y_reg <= ball_y_reg - 6;
-								end if;
-						end case;
+				case angle_reg is
+					when low =>
+						if (ball_x_dir = '1') then
+							cx := to_signed(6, 4);
+						else
+							cx := to_signed(-6, 4);
+						end if;
+						if (ball_y_dir = '1') then
+							cy := to_signed(3, 4);
+						else
+							cy := to_signed(-3, 4);
+						end if;
+					when med =>
+						if (ball_x_dir = '1') then
+							cx := to_signed(5, 4);
+						else
+							cx := to_signed(-5, 4);
+						end if;
+						if (ball_y_dir = '1') then
+							cy := to_signed(5, 4);
+						else
+							cy := to_signed(-5, 4);
+						end if;
+					when hi =>
+						if (ball_x_dir = '1') then
+							cx := to_signed(3, 4);
+						else
+							cx := to_signed(-3, 4);
+						end if;
+						if (ball_y_dir = '1') then
+							cy := to_signed(6, 4);
+						else
+							cy := to_signed(-6, 4);
+						end if;
+				end case;
 			when fastest =>
-					case angle_reg is
-							when low =>
-								if (ball_x_dir = '1') then
-								ball_x_reg <= ball_x_reg + 7; else
-								ball_x_reg <= ball_x_reg - 7;
-								end if;
-								if (ball_y_dir = '1') then
-								ball_y_reg <= ball_y_reg + 4; else
-								ball_y_reg <= ball_y_reg - 4;
-								end if;
-							when med =>
-								if (ball_x_dir = '1') then
-									ball_x_reg <= ball_x_reg + 6; else
-									ball_x_reg <= ball_x_reg - 6;
-								end if;
-								if (ball_y_dir = '1') then
-									ball_y_reg <= ball_y_reg + 6; else
-									ball_y_reg <= ball_y_reg - 6;
-								end if;
-							when hi =>
-								if (ball_x_dir = '1') then
-								ball_x_reg <= ball_x_reg + 4; else
-								ball_x_reg <= ball_x_reg - 4;
-								end if;
-								if (ball_y_dir = '1') then 
-								ball_y_reg <= ball_y_reg + 7; else
-								ball_y_reg <= ball_y_reg - 7;
-								end if;
-						end case;
+				case angle_reg is
+					when low =>
+						if (ball_x_dir = '1') then
+							cx := to_signed(7, 4);
+						else
+							cx := to_signed(-7, 4);
+						end if;
+						if (ball_y_dir = '1') then
+							cy := to_signed(4, 4);
+						else
+							cy := to_signed(-4, 4);
+						end if;
+					when med =>
+						if (ball_x_dir = '1') then
+							cx := to_signed(6, 4);
+						else
+							cx := to_signed(-6, 4);
+						end if;
+						if (ball_y_dir = '1') then
+							cy := to_signed(6, 4);
+						else
+							cy := to_signed(-6, 4);
+						end if;
+					when hi =>
+						if (ball_x_dir = '1') then
+							cx := to_signed(4, 4);
+						else
+							cx := to_signed(-4, 4);
+						end if;
+						if (ball_y_dir = '1') then
+							cy := to_signed(7, 4);								
+						else
+							cy := to_signed(-7, 4);
+						end if;
+				end case;
 		end case;
+		
+		if(cx > 0) then
+		ball_x_reg <= ball_x_reg + unsigned(x"00" & std_logic_vector(cx));
+		else
+		ball_x_reg <= ball_x_reg + unsigned(x"FF" & std_logic_vector(cx));
+		end if;
+		
+		if(cy > 0) then
+		ball_y_reg <= ball_y_reg + unsigned(x"00" & std_logic_vector(cy));
+		else
+		ball_y_reg <= ball_y_reg + unsigned(x"FF" & std_logic_vector(cy));
+		end if;								
 		
 		case ball_x_dir is
 			when '1' =>
@@ -411,108 +454,131 @@ begin --Logic of the Ball
 					ball_y_reg <= to_unsigned(SCREEN_Y_END, 12);
 				end if;
 			when '1' =>
-			
-                                if(ball_y_reg > (SCREEN_PADDLE_BEGIN - BALL_HEIGHT)) then
-                                  ball_y_reg <= to_unsigned((SCREEN_PADDLE_BEGIN - BALL_HEIGHT), 12);
-                                  if (ball_x_reg >= paddle_x_reg - 7 and ball_x_reg < paddle_x_reg + 4) then
-                                    ball_x_dir <= '0';
-                                    ball_y_dir <= '0';
-                                    angle_reg <= low;
+				  if(ball_y_reg > (SCREEN_PADDLE_BEGIN - BALL_HEIGHT)) then
+					 ball_y_reg <= to_unsigned((SCREEN_PADDLE_BEGIN - BALL_HEIGHT), 12);
+					 if (ball_x_reg >= paddle_x_reg - 7 and ball_x_reg < paddle_x_reg + 4) then
+						ball_x_dir <= '0';
+						ball_y_dir <= '0';
+						angle_reg <= low;
 
-                                  elsif (ball_x_reg >= paddle_x_reg + 36 and ball_x_reg < paddle_x_reg + 52) then
-                                    ball_x_dir <= '1';
-                                    ball_y_dir <= '0';
-                                    angle_reg <= low;
-                                    
+					 elsif (ball_x_reg >= paddle_x_reg + 36 and ball_x_reg < paddle_x_reg + 52) then
+						ball_x_dir <= '1';
+						ball_y_dir <= '0';
+						angle_reg <= low;
+						
 
-                                  elsif (ball_x_reg >= paddle_x_reg + 4 and ball_x_reg < paddle_x_reg + 12) then
-                                    ball_x_dir <= '0';
-                                    ball_y_dir <= '0';
-                                    angle_reg <= med;
+					 elsif (ball_x_reg >= paddle_x_reg + 4 and ball_x_reg < paddle_x_reg + 12) then
+						ball_x_dir <= '0';
+						ball_y_dir <= '0';
+						angle_reg <= med;
 
-                                  elsif (ball_x_reg >= paddle_x_reg + 29 and ball_x_reg < paddle_x_reg + 36) then
-                                    ball_x_dir <= '1';
-                                    ball_y_dir <= '0';
-                                    angle_reg <= med;
+					 elsif (ball_x_reg >= paddle_x_reg + 29 and ball_x_reg < paddle_x_reg + 36) then
+						ball_x_dir <= '1';
+						ball_y_dir <= '0';
+						angle_reg <= med;
 
-                                  elsif (ball_x_reg >= paddle_x_reg +12 and ball_x_reg < paddle_x_reg + 20) then
-                                    ball_x_dir <= '0';
-                                    ball_y_dir <= '0';
-                                    angle_reg <= hi;
+					 elsif (ball_x_reg >= paddle_x_reg +12 and ball_x_reg < paddle_x_reg + 20) then
+						ball_x_dir <= '0';
+						ball_y_dir <= '0';
+						angle_reg <= hi;
 
-                                  elsif (ball_x_reg >= paddle_x_reg +20 and ball_x_reg < paddle_x_reg + 29) then
-                                    ball_x_dir <= '1';
-                                    ball_y_dir <= '0';
-                                    angle_reg <= hi;  
+					 elsif (ball_x_reg >= paddle_x_reg +20 and ball_x_reg < paddle_x_reg + 29) then
+						ball_x_dir <= '1';
+						ball_y_dir <= '0';
+						angle_reg <= hi;  
 
-                                  else
-                                    if lives_reg > x"0" then
-                                      lives_reg <= std_logic_vector(unsigned(lives_reg)-1);
-                                      restart   <= '1';
-                                    else
-                                      dead_reg <= '1';
-                                    end if;
-                                   
-                                    
-                                  end if;
-				end if;
+					 else
+						if lives_reg > x"0" then
+						  lives_reg <= std_logic_vector(unsigned(lives_reg)-1);
+						  restart   <= '1';
+						else
+						  dead_reg <= '1';
+						end if;
+					  
+						
+						 end if;
+			end if;
 			when others => null;
 		end case;
 		
+		--Collision Logic----------
 		if ((ball_y_reg >= SCREEN_BRICK_BEGIN) and (ball_y_reg < SCREEN_BRICK_END) and 
 		(ball_x_reg >= SCREEN_X_BEGIN) and (ball_x_reg < (SCREEN_X_END-BALL_WIDTH))) then
 			bricks_reg <= bricks_reg;
-			vx := std_logic_vector(ball_x_reg - SCREEN_X_BEGIN);
-			vy := std_logic_vector(ball_y_reg - SCREEN_BRICK_BEGIN);
 			
-			result := to_integer(unsigned("000" & vy(11 downto 3)) * 18 + unsigned("00000" & vx(11 downto 5)));
+			vx := std_logic_vector(ball_x_reg + BALL_WIDTH/2- SCREEN_X_BEGIN);
+			vy := std_logic_vector(ball_y_reg + BALL_HEIGHT/2- SCREEN_BRICK_BEGIN);
 			
-                        if(bricks_reg(result) = '1') then
-                          --change the speed of the ball depending the brick hit
-                          case ("000" & vy(11 downto 3)) is
-                            when x"000" =>
-                              speed_reg <= fastest;
-                            when x"001" =>
-                              speed_reg <= faster;
-                            when x"002" =>
-                              speed_reg <= fast;
-                            when x"003" =>
-                              speed_reg <= normal;
-                            when x"004" =>
-                              speed_reg <= slow;
-                            when others => null;
-                          end case;
-                          if score_reg (3 downto 0) = x"9" then
-                            score_reg (3 downto 0) <= x"0";
-                            if score_reg (7 downto 4) = x"9" then
-                              score_reg (7 downto 4) <= x"0";
-                              score_reg (11 downto 8) <= std_logic_vector(unsigned(score_reg (11 downto 8)) + 1);
-                            else
-                              score_reg (7 downto 4) <= std_logic_vector(unsigned(score_reg (7 downto 4)) + 1);
-                            end if;
-                          else
-                            score_reg (3 downto 0) <= std_logic_vector(unsigned(score_reg (3 downto 0)) + 1);
-                          end if;
+			if(cx > 0) then
+				vxn := std_logic_vector(ball_x_reg + BALL_WIDTH/2- SCREEN_X_BEGIN + unsigned(x"00" & std_logic_vector(cx)));
+			else
+				vxn := std_logic_vector(ball_x_reg + BALL_WIDTH/2- SCREEN_X_BEGIN + unsigned(x"FF" & std_logic_vector(cx)));
+			end if;
+			
+			
+			if(cy > 0) then
+				vyn := std_logic_vector(ball_y_reg + BALL_HEIGHT/2- SCREEN_BRICK_BEGIN + unsigned(x"00" & std_logic_vector(cy)));
+			else
+				vyn := std_logic_vector(ball_y_reg + BALL_HEIGHT/2- SCREEN_BRICK_BEGIN + unsigned(x"FF" & std_logic_vector(cy)));
+			end if;
+			resultx := to_integer(unsigned("000" & vy(11 downto 3)) * 18 + unsigned("00000" & vxn(11 downto 5)));
+			resulty := to_integer(unsigned("000" & vyn(11 downto 3)) * 18 + unsigned("00000" & vx(11 downto 5)));
+			resultxy := to_integer(unsigned("000" & vyn(11 downto 3)) * 18 + unsigned("00000" & vxn(11 downto 5)));
 
-                          bricks_reg(result) <= '0';
-                          ball_y_dir <= not ball_y_dir;
-                          if(unsigned(vx and x"01F") < 4 or unsigned(vx and x"01F") >= 28) then
-                            ball_x_dir <= not ball_x_dir;
-                          end if;
-                        
-                        end if;
-	
+			if(bricks_reg(resultx) = '1' or bricks_reg(resulty) = '1' or bricks_reg(resultxy) = '1' ) then
+			  --change the speed of the ball depending the brick hit
+			  case ("000" & vy(11 downto 3)) is
+				 when x"000" =>
+					speed_reg <= fastest;
+				 when x"001" =>
+					speed_reg <= faster;
+				 when x"002" =>
+					speed_reg <= fast;
+				 when x"003" =>
+					speed_reg <= normal;
+				 when x"004" =>
+					speed_reg <= slow;
+				 when others => null;
+			  end case;
+			  
+			  
+			  if score_reg (3 downto 0) = x"9" then
+				 score_reg (3 downto 0) <= x"0";
+				 if score_reg (7 downto 4) = x"9" then
+					score_reg (7 downto 4) <= x"0";
+					score_reg (11 downto 8) <= std_logic_vector(unsigned(score_reg (11 downto 8)) + 1);
+				 else
+					score_reg (7 downto 4) <= std_logic_vector(unsigned(score_reg (7 downto 4)) + 1);
+				 end if;
+			  else
+				 score_reg (3 downto 0) <= std_logic_vector(unsigned(score_reg (3 downto 0)) + 1);
+			  end if;
+
+			  if(bricks_reg(resulty) = '1') then
+				  ball_y_dir <= not ball_y_dir;
+				  bricks_reg(resulty) <= '0';
+			  else if (bricks_reg(resultx) = '1') then
+				  ball_x_dir <= not ball_x_dir;
+				  bricks_reg(resultx) <= '0';
+			  else if (bricks_reg(resultxy) = '1') then
+				  ball_x_dir <= not ball_x_dir;
+				  ball_y_dir <= not ball_y_dir;
+				  bricks_reg(resultxy) <= '0';
+			  end if;
+         end if;
 		end if;
-	  elsif restart = '1' then
-            restart <= '0';
-            ball_x_reg <= paddle_x_reg + 24;
-            ball_y_reg <= x"1BA";     
-            ball_x_dir <= '1';
-            ball_y_dir <= '0';
-            angle_reg  <= hi;
-            speed_reg  <= slow;
-          end if;
-	 
+		end if;
+	end if;
+	 elsif restart = '1' then
+		restart <= '0';
+		ball_x_reg <= paddle_x_reg + 24;
+		ball_y_reg <= x"1BA";     
+		ball_x_dir <= '1';
+		ball_y_dir <= '0';
+		angle_reg  <= hi;
+		speed_reg  <= slow;
+	 end if;
+
 	end if;
 	 --End: Logic of the Ball.
   end process Ball;
