@@ -649,3 +649,74 @@ Implementing \emph{Breakout} on the Xilinx Virtex 5 is feasible for both the har
 \end{document}
 
 
+keyboard
+A-inputs: PS2D, PS2C and outputs:scan_ready, scan_code
+
+For the communication between the keyboard and the FPGA board,
+the keyboard module (Kbd.vhd) implements a Device to host communication.
+Data sent from the keyboard has a 11-bits format: a start bit, 7 bits of data,
+a parity bit and a stop bit.
+
+The start and stop bits are always equal to 0 and 1 respectively and the parity bit
+corresponds to an odd parity. It means that it is set if there is an even number of one's
+in the data bits otherwise it is cleared. This is used for errors checking, so when an 
+error occures the bit packet is withdrawn.
+
+The 8 bits data correspond to either the scancode of the key pressed, the
+key up code (``F0'') or the extend scancode for the extrended keys (``E0''). (see more about it
+in the controller section)
+
+The keyboard writes the data bit per bit on the data line (PS2D) when clock(PS2C) is high, 
+so they can be read by the host when the clock is low.
+
+During the sampling, the 8 bits data are gathered into a 1-byte vector using
+the following shifting operation: 
+
+1-  scan_code_reg (6 downto 0) <= scan_code_reg (7 downto 1);  
+2-  scan_code_reg (7)          <= keyboard_data;
+
+The new incoming keyboard_data bit is always received in the 7th index after shifting the previous bits
+to the right.
+  
+when data are ready, the signal scan_ready is set to one for one clock cycle notifying thus 
+the controller. Figure n°? (b) shows how the scan_ready is either set or cleared.   
+
+Figure n°? (a) displays a high level view of the device to host communication.
+
+
+controller
+inputs: scan_ready scan_code outputs: control_en, control_mode, control_signal
+
+The keyboard uses scan codes to communicate the key pressed data. Each key has a particular 
+scan code (1 byte). If a key is pressed, its scan code is sent and if it's held down, the scan
+code will be sent repeatedly once every 100ms(refer to DATAsheet). When released, the keyboard
+send the key-up code (``F0'') followed by the scan code of the realesed key.
+
+However there are special keys in the kyeboard, where the byte ``E0'' is sent first ahead of the scan
+code and when pressed repeatidly the bytes ``E0'' + teh corresponding scan code are sent.
+The key-up bytes for those keys are ``E0 F0''.
+
+The controller take in consideration the following keys :
+ESC : is used to End the game
+space: is used to pause the game
+enter: is used to launch the game
+the arrows (special keys) : are used to control the paddle
+
+The controller is implemented in a final state machine style (figure ?).
+It separates the received scan codes into two categories:
+
+1-control codes : they represent the arrows' scan code, so when received 
+the variable control_en will be set and the control_signal will have one of the 
+following values:
+go_left : when the left arrow is pressed
+go_right : when the right arrow is pressed
+
+2- mode codes : they refere to the control keys (space, launch, entern esc).
+When received the signal control_mode is set and the control signal will have 
+on of the following values:
+end : when esc is pressed
+pause : when space is pressed
+launch : when enter is pressed
+
+The implementation was spread into these two categories for a matter of use and in 
+order to have a smoother move of the paddle.
