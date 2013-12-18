@@ -222,7 +222,7 @@ begin --Logic of the Ball
       angle_reg  <= hi;
       speed_reg  <= slow;		
       bricks_reg <= x"00000FFFFFFFFFFFFFFFFFFFFFFFFFFF";
-      lives_reg  <= x"9";
+      lives_reg  <= x"3";
       score_reg  <= x"000";
       dead_reg   <= '0';
       restart    <= '0';

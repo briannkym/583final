@@ -1,0 +1,43 @@
+speed, lives and score :
+1-speed:
+
+
+
+
+
+2-lives:
+
+Each player has 3 lives, so each time the paddle misses the ball the lives
+are reduced by one and the game is restarted where it was left.
+If there is no lives left, the next miss will set a dead signal that will 
+restart all the modules of the game. This is the score corresponding to that
+section:
+
+if lives_reg > x"0" then
+  lives_reg <= std_logic_vector(unsigned(lives_reg)-1);
+  restart   <= '1';
+else
+  dead_reg <= '1';
+end if;
+
+3-scores:
+
+Each time the ball hit a brick, the score is incremented by one.
+the score output is a std_logic_vector (11 downto 0).
+Each 4 bits reprensent a number (0 through 9) (scores.dia (a)). This implementation was chosen
+for a matter of simplicity for the BreakRaster.
+If one of the three numbers (11 downto 8), (7 downto 4) or (3 downto 0) equals
+9, it is just cleared and the next number is incremented (score.dia (b)). The following code
+reflect this behavior: 
+
+if score_reg (3 downto 0) = x"9" then
+  score_reg (3 downto 0) <= x"0";
+  if score_reg (7 downto 4) = x"9" then
+    score_reg (7 downto 4) <= x"0";
+    score_reg (11 downto 8) <= std_logic_vector(unsigned(score_reg (11 downto 8)) + 1);
+  else
+    score_reg (7 downto 4) <= std_logic_vector(unsigned(score_reg (7 downto 4)) + 1);
+  end if;
+else
+    score_reg (3 downto 0) <= std_logic_vector(unsigned(score_reg (3 downto 0)) + 1);
+end if;
