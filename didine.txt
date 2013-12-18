@@ -1,7 +1,8 @@
 speed, lives and score :
 1-speed:
 
-
+When the ball hit a brick, depending on the layer position of that brick,
+the ball changes its speed from slow to fastest.
 
 
 

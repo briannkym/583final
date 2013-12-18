@@ -115,6 +115,9 @@ begin  -- process
         if draw_mode_reg = x"0" then
           draw_mode_in  <= x"1";
         end if;
+        if draw_mode_reg = x"3" then
+          draw_mode_in  <= x"0";
+        end if;
         
       when others => null;
     end case;
