@@ -1,8 +1,19 @@
 speed, lives and score :
+
+
+
+
 1-speed:
 
 When the ball hit a brick, depending on the layer position of that brick,
-the ball changes its speed from slow to fastest.
+the ball changes its speed from slow to fastest. Here are the different layers
+with their corresponding spped:
+purple : slow
+blue : normal
+green : fast
+yellow : faster
+orange: fastest
+red: fastest
 
 
 
@@ -42,3 +53,15 @@ if score_reg (3 downto 0) = x"9" then
 else
     score_reg (3 downto 0) <= std_logic_vector(unsigned(score_reg (3 downto 0)) + 1);
 end if;
+
+4- draw_mode:
+
+
+The draw_mode is a signal that, depending on the mode keys pressed, tells the VGA in which
+output mode it should display the images : Begin, Play, Pause or Game_over.
+The FSM in figure ?, reflect the behavior of this signal.
+
+Begin : displays a banner of Breakout
+Play : displays teh game state (paddle, ball and bricks)
+pause : displays a pause banner
+Game_over : displays a Game_over banner 

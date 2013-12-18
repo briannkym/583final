@@ -532,6 +532,8 @@ begin --Logic of the Ball
 					speed_reg <= faster;
 				 when x"004" =>
 					speed_reg <= fastest;
+                                 when x"004" =>
+					speed_reg <= fastest;
 				 when others => null;
 			  end case;
 			  
