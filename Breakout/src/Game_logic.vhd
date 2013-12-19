@@ -523,17 +523,17 @@ begin --Logic of the Ball
 			  --change the speed of the ball depending the brick hit
 			  case ("000" & vy(11 downto 3)) is
 				 when x"000" =>
-					speed_reg <= slow;
+					speed_reg <= fastest;
 				 when x"001" =>
-					speed_reg <= normal;
+					speed_reg <= faster;
 				 when x"002" =>
 					speed_reg <= fast;
 				 when x"003" =>
-					speed_reg <= faster;
+					speed_reg <= normal;
 				 when x"004" =>
-					speed_reg <= fastest;
-                                 when x"004" =>
-					speed_reg <= fastest;
+					speed_reg <= slow;
+             when x"005" =>
+					speed_reg <= slow;
 				 when others => null;
 			  end case;
 			  
